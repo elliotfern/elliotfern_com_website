@@ -103,3 +103,11 @@ img {
   max-width: 700px !important;
   margin-left: 0px !important;
 }
+
+.formBox {
+  max-width: 700px;
+  background-color: rgb(192, 192, 192);
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 20px;
+  padding: 20px;
+}

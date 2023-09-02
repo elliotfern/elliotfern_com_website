@@ -6,6 +6,10 @@ import { Container } from 'react-bootstrap'
 import Footer from './components/Footer'
 import Course from './pages/Course'
 import AboutAuthor from './pages/AboutAuthor'
+import Signup from './pages/Signup'
+import Login from './pages/Login'
+import Profile from './pages/Profile'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 function App() {
 
@@ -25,6 +29,13 @@ function App() {
           <Route path="/:lang/article/:nameArticle" element={<Articles />} />
 
           <Route path="/:lang/about-author" element={<AboutAuthor />} />
+
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
         </Routes>
       </Container>
       <Footer />

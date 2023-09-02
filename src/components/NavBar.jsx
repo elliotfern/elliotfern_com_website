@@ -20,6 +20,21 @@ function NavBar() {
                     >
                         <Nav.Link href="#action1">Home</Nav.Link>
                         <Nav.Link href="#action2">Link</Nav.Link>
+
+                        <NavDropdown title="Profile" id="navbarScrollingDropdown">
+                            <NavDropdown.Item>
+                                <Link to="/signup">SignUp</Link>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <Link to="/login">LogIn</Link>
+                            </NavDropdown.Item>
+
+                            <NavDropdown.Item>
+                                <Link to="/profile">Profile</Link>
+                            </NavDropdown.Item>
+                        </NavDropdown>
+
+
                         <NavDropdown title="Lang" id="navbarScrollingDropdown">
                             <NavDropdown.Item>
                                 <Link to="/en/homepage">English</Link>
