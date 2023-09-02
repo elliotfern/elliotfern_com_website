@@ -2,20 +2,17 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
+import he from 'he';
+import Comment from "../components/Comment";
 
 function Articles() {
 
-    const param = useParams();
-    console.log(param.articleId)
-
-    const url = `https://elliotfern.com/controller/blog.php?type=articles&id=${param.articleId}`;
-    console.log(url)
-
-    const [apartments, setApartments] = useState(null)
+    const [article, setArticle] = useState(null)
     const [isFetching, setIsFetching] = useState(true)
 
     // los Hooks se deben de invocar siempre
     const navigate = useNavigate()
+    const { nameArticle } = useParams();
 
     useEffect(() => {
         getData()
@@ -24,9 +21,9 @@ function Articles() {
 
     const getData = async () => {
         try {
-            const response = await axios.get(url)
-            console.log(response)
-            setApartments(response.data)
+            const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=articleName&paramName=${nameArticle}`)
+            console.log(response.data)
+            setArticle(response.data)
             setIsFetching(false)
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -50,26 +47,21 @@ function Articles() {
 
     }
 
+    // dangerouslySetInnerHTML para renderizar el contenido HTML de la API externa
+    const decodedContentArticle = { __html: article[0].post_content };
+    const decodedContentExcerpt = { __html: article[0].post_excerpt };
+
+    // idArticle
+    const idArticle = article[0].ID
 
     return (
-        <div>
-            {apartments.map((eachApartment) => {
-                return (
-                    <div key={eachApartment.ID}>
+        <>
+            <h2 className='text-center bold'>{article[0].post_title}</h2>
+            <h5 className='text-center italic'><div dangerouslySetInnerHTML={decodedContentExcerpt} /></h5>
+            <div dangerouslySetInnerHTML={decodedContentArticle} />
 
-                        <h3>{eachApartment.post_title}</h3>
-                        <h6>{eachApartment.post_date}</h6>
-                        <div dangerouslySetInnerHTML={{ __html: eachApartment.post_content }} />
-
-
-
-                    </div>
-
-                )
-
-            })}
-
-        </div>
+            <Comment idArticle={idArticle} />
+        </>
     )
 }
 

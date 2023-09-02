@@ -1,8 +1,92 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+html,
+body {
+  margin: 0 !important;
+  padding: 0;
 }
 
-body {
+.container-fluid {
   margin: 0;
+  padding-bottom: 0;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+.principal {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.separador {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.aligncenter,
+.wp-block-image {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* FOOTER */
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-elliotfern {
+  padding-top: 55px;
+  padding-bottom: 55px;
+  color: white !important;
   display: flex;
+  justify-content: center;
+  margin: auto;
+  max-width: 1200px;
+  font-size: 1.275em;
+}
+
+.menu-separacio {
+  flex: 1 0 0%;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.footer-elliotfern a:link,
+.footer-elliotfern a:visited,
+.footer-elliotfern a:hover {
+  color: white !important;
+  text-decoration: underline;
+}
+
+.footer-elliotfern-petit {
+  padding-top: 10px;
+  padding-bottom: 55px;
+  color: white !important;
+  text-align: center;
+  margin: auto;
+  max-width: 1200px;
+  font-size: 0.8em;
+}
+
+.text-footer {
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+  margin-bottom: 15px;
 }
