@@ -96,7 +96,7 @@ function HomePage() {
                     <h3> {he.decode(eachCourse.nombreCurso)}</h3>
                   </Link></Card.Title>
                   <Card.Text>
-                    {he.decode(eachCourse.descripcion)}
+                    {he.decode(eachCourse.resumen)}
                   </Card.Text>
                 </Card.Body>
                 <Card.Body>

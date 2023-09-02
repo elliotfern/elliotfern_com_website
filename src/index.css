@@ -34,6 +34,13 @@ body {
   text-align: center;
 }
 
+.alignleft {
+  text-align: left;
+  float: left;
+  clear: left;
+  padding: 20px;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -41,6 +48,7 @@ img {
 
 .italic {
   font-style: italic;
+  line-height: 1.7;
 }
 
 /* FOOTER */
@@ -89,4 +97,9 @@ img {
   padding-right: 20px !important;
   padding-left: 20px !important;
   margin-bottom: 15px;
+}
+
+.boxAuthor {
+  max-width: 700px !important;
+  margin-left: 0px !important;
 }

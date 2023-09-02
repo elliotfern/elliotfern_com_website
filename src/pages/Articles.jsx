@@ -1,9 +1,11 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from 'react-router-dom'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import he from 'he';
 import Comment from "../components/Comment";
+import { Helmet } from 'react-helmet';
+import AuthorBox from "../components/AuthorBox";
+import { format } from "date-fns";
 
 function Articles() {
 
@@ -12,7 +14,7 @@ function Articles() {
 
     // los Hooks se deben de invocar siempre
     const navigate = useNavigate()
-    const { nameArticle } = useParams();
+    const { nameArticle, lang } = useParams();
 
     useEffect(() => {
         getData()
@@ -32,6 +34,19 @@ function Articles() {
 
         }
     }
+
+    // Llamar a getTitle después de que article se haya cargado
+    useEffect(() => {
+
+        if (article && article[0] && article[0].post_title) {
+            getTitle();
+        }
+    }, [article]);
+
+    const getTitle = () => {
+        document.title = `${article[0].post_title} - Open History`;
+    }
+
 
     if (isFetching === true) {
         return (
@@ -54,10 +69,48 @@ function Articles() {
     // idArticle
     const idArticle = article[0].ID
 
+
+    // traducción cadenas de texto
+    let webPostDate = "";
+    let webPostModified = "";
+
+    if (lang === "es") {
+        webPostDate = "Publicado el ";
+        webPostModified = "Modificado el ";
+    } else if (lang === "en") {
+        webPostDate = "Posted on";
+        webPostModified = "Modified on ";
+    } else if (lang === "fr") {
+        webPostDate = "Publié le ";
+        webPostModified = "Modifié le ";
+    } else if (lang === "ca") {
+        webPostDate = "Publicat el ";
+        webPostModified = "Modificat el ";
+    } else if (lang === "it") {
+        webPostDate = "Pubblicato il ";
+        webPostModified = "Modificato il ";
+    }
+
+    const datePost_format = format(new Date(article[0].post_date), "dd-MM-yyyy");
+
+    const dateModified_format = format(new Date(article[0].post_modified), "dd-MM-yyyy");
+
     return (
         <>
+            <Helmet>
+                <meta name="description" content={he.decode(article[0].post_excerpt)} />
+            </Helmet>
+
             <h2 className='text-center bold'>{article[0].post_title}</h2>
             <h5 className='text-center italic'><div dangerouslySetInnerHTML={decodedContentExcerpt} /></h5>
+
+            <AuthorBox />
+
+            <hr />
+
+            <p>{webPostDate} {datePost_format} | {webPostModified} {dateModified_format}</p>
+
+
             <div dangerouslySetInnerHTML={decodedContentArticle} />
 
             <Comment idArticle={idArticle} />

@@ -31,7 +31,7 @@ function Footer() {
                 <hr />
 
                 <div id="footer-elliotfern-petit">
-                    <a href="" aria-label="Creative Commons" target='_blank' rel='noopener' title="Creative commons"><img class="mx-auto d-block" src="img/elliotfern-icon/domini-public.gif" alt="Creative Commons" title='Public Domain' width='88' height='31' /></a>
+                    <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" aria-label="Creative Commons" target='_blank' rel='noopener' title="Creative commons"><img className="mx-auto d-block" src="https://elliotfern.com/img/elliotfern-icon/domini-public.gif" alt="Public Domain" title='Public Domain' width='88' height='31' /></a>
 
                     <div className="text-footer">{textPB}</div>
 
