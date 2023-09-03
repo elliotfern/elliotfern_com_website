@@ -10,6 +10,7 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import IsPrivate from './components/isPrivate'
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
 
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} />
 
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 

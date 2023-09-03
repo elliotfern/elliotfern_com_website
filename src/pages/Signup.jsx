@@ -6,8 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 
-import ReCAPTCHA from "react-google-recaptcha";
-
 function Signup() {
   const navigate = useNavigate()
 
@@ -18,6 +16,12 @@ function Signup() {
 
   // estados de errores
   const [errorMessageUsername, setErrorMessageUsername] = useState("")
+  const [errorMessageEmail, setErrorMessageEmail] = useState("")
+  const [errorMessagePassword, setErrorMessagePassword] = useState("")
+  const [errorMessageLang, setErrorMessageLang] = useState("")
+  const [errorMessageUniqueUsername, setErrorMessageUniqueUsername] = useState("")
+
+  // los handlers
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -87,6 +91,12 @@ function Signup() {
           </Alert>
           : null}
 
+        {errorMessageUniqueUsername ?
+          <Alert variant="danger">
+            {errorMessageUniqueUsername}
+          </Alert>
+          : null}
+
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -97,6 +107,11 @@ function Signup() {
             onChange={handleEmailChange}
             placeholder="Enter email" />
         </Form.Group>
+        {errorMessageEmail ?
+          <Alert variant="danger">
+            {errorMessageEmail}
+          </Alert>
+          : null}
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
@@ -113,6 +128,12 @@ function Signup() {
           </Form.Text>
         </Form.Group>
 
+        {errorMessagePassword ?
+          <Alert variant="danger">
+            {errorMessagePassword}
+          </Alert>
+          : null}
+
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Prefered language</Form.Label>
           <Form.Select aria-label="Default select example"
@@ -128,6 +149,12 @@ function Signup() {
             <option value="ca">Catalan</option>
           </Form.Select>
         </Form.Group>
+
+        {errorMessageLang ?
+          <Alert variant="danger">
+            {errorMessageLang}
+          </Alert>
+          : null}
 
         <Form.Group className="mb-3">
           <div className="d-flex align-items-center">
