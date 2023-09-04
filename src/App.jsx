@@ -17,7 +17,7 @@ import IsPrivate from './components/isPrivate'
 import HomePage from './pages/HomePage';
 
 function App() {
-  const { isUserActive, updateUserLang, userLang } = useContext(AuthContext);
+  const { isUserActive, userLang } = useContext(AuthContext);
 
   //estado para controlar los cambios en userLang
   const [userLangRedirect, setUserLangRedirect] = useState("")
