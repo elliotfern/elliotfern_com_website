@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import service from "../services/service.config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -39,7 +39,7 @@ function Login() {
             localStorage.setItem("authToken", response.data.authToken)
 
             await verifyToken()
-            navigate("/profile")
+            navigate("/")
 
         } catch (error) {
             console.log(error)
@@ -99,6 +99,11 @@ function Login() {
                     Log In
                 </Button>
             </Form>
+            <hr />
+            <div className="aligncenter">
+                <h5>Don't have an Open History account?</h5>
+                <h5><strong> <Link to="/signup">Register now</Link></strong></h5>
+            </div>
 
 
         </div>

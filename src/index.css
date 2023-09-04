@@ -11,6 +11,12 @@ body {
   padding-left: 0px !important;
 }
 
+.header {
+  background-color: rgb(158, 158, 158) !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
 .principal {
   margin-top: 30px;
   margin-bottom: 50px;
@@ -27,6 +33,10 @@ body {
 .separador {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+.espacio-izq {
+  margin-left: 20px;
 }
 
 .aligncenter,
@@ -49,6 +59,12 @@ img {
 .italic {
   font-style: italic;
   line-height: 1.7;
+}
+
+.underline {
+  text-decoration: underline;
+  color: black;
+  font-weight: bold;
 }
 
 /* FOOTER */

@@ -4,13 +4,45 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+
+import { useContext, useState, useEffect } from 'react'
+import { AuthContext } from '../context/auth.context'
 
 function NavBar() {
+
+    // llamamos al hook useNavigate()
+    const navigate = useNavigate()
+
+    // llamamos a los estafos del contexto
+    const { isUserActive, verifyToken, userDetails, userFullName } = useContext(AuthContext)
+
+    //estado para controlar los cambios en el FullName user
+    const [userFullNameUpdated, setUserFullNameUpdated] = useState(null)
+
+    useEffect(() => {
+        setUserFullNameUpdated(userFullName)
+    }, [userFullName])
+
+
+
+    const handleLogout = () => {
+        localStorage.removeItem("authToken")
+
+        verifyToken() // verificar un token que no existe para reiniciar los estados
+        navigate("/")
+    }
+
+    const handleProfile = () => {
+        navigate("/profile")
+    }
+
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="header">
             <Container fluid>
-                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                <Link className="nav-link" to={`/`}><Navbar.Brand> OpenHistory </Navbar.Brand></Link>
+
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -18,22 +50,8 @@ function NavBar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Home</Nav.Link>
-                        <Nav.Link href="#action2">Link</Nav.Link>
 
-                        <NavDropdown title="Profile" id="navbarScrollingDropdown">
-                            <NavDropdown.Item>
-                                <Link to="/signup">SignUp</Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link to="/login">LogIn</Link>
-                            </NavDropdown.Item>
-
-                            <NavDropdown.Item>
-                                <Link to="/profile">Profile</Link>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-
+                        <Nav.Link href="#action2">Books</Nav.Link>
 
                         <NavDropdown title="Lang" id="navbarScrollingDropdown">
                             <NavDropdown.Item>
@@ -52,9 +70,6 @@ function NavBar() {
                                 <Link to="/ca/homepage">Catalan</Link>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#" disabled>
-                            Link
-                        </Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control
@@ -66,13 +81,40 @@ function NavBar() {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                 </Navbar.Collapse>
+
                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        Signed in as: <a href="#login">Mark Otto</a>
-                    </Navbar.Text>
+                    {isUserActive === true
+                        ? (
+                            <>
+                                <Navbar.Text>
+                                    <Button onClick={handleProfile} variant="outline-success espacio-izq"> Signed in as: <span className="underline">{userDetails.fullName ? (
+                                        <> {userFullNameUpdated} </>
+                                    )
+                                        : <> {userDetails.username} </>
+                                    }</span></Button>
+
+                                </Navbar.Text>
+
+                                <Navbar.Text>
+                                    <Button onClick={handleLogout} variant="outline-success espacio-izq">Log Out</Button>
+                                </Navbar.Text>
+
+                            </>
+                        )
+                        : (
+                            <>
+
+                                <Navbar.Text>
+                                    <Link to="/login"><Button variant="outline-success espacio-izq"> Log In</Button></Link>
+                                </Navbar.Text>
+
+                            </>
+                        )
+                    }
                 </Navbar.Collapse>
+
             </Container>
-        </Navbar>
+        </Navbar >
     )
 }
 
