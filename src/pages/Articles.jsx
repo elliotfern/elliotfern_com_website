@@ -1,11 +1,15 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState, useRef } from "react"
+import { useNavigate, useParams, Link } from "react-router-dom"
 import he from 'he';
 import Comment from "../components/Comment";
 import { Helmet } from 'react-helmet';
 import AuthorBox from "../components/AuthorBox";
 import { format } from "date-fns";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+
 
 function Articles() {
 
@@ -15,6 +19,15 @@ function Articles() {
     // los Hooks se deben de invocar siempre
     const navigate = useNavigate()
     const { nameArticle, lang } = useParams();
+
+    // Ref para la sección de comentarios
+    const commentsSectionRef = useRef(null);
+
+    // Función para desplazarse a la sección de comentarios al hacer clic en el icono
+    const scrollToComments = () => {
+        commentsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
 
     useEffect(() => {
         getData()
@@ -90,9 +103,7 @@ function Articles() {
         webPostDate = "Pubblicato il ";
         webPostModified = "Modificato il ";
     }
-
     const datePost_format = format(new Date(article[0].post_date), "dd-MM-yyyy");
-
     const dateModified_format = format(new Date(article[0].post_modified), "dd-MM-yyyy");
 
     return (
@@ -109,11 +120,17 @@ function Articles() {
             <hr />
 
             <p>{webPostDate} {datePost_format} | {webPostModified} {dateModified_format}</p>
+            <div className="icon-comments"><Link to="#" onClick={scrollToComments}>
+                <FontAwesomeIcon icon={faComment} /> Comments
+            </Link>
+            </div>
 
 
             <div dangerouslySetInnerHTML={decodedContentArticle} />
 
-            <Comment idArticle={idArticle} />
+            <div ref={commentsSectionRef}>
+                <Comment idArticle={idArticle} />
+            </div>
         </>
     )
 }

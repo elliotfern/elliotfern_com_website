@@ -8,8 +8,13 @@ import Alert from 'react-bootstrap/Alert';
 
 function Comment(props) {
     const navigate = useNavigate();
-    const { activeUserId } = useContext(AuthContext);
+    const { activeUserId, userDetails } = useContext(AuthContext);
+
+    const userRole = userDetails.role
+    console.log(userRole)
+
     const urlApiComments = `/comment/${props.idArticle}`;
+
     const [allComments, setAllComments] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
     const [editando, setEditando] = useState(false);
@@ -174,16 +179,15 @@ function Comment(props) {
                                     <Card.Text>{comentario.comment}</Card.Text>
                                     <Card.Text>Fecha de Creación: {formatDate(comentario.createdAt)}</Card.Text>
 
-                                    {comentario.userCreatorId._id === activeUserId ? (
+                                    {(comentario.userCreatorId._id === activeUserId || userRole === "admin") && (
+
+
                                         <>
                                             <Button variant="info" onClick={() => handleEditarClick(comentario._id)}>Editar</Button>
 
                                             <Button variant="danger" onClick={() => handleEliminarClick(comentario._id)}>Eliminar</Button>
                                         </>
-                                    )
-                                        :
-                                        null}
-
+                                    )}
                                 </div>
                             )}
                         </Card.Body>

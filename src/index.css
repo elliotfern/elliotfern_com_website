@@ -127,3 +127,12 @@ img {
   border-radius: 20px;
   padding: 20px;
 }
+
+.bookPhoto {
+  max-height: 250px !important;
+  height: 250px !important;
+}
+
+.icon-comments {
+  margin-bottom: 25px;
+}

@@ -131,12 +131,12 @@ function HomePage() {
 
       <p className="text-center"><button onClick={handleRefresh}>Refrescar</button></p>
 
-      <Row>
+      <Row xs={1} md={2} lg={4}>
         {coursesList.map((eachCourse) => {
           return (
-            <Col xs={12} md={3} key={eachCourse.id}>
+            <Col key={eachCourse.id}>
 
-              <Card style={{ width: '18rem', marginBottom: '25px' }} key={eachCourse.id}>
+              <Card style={{ marginBottom: '25px' }} key={eachCourse.id}>
                 <Link to={`/${lang}/course/${eachCourse.paramName}`} >
                   <Card.Img variant="top" src={eachCourse.img} />
                 </Link>

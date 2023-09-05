@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import service from "../services/service.config";
 import { Card, Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { AuthContext } from '../context/auth.context'
 
 
 function Books() {
+    const { activeUserId, userDetails } = useContext(AuthContext);
+
     const [books, setBooks] = useState([]);
     const [showAddModal, setShowAddModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
@@ -13,6 +16,9 @@ function Books() {
         bookAuthor: "",
         topic: "history", // Valor predeterminado
     });
+
+    const userRole = userDetails.role
+    console.log(userRole)
 
     const fetchBooks = async () => {
         try {
@@ -76,10 +82,10 @@ function Books() {
 
     return (
         <div>
-            <h1>Books</h1>
-            <Button variant="primary" onClick={handleShowAddModal}>
-                Agregar Libro
-            </Button>
+            <h2>The books of the Open History community</h2>
+            {activeUserId && (
+                <Button variant="primary" onClick={handleShowAddModal}>Agregar Libro</Button>
+            )}
 
             <Modal show={showAddModal} onHide={handleAddModalClose}>
                 <Modal.Header closeButton>
@@ -142,7 +148,7 @@ function Books() {
 
                         <Card style={{ marginBottom: "20px" }}>
                             {/* Agrega la imagen de la portada del libro */}
-                            <Card.Img
+                            <Card.Img className="bookPhoto"
                                 variant="top"
                                 src={book.imageBook || "https://media.elliotfern.com/img/book_default.png"}
                                 alt={`Portada de ${book.bookTitle}`}
@@ -159,18 +165,22 @@ function Books() {
                                 </Card.Subtitle>
 
                                 <Card.Text>Tema: {book.topic}</Card.Text>
-                                <Button
-                                    variant="primary"
-                                    onClick={() => handleShowEditModal(book)}
-                                >
-                                    Editar
-                                </Button>
-                                <Button
-                                    variant="danger"
-                                    onClick={() => handleDeleteBook(book._id)}
-                                >
-                                    Borrar
-                                </Button>
+                                {(book.userCreatorId._id === activeUserId || userRole === "admin") && (
+                                    <>
+                                        <Button
+                                            variant="primary"
+                                            onClick={() => handleShowEditModal(book)}
+                                        >
+                                            Editar
+                                        </Button>
+                                        <Button
+                                            variant="danger"
+                                            onClick={() => handleDeleteBook(book._id)}
+                                        >
+                                            Borrar
+                                        </Button>
+                                    </>
+                                )}
                             </Card.Body>
                         </Card>
                     </Col>
