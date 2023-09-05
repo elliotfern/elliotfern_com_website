@@ -15,6 +15,7 @@ import ProfileEdit from './pages/ProfileEdit'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import IsPrivate from './components/isPrivate'
 import HomePage from './pages/HomePage';
+import Books from './pages/Books';
 
 function App() {
   const { isUserActive, userLang } = useContext(AuthContext);
@@ -66,6 +67,9 @@ function App() {
           <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} />
           <Route path="/profile/edit" element={<IsPrivate> <ProfileEdit /> </IsPrivate>} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+          <Route path="/books" element={<Books />} />
+
         </Routes>
       </Container>
       <Footer />

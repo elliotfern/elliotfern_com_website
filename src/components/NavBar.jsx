@@ -51,7 +51,7 @@ function NavBar() {
                         navbarScroll
                     >
 
-                        <Nav.Link href="#action2">Books</Nav.Link>
+                        <Nav.Link> <Link to="/books">Books</Link> </Nav.Link>
 
                         <NavDropdown title="Lang" id="navbarScrollingDropdown">
                             <NavDropdown.Item>
