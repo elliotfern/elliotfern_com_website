@@ -5,18 +5,20 @@ import { useNavigate, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
 function Profile() {
+
+    //https://elliotfern.com/controller/blog.php?type=listadoarticulos&lang=ca
+
     const navigate = useNavigate();
     const { userFullName, userLang, userDetails } = useContext(AuthContext);
 
-    // manejo de estados
+    // Manejo de estados
     const [userLangRedirect, setUserLangRedirect] = useState("");
-    const [coursesList, setCoursesList] = useState([]);
-    const [savedCourseTitles, setSavedCourseTitles] = useState([]);
     const [userFullNameUpdated, setUserFullNameUpdated] = useState(null);
 
-    const handleUpdateProfile = () => {
-        navigate("/profile/edit");
-    };
+    // Cursos guardados como favoritos
+    const [savedCoursesList, setSavedCoursesList] = useState(userDetails.savedCourses);
+    const [courseTitles, setCourseTitles] = useState([]);
+    const [loading, setLoading] = useState(true); // Estado de carga de datos
 
     useEffect(() => {
         setUserFullNameUpdated(userFullName);
@@ -32,21 +34,16 @@ function Profile() {
     const getData = async () => {
         try {
             const response = await axios.get(cursosApi);
-            setCoursesList(response.data);
+            setCourseTitles(response.data);
+            setLoading(false); // Marcar que los datos se han cargado
         } catch (error) {
             navigate("/error");
         }
     };
 
-    useEffect(() => {
-        if (userDetails.savedCourses && coursesList.length > 0) {
-            const savedTitles = userDetails.savedCourses.map(savedCourseId => {
-                const course = coursesList.find(course => course.id === savedCourseId);
-                return course ? course.title : "";
-            });
-            setSavedCourseTitles(savedTitles);
-        }
-    }, [userDetails.savedCourses, coursesList]);
+    const handleUpdateProfile = () => {
+        navigate("/profile/edit");
+    };
 
     let idioma = "";
 
@@ -62,8 +59,20 @@ function Profile() {
         idioma = "Italian";
     }
 
-    console.log("listado de cursos", coursesList)
-    console.log("cursos guardados usuario", savedCourseTitles)
+    // Mostrar un mensaje de carga mientras se obtienen los datos
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+    console.log("cursos usuario favoritos", savedCoursesList)
+    console.log("cursos titulos", courseTitles)
+
+    // Filtrar títulos de cursos guardados por los IDs guardados en savedCoursesList
+    const savedCourseTitles = savedCoursesList.map(savedCourseId => {
+        const course = courseTitles.find(course => course.id.toString() === savedCourseId);
+        console.log(course)
+        return course ? course.nombreCurso : ""; // Usamos course.nombreCurso en lugar de course.title
+    });
+
     return (
         <>
             <h2>Hi, {userFullNameUpdated}!</h2>
@@ -71,14 +80,20 @@ function Profile() {
             <h5>My saved courses</h5>
             {savedCourseTitles.length > 0 ? (
                 <ul>
-                    {savedCourseTitles.map((nombreCurso, index) => (
-                        <li key={index}>{nombreCurso}</li>
-                    ))}
+                    {savedCourseTitles.map((nombreCurso, index) => {
+                        const course = courseTitles.find(course => course.id.toString() === savedCoursesList[index]);
+                        return (
+                            <li key={index}>
+                                {course && (
+                                    <Link to={`/${userLang}/course/${course.paramName}`}>{nombreCurso}</Link>
+                                )}
+                            </li>
+                        );
+                    })}
                 </ul>
             ) : (
                 <p>No saved courses found.</p>
             )}
-
             <h5>My saved lessons</h5>
 
             <h4>Your preferred language</h4>
