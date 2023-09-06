@@ -28,10 +28,14 @@ function HomePage() {
   const { isUserActive, userDetails } = useContext(AuthContext)
 
   // estado para los id de los cursos guardados por el usuario
-  const [userSavedCourses, setUserSavedCourses] = useState(userDetails.savedCourses);
+  const [userSavedCourses, setUserSavedCourses] = useState(userDetails ? userDetails.savedCourses : []);
+
 
   useEffect(() => {
-    setUserSavedCourses(userDetails.savedCourses)
+    if (typeof userDetails !== 'undefined' && userDetails !== null) {
+      setUserSavedCourses(userDetails.savedCourses)
+    }
+
     getData()
   }, [lang])
 

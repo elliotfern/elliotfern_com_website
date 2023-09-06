@@ -11,10 +11,13 @@ function Comment(props) {
     const { lang } = useParams();
     const { activeUserId, userDetails } = useContext(AuthContext);
 
-    const userRole = userDetails.role
-    const userLang = userDetails.lang
-    console.log("rol usuari", userRole)
-    console.log("idioma usuari", userLang)
+    if (typeof userDetails !== 'undefined' && userDetails !== null) {
+        const userRole = userDetails.role
+        const userLang = userDetails.lang
+        console.log("rol usuari", userRole)
+        console.log("idioma usuari", userLang)
+    }
+
 
     const urlApiComments = `/comment/${props.idArticle}`;
 
@@ -218,11 +221,14 @@ function Comment(props) {
                                         <Card.Text>{comentario.comment}</Card.Text>
                                         <Card.Text>Fecha de Creación: {formatDate(comentario.createdAt)}</Card.Text>
 
-                                        {(comentario.userCreatorId._id === activeUserId || userRole === "admin") && (
-                                            <>
-                                                <Button variant="info" onClick={() => handleEditarClick(comentario._id, comentario)}>Editar</Button>
-                                                <Button variant="danger" onClick={() => handleEliminarClick(comentario._id)}>Eliminar</Button>
-                                            </>
+                                        {(typeof userDetails !== 'undefined' && userDetails !== null) && (
+
+                                            (comentario.userCreatorId._id === activeUserId || userRole === "admin") && (
+                                                <>
+                                                    <Button variant="info" onClick={() => handleEditarClick(comentario._id, comentario)}>Editar</Button>
+                                                    <Button variant="danger" onClick={() => handleEliminarClick(comentario._id)}>Eliminar</Button>
+                                                </>
+                                            )
                                         )}
                                     </div>
                                 )}

@@ -17,8 +17,11 @@ function Books() {
         topic: "history", // Valor predeterminado
     });
 
-    const userRole = userDetails.role
-    console.log(userRole)
+    if (typeof userDetails !== 'undefined' && userDetails !== null) {
+        const userRole = userDetails.role
+        console.log("user role", userDetails.role)
+    }
+
 
     const fetchBooks = async () => {
         try {
@@ -165,21 +168,26 @@ function Books() {
                                 </Card.Subtitle>
 
                                 <Card.Text>Tema: {book.topic}</Card.Text>
-                                {(book.userCreatorId._id === activeUserId || userRole === "admin") && (
-                                    <>
-                                        <Button
-                                            variant="primary"
-                                            onClick={() => handleShowEditModal(book)}
-                                        >
-                                            Editar
-                                        </Button>
-                                        <Button
-                                            variant="danger"
-                                            onClick={() => handleDeleteBook(book._id)}
-                                        >
-                                            Borrar
-                                        </Button>
-                                    </>
+                                {/* Verifica que userRole existe antes de evaluar la condición */}
+                                {(typeof userDetails !== 'undefined' && userDetails !== null) && (
+
+                                    (book.userCreatorId._id === activeUserId || userDetails.role === "admin") && (
+                                        <>
+                                            <Button
+                                                variant="primary"
+                                                onClick={() => handleShowEditModal(book)}
+                                            >
+                                                Editar
+                                            </Button>
+                                            <Button
+                                                variant="danger"
+                                                onClick={() => handleDeleteBook(book._id)}
+                                            >
+                                                Borrar
+                                            </Button>
+                                        </>
+                                    )
+
                                 )}
                             </Card.Body>
                         </Card>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: import.meta.env.VITE_SERVER_URL || "https://openhistoryserver.adaptable.app/api"
+    baseURL: import.meta.env.VITE_SERVER_URL || "http://localhost:5005/api"
 })
 
 // configuramos que en TODAS las llamadas al backend
