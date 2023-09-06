@@ -51,24 +51,20 @@ function NavBar() {
                         navbarScroll
                     >
 
-                        <Nav.Link> <Link to="/books">Books</Link> </Nav.Link>
+                        <li className="links-menu"><Link to="/books">Books</Link></li>
 
                         <NavDropdown title="Lang" id="navbarScrollingDropdown">
-                            <NavDropdown.Item>
-                                <Link to="/en/homepage">English</Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link to="/es/homepage">Spanish</Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link to="/it/homepage">Italian</Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link to="/fr/homepage">French</Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link to="/ca/homepage">Catalan</Link>
-                            </NavDropdown.Item>
+
+                            <li><Link to="/en/homepage">English</Link></li>
+
+                            <li><Link to="/es/homepage">Spanish</Link></li>
+
+                            <li><Link to="/it/homepage">Italian</Link></li>
+
+                            <li><Link to="/fr/homepage">French</Link></li>
+
+                            <li><Link to="/ca/homepage">Catalan</Link></li>
+
                         </NavDropdown>
                     </Nav>
                     <Form className="d-flex">

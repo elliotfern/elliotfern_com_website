@@ -1,5 +1,5 @@
 import service from "../services/service.config";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { Card, Form, Button } from 'react-bootstrap';
 
@@ -8,17 +8,21 @@ import Alert from 'react-bootstrap/Alert';
 
 function Comment(props) {
     const navigate = useNavigate();
+    const { lang } = useParams();
     const { activeUserId, userDetails } = useContext(AuthContext);
 
     const userRole = userDetails.role
-    console.log(userRole)
+    const userLang = userDetails.lang
+    console.log("rol usuari", userRole)
+    console.log("idioma usuari", userLang)
 
     const urlApiComments = `/comment/${props.idArticle}`;
 
     const [allComments, setAllComments] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
     const [editando, setEditando] = useState(false);
-    const [nuevoTexto, setNuevoTexto] = useState("");
+    const [nuevoTexto, setNuevoTexto] = useState(""); // Para crear nuevos comentarios
+    const [textoEdicion, setTextoEdicion] = useState(""); // Para editar comentarios existentes
     const [showForm, setShowForm] = useState(false); // Nuevo estado para controlar la visibilidad del formulario
 
     useEffect(() => {
@@ -30,16 +34,19 @@ function Comment(props) {
             const response = await service.get(urlApiComments);
             setAllComments(response.data);
             setIsFetching(false);
+            // Obtener la longitud de la lista de comentarios y actualizar el contador
+            const commentCount = response.data.length;
+
+            props.updateCommentCount(commentCount);
         } catch (error) {
             console.error("Error al obtener datos:", error);
             navigate("/error");
         }
     }
 
-    const handleEditarClick = (commentId) => {
-        const comentario = allComments.find((c) => c._id === commentId);
-        if (comentario && comentario.userCreatorId._id === activeUserId) {
-            setNuevoTexto(comentario.comment);
+    const handleEditarClick = (commentId, commentText) => {
+        if (commentText && commentText.userCreatorId._id === activeUserId) {
+            setTextoEdicion(commentText.comment);
             setEditando(commentId);
         }
     }
@@ -47,13 +54,14 @@ function Comment(props) {
     const handleGuardarClick = async (commentId) => {
         try {
             await service.put(`/comment/${commentId}`, {
-                comment: nuevoTexto,
+                comment: textoEdicion,
             });
             const nuevosComentarios = allComments.map((comentario) =>
-                comentario._id === commentId ? { ...comentario, comment: nuevoTexto } : comentario
+                comentario._id === commentId ? { ...comentario, comment: textoEdicion } : comentario
             );
             setAllComments(nuevosComentarios);
             setEditando(false);
+            setTextoEdicion(""); // Restablecer el texto de edición a un valor vacío
         } catch (error) {
             console.log(error);
         }
@@ -66,6 +74,7 @@ function Comment(props) {
                 comentario._id !== commentId
             );
             setAllComments(nuevosComentarios);
+            props.onCommentDeleted();
         } catch (error) {
             console.log(error);
         }
@@ -73,20 +82,26 @@ function Comment(props) {
 
     const handleCancelarClick = () => {
         setEditando(false);
-        setNuevoTexto(""); // Restablecer nuevoTexto a un valor vacío al cancelar la edición
+        setTextoEdicion(""); // Restablecer el texto de edición a un valor vacío al cancelar la edición
     }
 
     const handleChangeTexto = (e) => {
-        setNuevoTexto(e.target.value);
+        if (editando) {
+            setTextoEdicion(e.target.value);
+        } else {
+            setNuevoTexto(e.target.value);
+        }
     };
 
     const handleMostrarFormulario = () => {
         setShowForm(true); // Mostrar el formulario cuando se hace clic en el botón correspondiente
+        setEditando(false); // Asegurarse de que no estés en modo edición
+        setTextoEdicion(""); // Restablecer el texto de edición a un valor vacío
     }
 
     const handleCancelarFormulario = () => {
         setShowForm(false); // Ocultar el formulario cuando se hace clic en "Cancelar"
-        setNuevoTexto("");
+        setNuevoTexto(""); // Restablecer el texto para nuevos comentarios
     }
 
     const formatDate = (dateString) => {
@@ -102,8 +117,11 @@ function Comment(props) {
             });
             const nuevoComentario = response.data;
             setAllComments([...allComments, nuevoComentario]);
-            setNuevoTexto("");
-            setShowForm(false);
+            setNuevoTexto(""); // Restablecer el texto para nuevos comentarios
+            setShowForm(false); // Ocultar el formulario después de agregar un nuevo comentario
+
+            // Llamar a la función de callback para notificar que se publicó un nuevo comentario
+            props.onCommentPosted();
         } catch (error) {
             console.log(error);
         }
@@ -113,9 +131,29 @@ function Comment(props) {
         return <h3>Cargando...</h3>;
     }
 
+    // Contador de comentarios
+    const commentCount = allComments.length;
+
+    // traducciones
+    let webCommentsTitle = "";
+    let webPostModified = "";
+
+    if (lang === "es") {
+        webCommentsTitle = "Comentarios";
+
+    } else if (lang === "en") {
+        webCommentsTitle = "Comments";
+    } else if (lang === "fr") {
+        webCommentsTitle = "Comentarios";
+    } else if (lang === "ca") {
+        webCommentsTitle = "Comentaris";
+    } else if (lang === "it") {
+        webCommentsTitle = "Comenti";
+    }
+
     return (
         <div>
-            <h3>Comments</h3>
+            <h3>{webCommentsTitle}</h3>
             {activeUserId ? (
                 <Button variant="primary" onClick={handleMostrarFormulario}>
                     Agregar Comentario
@@ -156,42 +194,41 @@ function Comment(props) {
 
             <ul>
                 {allComments.map((comentario) => (
-                    <Card key={comentario._id}>
-                        <Card.Body>
-                            <Card.Title>
-                                {comentario.userCreatorId.fullName ? comentario.userCreatorId.fullName : comentario.userCreatorId.userName}
-                            </Card.Title>
-                            {editando === comentario._id ? (
-                                <div>
-                                    <Form.Group controlId="editedCommentText">
-                                        <Form.Control
-                                            as="textarea"
-                                            rows={3}
-                                            value={nuevoTexto}
-                                            onChange={handleChangeTexto}
-                                        />
-                                    </Form.Group>
-                                    <Button variant="success" onClick={() => handleGuardarClick(comentario._id)}>Guardar</Button>
-                                    <Button variant="danger" onClick={handleCancelarClick}>Cancelar</Button>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Card.Text>{comentario.comment}</Card.Text>
-                                    <Card.Text>Fecha de Creación: {formatDate(comentario.createdAt)}</Card.Text>
+                    <div className="caja-comentarios" key={comentario._id}>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>
+                                    {comentario.userCreatorId.fullName ? comentario.userCreatorId.fullName : comentario.userCreatorId.userName}
+                                </Card.Title>
+                                {editando === comentario._id ? (
+                                    <div>
+                                        <Form.Group controlId="editedCommentText">
+                                            <Form.Control
+                                                as="textarea"
+                                                rows={3}
+                                                value={textoEdicion}
+                                                onChange={handleChangeTexto}
+                                            />
+                                        </Form.Group>
+                                        <Button variant="success" onClick={() => handleGuardarClick(comentario._id)}>Guardar</Button>
+                                        <Button variant="danger" onClick={handleCancelarClick}>Cancelar</Button>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <Card.Text>{comentario.comment}</Card.Text>
+                                        <Card.Text>Fecha de Creación: {formatDate(comentario.createdAt)}</Card.Text>
 
-                                    {(comentario.userCreatorId._id === activeUserId || userRole === "admin") && (
-
-
-                                        <>
-                                            <Button variant="info" onClick={() => handleEditarClick(comentario._id)}>Editar</Button>
-
-                                            <Button variant="danger" onClick={() => handleEliminarClick(comentario._id)}>Eliminar</Button>
-                                        </>
-                                    )}
-                                </div>
-                            )}
-                        </Card.Body>
-                    </Card>
+                                        {(comentario.userCreatorId._id === activeUserId || userRole === "admin") && (
+                                            <>
+                                                <Button variant="info" onClick={() => handleEditarClick(comentario._id, comentario)}>Editar</Button>
+                                                <Button variant="danger" onClick={() => handleEliminarClick(comentario._id)}>Eliminar</Button>
+                                            </>
+                                        )}
+                                    </div>
+                                )}
+                            </Card.Body>
+                        </Card>
+                    </div>
                 ))}
             </ul>
         </div>

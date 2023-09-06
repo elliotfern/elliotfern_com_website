@@ -25,9 +25,42 @@ function HomePage() {
   // los Hooks se deben de invocar siempre
   const navigate = useNavigate()
   const { lang } = useParams();
-  const { isUserActive } = useContext(AuthContext)
+  const { isUserActive, userDetails } = useContext(AuthContext)
+
+  // estado para los id de los cursos guardados por el usuario
+  const [userSavedCourses, setUserSavedCourses] = useState(userDetails.savedCourses);
+
+  useEffect(() => {
+    setUserSavedCourses(userDetails.savedCourses)
+    getData()
+  }, [lang])
+
+  // Llamar a getTitle después de que article se haya cargado
+  useEffect(() => {
+    if (coursesList && coursesList[0]) {
+      getTitle();
+    }
+  }, [coursesList]);
 
 
+  const getTitle = () => {
+    document.title = `${webTitle}`;
+  }
+
+  const getData = async () => {
+    try {
+      const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=listado-cursos&langCurso=${lang}`)
+      setCoursesList(response.data)
+      setIsFetching(false)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      // redireccionar a /error
+      navigate("/error")
+
+    }
+  }
+
+  console.log(userSavedCourses)
   // traducción cadenas de texto
   let webTitle = "";
   let webDescription = "";
@@ -63,37 +96,6 @@ function HomePage() {
     webTitle = "Open History"
   }
 
-
-  useEffect(() => {
-    getData()
-
-  }, [lang])
-
-  // Llamar a getTitle después de que article se haya cargado
-  useEffect(() => {
-
-    if (coursesList && coursesList[0]) {
-      getTitle();
-    }
-  }, [coursesList]);
-
-  const getTitle = () => {
-    document.title = `${webTitle}`;
-  }
-
-  const getData = async () => {
-    try {
-      const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=listado-cursos&langCurso=${lang}`)
-      setCoursesList(response.data)
-      setIsFetching(false)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      // redireccionar a /error
-      navigate("/error")
-
-    }
-  }
-
   if (isFetching === true) {
     return (
       <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
@@ -108,16 +110,19 @@ function HomePage() {
 
   }
 
-  const handleCourseSaved = async (e) => {
+  const handleCourseSaved = async (e, courseId) => {
     e.preventDefault();
     const savedCourses = e.target.value
     console.log(savedCourses)
 
     try {
       const response = await service.patch("/profile/savedCourses", {
-        savedCourses,
-      })
-      console.log(response)
+        savedCourses: [courseId], // Enviar un arreglo con el ID del curso
+      });
+      console.log(response);
+
+      // Actualizar el estado userSavedCourses con el nuevo curso guardado
+      setUserSavedCourses([...userSavedCourses, courseId]);
 
     } catch (error) {
       console.log(error)
@@ -133,6 +138,11 @@ function HomePage() {
 
       <Row xs={1} md={2} lg={4}>
         {coursesList.map((eachCourse) => {
+          // Verificar si el ID del curso actual está en userSavedCourses
+          const isCourseSaved = userSavedCourses.toString().includes(eachCourse.id.toString());
+          console.log("eachCourse.id:", eachCourse.id.toString());
+          console.log("isCourseSaved:", isCourseSaved);
+          console.log("estado", userSavedCourses.toString())
           return (
             <Col key={eachCourse.id}>
 
@@ -153,11 +163,20 @@ function HomePage() {
                   <Link to={`/${lang}/course/${eachCourse.paramName}`} >
                     {webLinkCourse}</Link>
 
-                  {isUserActive && (
-                    <><p><Button variant="primary" type="submit" name="idCourse" value={eachCourse.id} onClick={handleCourseSaved}>{savedCourse}</Button></p></>
-                  )
-                  }
-
+                  {/* Renderizar el botón solo si el curso no está guardado */}
+                  {isUserActive && !isCourseSaved && (
+                    <p>
+                      <Button
+                        variant="primary"
+                        type="submit"
+                        name="idCourse"
+                        value={eachCourse.id}
+                        onClick={(e) => handleCourseSaved(e, eachCourse.id)} // Pasar el ID del curso
+                      >
+                        {savedCourse}
+                      </Button>
+                    </p>
+                  )}
                 </Card.Body>
               </Card>
 

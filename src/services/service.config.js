@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: "http://localhost:5005/api"
+    baseURL: import.meta.env.VITE_SERVER_URL || "https://openhistoryserver.adaptable.app/api"
 })
 
 // configuramos que en TODAS las llamadas al backend, se busque el token en el navegador y se envie

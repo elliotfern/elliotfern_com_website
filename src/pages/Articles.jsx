@@ -16,6 +16,8 @@ function Articles() {
     const [article, setArticle] = useState(null)
     const [isFetching, setIsFetching] = useState(true)
 
+    const [commentCount, setCommentCount] = useState(0);
+
     // los Hooks se deben de invocar siempre
     const navigate = useNavigate()
     const { nameArticle, lang } = useParams();
@@ -27,6 +29,18 @@ function Articles() {
     const scrollToComments = () => {
         commentsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
     };
+
+    const handleCommentPosted = () => {
+        // Obtener la longitud actual de los comentarios y agregar 1 para el nuevo comentario
+        const updatedCommentCount = commentCount + 1;
+        setCommentCount(updatedCommentCount);
+    }
+
+    const handleCommentDeleted = () => {
+        // Obtener la longitud actual de los comentarios y restar 1 para el comentario eliminado
+        const updatedCommentCount = commentCount - 1;
+        setCommentCount(updatedCommentCount);
+    }
 
 
     useEffect(() => {
@@ -86,22 +100,28 @@ function Articles() {
     // traducción cadenas de texto
     let webPostDate = "";
     let webPostModified = "";
+    let webCommentsText = "";
 
     if (lang === "es") {
         webPostDate = "Publicado el ";
         webPostModified = "Modificado el ";
+        webCommentsText = "Comentarios"
     } else if (lang === "en") {
         webPostDate = "Posted on";
         webPostModified = "Modified on ";
+        webCommentsText = "Comments"
     } else if (lang === "fr") {
         webPostDate = "Publié le ";
         webPostModified = "Modifié le ";
+        webCommentsText = "Commentaires"
     } else if (lang === "ca") {
         webPostDate = "Publicat el ";
         webPostModified = "Modificat el ";
+        webCommentsText = "Comentaris"
     } else if (lang === "it") {
         webPostDate = "Pubblicato il ";
         webPostModified = "Modificato il ";
+        webCommentsText = "Commenti"
     }
     const datePost_format = format(new Date(article[0].post_date), "dd-MM-yyyy");
     const dateModified_format = format(new Date(article[0].post_modified), "dd-MM-yyyy");
@@ -121,15 +141,18 @@ function Articles() {
 
             <p>{webPostDate} {datePost_format} | {webPostModified} {dateModified_format}</p>
             <div className="icon-comments"><Link to="#" onClick={scrollToComments}>
-                <FontAwesomeIcon icon={faComment} /> Comments
+                <FontAwesomeIcon icon={faComment} /> {webCommentsText} ({commentCount})
             </Link>
             </div>
 
 
             <div dangerouslySetInnerHTML={decodedContentArticle} />
 
+            <hr />
+
             <div ref={commentsSectionRef}>
-                <Comment idArticle={idArticle} />
+                <Comment idArticle={idArticle} updateCommentCount={setCommentCount} onCommentPosted={handleCommentPosted}
+                    onCommentDeleted={handleCommentDeleted} />
             </div>
         </>
     )
