@@ -292,11 +292,17 @@ function Books() {
                         </Form.Group>
 
                         <div>
+
                             <label>Image: </label>
                             <input
                                 type="file"
                                 name="image"
-                                onChange={handleFileUpload}
+                                onChange={(e) =>
+                                    handleFileUpload({
+                                        ...selectedBook,
+                                        imageBook: imageUrl,
+                                    })
+                                }
                                 disabled={isUploading}
                             />
                             {/* below disabled prevents the user from attempting another upload while one is already happening */}
