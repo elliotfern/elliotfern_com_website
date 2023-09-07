@@ -44,8 +44,9 @@ function Books() {
     const [isUploading, setIsUploading] = useState(false); // for a loading animation effect
 
     // below function should be the only function invoked when the file type input changes => onChange={handleFileUpload}
-    const handleFileUpload = async (event) => {
+    const handleFileUpload = async (event, bookId) => {
         // console.log("The file to be uploaded is: ", e.target.files[0]);
+        const bookId = bookId;
 
         if (!event.target.files[0]) {
             // to prevent accidentally clicking the choose file button and not selecting a file
@@ -60,7 +61,7 @@ function Books() {
         //     this name needs to match the name used in the middleware => uploader.single("image")
 
         try {
-            const response = await uploadImageService(uploadData);
+            const response = await uploadImageService(uploadData, bookId);
             // or below line if not using services
             // const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/upload`, uploadData)
 
@@ -297,7 +298,13 @@ function Books() {
                             <input
                                 type="file"
                                 name="image"
-                                onChange={handleFileUpload}
+                                value={selectedBook._id}
+                                onChange={(e) =>
+                                    handleFileUpload({
+                                        ...selectedBook,
+                                        _id: selectedBook._id,
+                                    })
+                                }
                                 disabled={isUploading}
                             />
                             {/* below disabled prevents the user from attempting another upload while one is already happening */}
