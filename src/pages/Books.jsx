@@ -302,7 +302,7 @@ function Books() {
                             <input
                                 type="file"
                                 name="image"
-                                onChange={handleFileUpload()}
+                                onChange={handleFileUpload}
                                 disabled={isUploading}
                             />
                             {/* below disabled prevents the user from attempting another upload while one is already happening */}
