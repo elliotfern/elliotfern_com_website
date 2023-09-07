@@ -11,8 +11,13 @@ import { AuthContext } from '../context/auth.context'
 
 function NavBar(props) {
 
+
+    const currentUrl = window.location.href;
+    const segments = currentUrl.split('/');
+    const langUrl = segments[3];
+
     const userLang = props.lang
-    //console.log(userLang)
+    console.log("user lang", langUrl)
 
     // llamamos al hook useNavigate()
     const navigate = useNavigate()
@@ -45,7 +50,7 @@ function NavBar(props) {
     const handleSearch = (e) => {
         e.preventDefault();
         // Redirige al usuario a la página de resultados de búsqueda con la consulta como parámetro de búsqueda
-        navigate(`/${userLang}/search-results?query=${query}`);
+        navigate(`/${isUserActive ? userLang : langUrl}/search-results?query=${query}`);
         setQuery('');
     };
 
