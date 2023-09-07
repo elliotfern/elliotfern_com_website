@@ -55,7 +55,7 @@ function NavBar(props) {
     };
 
     const homepageUser = userLang + "/homepage";
-    const homepageVisitor = urlDinamica + "/homepage"
+    const homepageVisitor = "/en/homepage"
 
     return (
         <Navbar expand="lg" className="header">
