@@ -38,6 +38,41 @@ function Books() {
         }
     };
 
+    // below state will hold the image URL from cloudinary. This will come from the backend.
+    const [imageUrl, setImageUrl] = useState(null);
+    const [isUploading, setIsUploading] = useState(false); // for a loading animation effect
+
+    // below function should be the only function invoked when the file type input changes => onChange={handleFileUpload}
+    const handleFileUpload = async (event) => {
+        // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+        if (!event.target.files[0]) {
+            // to prevent accidentally clicking the choose file button and not selecting a file
+            return;
+        }
+
+        setIsUploading(true); // to start the loading animation
+
+        const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+        uploadData.append("image", event.target.files[0]);
+        //                   |
+        //     this name needs to match the name used in the middleware => uploader.single("image")
+
+        try {
+            const response = await uploadImageService(uploadData);
+            // or below line if not using services
+            // const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/upload`, uploadData)
+
+            setImageUrl(response.data.imageUrl);
+            //                          |
+            //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
+
+            setIsUploading(false); // to stop the loading animation
+        } catch (error) {
+            navigate("/error");
+        }
+    };
+
     useEffect(() => {
         fetchBooks();
     }, []);
@@ -255,6 +290,26 @@ function Books() {
                                 <option value="fiction">Ficción</option>
                             </Form.Control>
                         </Form.Group>
+
+                        <div>
+                            <label>Image: </label>
+                            <input
+                                type="file"
+                                name="image"
+                                value="imageBook"
+                                onChange={handleFileUpload}
+                                disabled={isUploading}
+                            />
+                            {/* below disabled prevents the user from attempting another upload while one is already happening */}
+                        </div>;
+
+                        {/* to render a loading message or spinner while uploading the picture */}
+                        {isUploading ? <h3>... uploading image</h3> : null}
+
+                        {/* below line will render a preview of the image from cloudinary */}
+                        {imageUrl ? (<div><img src={imageUrl} alt="img" width={200} /></div>) : null}
+
+
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
