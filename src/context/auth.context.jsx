@@ -103,7 +103,7 @@ function AuthWrapper(props) {
 
     // clausula de guardia para toda la pagina
     if (isPageLoading === true) {
-        return <h3>... Validando credenciales</h3>
+        return <h3>... Loading</h3>
     }
 
     return (
