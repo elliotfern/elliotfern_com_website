@@ -16,9 +16,14 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import IsPrivate from './components/isPrivate'
 import HomePage from './pages/HomePage';
 import Books from './pages/Books';
+import SearchResultsPage from './pages/SearchResultsPage';
+
+import Error from './pages/Error';
+import PageNotFound from './pages/PageNotFound';
+import Contact from './pages/Contact';
 
 function App() {
-  const { isUserActive, userLang } = useContext(AuthContext);
+  const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
 
   //estado para controlar los cambios en userLang
   const [userLangRedirect, setUserLangRedirect] = useState("")
@@ -34,7 +39,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar lang={isUserActive ? userLang : langUrlDinamico} />
       <Container className="principal">
         <Routes>
 
@@ -61,14 +66,21 @@ function App() {
           <Route path="/:lang/homepage" element={<HomePage />} />
           <Route path="/:lang/course/:nameCourse/" element={<Course />} />
           <Route path="/:lang/article/:nameArticle" element={<Articles />} />
-          <Route path="/:lang/about-author" element={<AboutAuthor />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} />
           <Route path="/profile/edit" element={<IsPrivate> <ProfileEdit /> </IsPrivate>} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+          <Route path="/:lang/about-author" element={<AboutAuthor />} />
+          <Route path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/:lang/contact" element={<Contact />} />
 
           <Route path="/books" element={<Books />} />
+
+          <Route path="/:lang/search-results" element={<SearchResultsPage />} />
+
+          <Route path="/error" element={<Error />} />
+          <Route path="*" element={<PageNotFound />} />
 
         </Routes>
       </Container>

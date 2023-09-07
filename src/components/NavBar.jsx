@@ -4,28 +4,32 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../context/auth.context'
 
-function NavBar() {
+function NavBar(props) {
+
+    const userLang = props.lang
+    //console.log(userLang)
 
     // llamamos al hook useNavigate()
     const navigate = useNavigate()
 
     // llamamos a los estafos del contexto
-    const { isUserActive, verifyToken, userDetails, userFullName } = useContext(AuthContext)
+    const { isUserActive, userDetails, verifyToken, userFullName, setLangUrlDinamico, langUrlDinamico } = useContext(AuthContext)
 
     //estado para controlar los cambios en el FullName user
     const [userFullNameUpdated, setUserFullNameUpdated] = useState(null)
+    const [urlDinamica, setUrlDinamica] = useState(langUrlDinamico)
+
+    // estado para controlar el buscador
+    const [query, setQuery] = useState('');
 
     useEffect(() => {
         setUserFullNameUpdated(userFullName)
     }, [userFullName])
-
-
 
     const handleLogout = () => {
         localStorage.removeItem("authToken")
@@ -38,10 +42,30 @@ function NavBar() {
         navigate("/profile")
     }
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        // Redirige al usuario a la página de resultados de búsqueda con la consulta como parámetro de búsqueda
+        navigate(`/${userLang}/search-results?query=${query}`);
+        setQuery('');
+    };
+
+    const handleLanguageChange = (newLang) => {
+        // Llamar a la función de cambio de idioma del contexto
+        setLangUrlDinamico(newLang); // Asegúrate de importar changeUserLang desde tu contexto
+    };
+
+    const homepageUser = userLang + "/homepage";
+    const homepageVisitor = urlDinamica + "/homepage"
+    if (homepageUser === "login/homepage") {
+        let resultado = variable.replace("login", "en");
+    }
+
+    // console.log(resultado)
+
     return (
         <Navbar expand="lg" className="header">
             <Container fluid>
-                <Link className="nav-link" to={`/`}><Navbar.Brand> OpenHistory </Navbar.Brand></Link>
+                <Link className="nav-link" to={isUserActive ? homepageUser : homepageVisitor}><Navbar.Brand> OpenHistory </Navbar.Brand></Link>
 
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -55,26 +79,30 @@ function NavBar() {
 
                         <NavDropdown title="Lang" id="navbarScrollingDropdown">
 
-                            <li><Link to="/en/homepage">English</Link></li>
+                            <li><Link to="/en/homepage" onClick={() => handleLanguageChange('en')}>English</Link></li>
 
-                            <li><Link to="/es/homepage">Spanish</Link></li>
+                            <li><Link to="/es/homepage" onClick={() => handleLanguageChange('es')}>Spanish</Link></li>
 
-                            <li><Link to="/it/homepage">Italian</Link></li>
+                            <li><Link to="/it/homepage" onClick={() => handleLanguageChange('it')}>Italian</Link></li>
 
-                            <li><Link to="/fr/homepage">French</Link></li>
+                            <li><Link to="/fr/homepage" onClick={() => handleLanguageChange('fr')}>French</Link></li>
 
-                            <li><Link to="/ca/homepage">Catalan</Link></li>
+                            <li><Link to="/ca/homepage" onClick={() => handleLanguageChange('ca')}>Catalan</Link></li>
 
                         </NavDropdown>
                     </Nav>
-                    <Form className="d-flex">
+                    <Form className="d-flex" onSubmit={handleSearch} >
                         <Form.Control
                             type="search"
-                            placeholder="Search"
+                            placeholder="Buscar artículo por título..."
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
                             className="me-2"
                             aria-label="Search"
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button type="submit" variant="outline-success">
+                            Search
+                        </Button>
                     </Form>
                 </Navbar.Collapse>
 

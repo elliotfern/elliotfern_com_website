@@ -5,6 +5,12 @@ const AuthContext = createContext()
 
 function AuthWrapper(props) {
 
+    // funcion para saber la url dinamica por la que navega el usuario
+    // acceder al parametro dinamico de la lang
+    const currentUrl = window.location.href;
+    const segments = currentUrl.split('/');
+    const langUrl = segments[3];
+
     // función para actualizar el idioma del usuario
     const updateUserLang = (newLang) => {
         setUserLang(newLang);
@@ -21,11 +27,23 @@ function AuthWrapper(props) {
     const [isPageLoading, setIsPageLoading] = useState(true)
     const [userDetails, setUserDetails] = useState(null)
     const [userLang, setUserLang] = useState(null)
+    const [userSavedCourses, setUserSavedCourses] = useState([]);
+    const [userSavedLessons, setUserSavedLessons] = useState([]);
+
     const [userFullName, setUserFullName] = useState(null)
+    const [langUrlDinamico, setLangUrlDinamico] = useState(langUrl);
 
     useEffect(() => {
         verifyToken()
     }, [])
+
+    const updateUserSavedCourses = (newCourses) => {
+        setUserSavedCourses(newCourses);
+    };
+
+    const updateUserSavedLessons = (newLessons) => {
+        setUserSavedLessons(newLessons);
+    };
 
     const verifyToken = async () => {
 
@@ -35,11 +53,11 @@ function AuthWrapper(props) {
         try {
 
             const response = await service.get("/auth/verify")
-            console.log(response)
+            //console.log(response)
 
             const userData = await service.get("/profile")
-            console.log(userData)
-            console.log("user full name", userData.data.fullName)
+            //console.log(userData)
+            //console.log("user full name", userData.data.fullName)
 
             setIsUserActive(true)
             setActiveUserId(response.data._id)
@@ -47,6 +65,10 @@ function AuthWrapper(props) {
             setUserLang(response.data.lang)
             setUserDetails(userData.data)
             setUserFullName(userData.data.fullName)
+
+            // Actualiza las listas de cursos y lecciones guardados
+            updateUserSavedCourses(userData.data.savedCourses);
+            updateUserSavedLessons(userData.data.savedLessons);
 
         } catch (error) {
             console.log(error)
@@ -56,6 +78,8 @@ function AuthWrapper(props) {
             setUserLang(null)
             setUserDetails(null)
             setUserFullName(null)
+            updateUserSavedCourses(null);
+            updateUserSavedLessons(null);
         }
 
     }
@@ -68,7 +92,13 @@ function AuthWrapper(props) {
         userDetails, // aqui mandamos todos los detalles del usuario
         updateUserLang,
         updateUserFullName,
-        userFullName
+        userFullName,
+        langUrlDinamico,
+        setLangUrlDinamico,
+        updateUserSavedCourses,
+        updateUserSavedLessons,
+        userSavedLessons,
+        userSavedCourses
     }
 
     // clausula de guardia para toda la pagina

@@ -1,6 +1,7 @@
-import axios from "axios"
-import { useEffect, useState, useRef } from "react"
-import { useNavigate, useParams, Link } from "react-router-dom"
+import axios from "axios";
+import service from "../services/service.config";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import he from 'he';
 import Comment from "../components/Comment";
 import { Helmet } from 'react-helmet';
@@ -9,20 +10,25 @@ import { format } from "date-fns";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
+import Button from 'react-bootstrap/Button';
 
+// para usar context
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function Articles() {
-
-    const [article, setArticle] = useState(null)
-    const [isFetching, setIsFetching] = useState(true)
-
+    const [article, setArticle] = useState(null);
+    const [isFetching, setIsFetching] = useState(true);
     const [commentCount, setCommentCount] = useState(0);
 
-    // los Hooks se deben de invocar siempre
-    const navigate = useNavigate()
-    const { nameArticle, lang } = useParams();
+    const { isUserActive, userDetails, updateUserSavedLessons } = useContext(AuthContext);
 
-    // Ref para la sección de comentarios
+    // estado para los id de los articulos guardados por el usuario
+    const [userSavedLessons, setUserSavedLessons] = useState(userDetails ? userDetails.savedLessons : []);
+
+    // los Hooks se deben de invocar siempre
+    const navigate = useNavigate();
+    const { nameArticle, lang } = useParams();
     const commentsSectionRef = useRef(null);
 
     // Función para desplazarse a la sección de comentarios al hacer clic en el icono
@@ -44,8 +50,10 @@ function Articles() {
 
 
     useEffect(() => {
+        if (typeof userDetails !== 'undefined' && userDetails !== null) {
+            setUserSavedLessons(userDetails.savedLessons)
+        }
         getData()
-
     }, [])
 
     const getData = async () => {
@@ -74,6 +82,27 @@ function Articles() {
         document.title = `${article[0].post_title} - Open History`;
     }
 
+
+    const handleLessonSaved = async (e, articleId) => {
+        e.preventDefault();
+        const savedLesson = e.target.value;
+
+        // Convierte articleId a cadena de texto antes de agregarlo
+        const articleIdAsString = articleId.toString();
+
+        try {
+            const response = await service.patch("/profile/savedLessons", {
+                savedLessons: [articleIdAsString], // Envía un array con el ID del artículo como cadena de texto
+            });
+            console.log(response);
+
+            // Actualiza el estado userSavedLessons con el nuevo artículo guardado
+            setUserSavedLessons([...userSavedLessons, articleIdAsString]);
+            updateUserSavedLessons([...userSavedLessons, articleIdAsString]);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     if (isFetching === true) {
         return (
@@ -145,6 +174,21 @@ function Articles() {
             </Link>
             </div>
 
+            {/* Renderizar el botón solo si el articulo no está guardado */}
+            {isUserActive && (
+                <p>
+                    <Button
+                        variant="primary"
+                        type="submit"
+                        name="idArticle"
+                        value={idArticle}
+                        onClick={(e) => handleLessonSaved(e, idArticle)} // Pasar el ID del articulo
+                    >
+                        Guardar articulo
+                    </Button>
+                </p>
+            )}
+
 
             <div dangerouslySetInnerHTML={decodedContentArticle} />
 
@@ -158,4 +202,4 @@ function Articles() {
     )
 }
 
-export default Articles
+export default Articles;

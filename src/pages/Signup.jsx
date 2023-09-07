@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import service from "../services/service.config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 
+import { AuthContext } from "../context/auth.context";
+
 function Signup() {
   const navigate = useNavigate()
+
+  const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext)
 
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("");
@@ -168,9 +172,8 @@ function Signup() {
             />
             <label className="form-check-label" htmlFor="aceptarPolitica">
               You must read and accept the {" "}
-              <a href="/privacy-policy" target="_blank">
-                Privacy Policy of this website.
-              </a>
+              <Link target="_blank" to={`/en/privacy-policy`}>Privacy Policy</Link>
+
             </label>
           </div>
         </Form.Group>

@@ -1,6 +1,10 @@
-
+import { AuthContext } from '../context/auth.context';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
+
+    const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
 
     // textos
     const titolPB = "We release the contents to the Public Domain";
@@ -16,15 +20,15 @@ function Footer() {
             <div className="container-fluid footer">
                 <div className="footer-elliotfern">
                     <div className="menu-separacio">
-                        <a href="">About me</a>
+                        <Link to={`/${isUserActive ? userLang : langUrlDinamico}/about-author`}>About author</Link>
                     </div>
 
                     <div className="menu-separacio">
-                        <a href="">Privacy policy</a>
+                        <Link to={`/${isUserActive ? userLang : langUrlDinamico}/privacy-policy`}>Privacy Policy</Link>
                     </div>
 
                     <div className="menu-separacio">
-                        <a href="">Contact</a>
+                        <Link to={`/${isUserActive ? userLang : langUrlDinamico}/contact`}>Contact</Link>
                     </div>
                 </div>
 

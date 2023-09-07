@@ -2,12 +2,16 @@ import { useEffect, useState, useContext } from "react";
 import service from "../services/service.config";
 import { Card, Button, Modal, Form, Row, Col } from "react-bootstrap";
 import { AuthContext } from '../context/auth.context'
+import SearchBooks from "../components/SearchBooks";
 
 
 function Books() {
     const { activeUserId, userDetails } = useContext(AuthContext);
 
-    const [books, setBooks] = useState([]);
+    // -creamos dos estados para mantener la lista de libros, un estado para las busquedas y otro para tener siempre la lista completa de libros
+    const [books, setBooks] = useState([]); //listado original
+    const [allBooks, setAllBooks] = useState([]); // busquedas
+
     const [showAddModal, setShowAddModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [selectedBook, setSelectedBook] = useState({});
@@ -22,11 +26,11 @@ function Books() {
         console.log("user role", userDetails.role)
     }
 
-
     const fetchBooks = async () => {
         try {
             const response = await service.get("/book");
             setBooks(response.data);
+            setAllBooks(response.data); // Actualiza la lista completa de libros
         } catch (error) {
             console.error("Error al obtener libros:", error);
         }
@@ -86,6 +90,10 @@ function Books() {
     return (
         <div>
             <h2>The books of the Open History community</h2>
+
+            <SearchBooks books={books} setBooks={setBooks} allBooks={allBooks} />
+
+
             {activeUserId && (
                 <Button variant="primary" onClick={handleShowAddModal}>Agregar Libro</Button>
             )}

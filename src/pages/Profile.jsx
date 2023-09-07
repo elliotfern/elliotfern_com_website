@@ -5,20 +5,18 @@ import { useNavigate, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
 function Profile() {
-
-    //https://elliotfern.com/controller/blog.php?type=listadoarticulos&lang=ca
-
     const navigate = useNavigate();
-    const { userFullName, userLang, userDetails } = useContext(AuthContext);
+    const { userFullName, userLang, userDetails, userSavedLessons, userSavedCourses } = useContext(AuthContext);
 
-    // Manejo de estados
+    const [userDetailsUpdated, setUserDetailsUpdated] = useState(userDetails);
+
     const [userLangRedirect, setUserLangRedirect] = useState("");
     const [userFullNameUpdated, setUserFullNameUpdated] = useState(null);
-
-    // Cursos guardados como favoritos
-    const [savedCoursesList, setSavedCoursesList] = useState(userDetails.savedCourses);
+    const [savedCoursesList, setSavedCoursesList] = useState(userSavedCourses);
     const [courseTitles, setCourseTitles] = useState([]);
-    const [loading, setLoading] = useState(true); // Estado de carga de datos
+    const [loading, setLoading] = useState(true);
+    const [savedLessonsList, setSavedLessonsList] = useState(userSavedLessons);
+    const [articlesTitles, setarticlesTitles] = useState([]);
 
     useEffect(() => {
         setUserFullNameUpdated(userFullName);
@@ -29,13 +27,24 @@ function Profile() {
         setUserLangRedirect(userLang);
     }, [userLang]);
 
+    useEffect(() => {
+        // Suscribirse al cambio de la lista de cursos guardados en el contexto
+        setSavedCoursesList(userDetails.savedCourses);
+        // Suscribirse al cambio de la lista de lecciones guardadas en el contexto
+        setSavedLessonsList(userDetails.savedLessons);
+    }, [userDetails.savedCourses, userDetails.savedLessons]); // Add userDetails.savedLessons as a dependency
+
     const cursosApi = `https://elliotfern.com/controller/blog.php?type=listado-cursos&langCurso=${userLang}`;
+    const articlesApi = `https://elliotfern.com/controller/blog.php?type=listadoarticulos&lang=${userLang}`;
 
     const getData = async () => {
         try {
             const response = await axios.get(cursosApi);
             setCourseTitles(response.data);
-            setLoading(false); // Marcar que los datos se han cargado
+            setLoading(false);
+
+            const responseArt = await axios.get(articlesApi);
+            setarticlesTitles(responseArt.data);
         } catch (error) {
             navigate("/error");
         }
@@ -59,18 +68,18 @@ function Profile() {
         idioma = "Italian";
     }
 
-    // Mostrar un mensaje de carga mientras se obtienen los datos
-    if (loading) {
+    if (courseTitles.length === 0 || articlesTitles.length === 0) {
         return <p>Loading...</p>;
     }
-    console.log("cursos usuario favoritos", savedCoursesList)
-    console.log("cursos titulos", courseTitles)
 
-    // Filtrar títulos de cursos guardados por los IDs guardados en savedCoursesList
     const savedCourseTitles = savedCoursesList.map(savedCourseId => {
         const course = courseTitles.find(course => course.id.toString() === savedCourseId);
-        console.log(course)
-        return course ? course.nombreCurso : ""; // Usamos course.nombreCurso en lugar de course.title
+        return course ? course.nombreCurso : "";
+    });
+
+    const savedLessonsTitles = savedLessonsList.map(savedLessonId => {
+        const lesson = articlesTitles.find(article => article.ID.toString() === savedLessonId);
+        return lesson ? lesson.post_title : "";
     });
 
     return (
@@ -94,7 +103,27 @@ function Profile() {
             ) : (
                 <p>No saved courses found.</p>
             )}
+
             <h5>My saved lessons</h5>
+            {savedLessonsTitles.length > 0 ? (
+                <ul>
+                    {savedLessonsTitles.map((nombreArticulo, index) => {
+                        const savedLessonId = savedLessonsList[index];
+                        const article = articlesTitles.find(article => article.ID.toString() === savedLessonId);
+                        if (article && article.post_name) {
+                            const postName = article.post_name;
+                            return (
+                                <li key={index}>
+                                    <Link to={`/${userLang}/article/${postName}`}>{nombreArticulo}</Link>
+                                </li>
+                            );
+                        }
+                        return null;
+                    })}
+                </ul>
+            ) : (
+                <p>No saved lessons found.</p>
+            )}
 
             <h4>Your preferred language</h4>
             <p>{idioma}</p>

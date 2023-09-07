@@ -30,7 +30,6 @@ function HomePage() {
   // estado para los id de los cursos guardados por el usuario
   const [userSavedCourses, setUserSavedCourses] = useState(userDetails ? userDetails.savedCourses : []);
 
-
   useEffect(() => {
     if (typeof userDetails !== 'undefined' && userDetails !== null) {
       setUserSavedCourses(userDetails.savedCourses)
@@ -64,7 +63,7 @@ function HomePage() {
     }
   }
 
-  console.log(userSavedCourses)
+  // console.log(userSavedCourses)
   // traducción cadenas de texto
   let webTitle = "";
   let webDescription = "";
@@ -117,11 +116,11 @@ function HomePage() {
   const handleCourseSaved = async (e, courseId) => {
     e.preventDefault();
     const savedCourses = e.target.value
-    console.log(savedCourses)
+    //console.log(savedCourses)
 
     try {
       const response = await service.patch("/profile/savedCourses", {
-        savedCourses: [courseId], // Enviar un arreglo con el ID del curso
+        savedCourses: [courseId], // Enviar un array con el ID del curso
       });
       console.log(response);
 
@@ -144,9 +143,9 @@ function HomePage() {
         {coursesList.map((eachCourse) => {
           // Verificar si el ID del curso actual está en userSavedCourses
           const isCourseSaved = userSavedCourses.toString().includes(eachCourse.id.toString());
-          console.log("eachCourse.id:", eachCourse.id.toString());
-          console.log("isCourseSaved:", isCourseSaved);
-          console.log("estado", userSavedCourses.toString())
+          //console.log("eachCourse.id:", eachCourse.id.toString());
+          //console.log("isCourseSaved:", isCourseSaved);
+          //console.log("estado", userSavedCourses.toString())
           return (
             <Col key={eachCourse.id}>
 
