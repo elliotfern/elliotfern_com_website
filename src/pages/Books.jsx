@@ -299,6 +299,7 @@ function Books() {
                                 name="image"
                                 onChange={(e) =>
                                     handleFileUpload({
+                                        e,
                                         ...selectedBook,
                                         _id: selectedBook._id,
                                     })
