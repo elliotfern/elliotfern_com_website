@@ -296,7 +296,6 @@ function Books() {
                             <input
                                 type="file"
                                 name="image"
-                                value="imageBook"
                                 onChange={handleFileUpload}
                                 disabled={isUploading}
                             />
