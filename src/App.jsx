@@ -63,6 +63,8 @@ function App() {
           <Route path="/it" element={<Navigate to="/it/homepage" />} />
           <Route path="/fr" element={<Navigate to="/fr/homepage" />} />
 
+          <Route path="/homepage" element={<Navigate to="/en/homepage" />} />
+
           <Route path="/:lang/homepage" element={<HomePage />} />
           <Route path="/:lang/course/:nameCourse/" element={<Course />} />
           <Route path="/:lang/article/:nameArticle" element={<Articles />} />
@@ -74,6 +76,10 @@ function App() {
           <Route path="/:lang/about-author" element={<AboutAuthor />} />
           <Route path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/:lang/contact" element={<Contact />} />
+
+          <Route path="/about-author" element={<Navigate to="/en/about-author" />} />
+          <Route path="/privacy-policy" element={<Navigate to="/en/privacy-policy" />} />
+          <Route path="/contact" element={<Navigate to="/en/contact" />} />
 
           <Route path="/books" element={<Books />} />
 

@@ -56,11 +56,6 @@ function NavBar(props) {
 
     const homepageUser = userLang + "/homepage";
     const homepageVisitor = urlDinamica + "/homepage"
-    if (homepageUser === "login/homepage") {
-        let resultado = variable.replace("login", "en");
-    }
-
-    // console.log(resultado)
 
     return (
         <Navbar expand="lg" className="header">
