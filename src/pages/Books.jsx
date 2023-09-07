@@ -68,6 +68,11 @@ function Books() {
             //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
 
             setIsUploading(false); // to stop the loading animation
+            setSelectedBook({
+                ...selectedBook,
+                imageBook: response.data.imageUrl,
+            })
+
         } catch (error) {
             navigate("/error");
         }
@@ -297,12 +302,7 @@ function Books() {
                             <input
                                 type="file"
                                 name="image"
-                                onChange={(e) =>
-                                    handleFileUpload({
-                                        ...selectedBook,
-                                        imageBook: imageUrl,
-                                    })
-                                }
+                                onChange={handleFileUpload()}
                                 disabled={isUploading}
                             />
                             {/* below disabled prevents the user from attempting another upload while one is already happening */}
