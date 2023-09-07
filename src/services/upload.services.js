@@ -1,6 +1,6 @@
 // in upload.services.js
 
-import service from "./config.services";
+import service from "./service.config";
 
 const uploadImageService = (imageFile) => {
     return service.post("/upload", imageFile);
