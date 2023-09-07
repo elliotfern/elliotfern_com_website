@@ -46,7 +46,6 @@ function Books() {
     // below function should be the only function invoked when the file type input changes => onChange={handleFileUpload}
     const handleFileUpload = async (event, bookId) => {
         // console.log("The file to be uploaded is: ", e.target.files[0]);
-        const bookId = bookId;
 
         if (!event.target.files[0]) {
             // to prevent accidentally clicking the choose file button and not selecting a file
