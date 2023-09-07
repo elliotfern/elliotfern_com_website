@@ -297,7 +297,6 @@ function Books() {
                             <input
                                 type="file"
                                 name="image"
-                                value={selectedBook._id}
                                 onChange={(e) =>
                                     handleFileUpload({
                                         ...selectedBook,
