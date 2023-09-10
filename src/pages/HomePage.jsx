@@ -52,7 +52,7 @@ function HomePage() {
 
   const getData = async () => {
     try {
-      const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=listado-cursos&langCurso=${lang}`)
+      const response = await axios.get(`https://api.elliotfern.com/blog.php?type=listado-cursos&langCurso=${lang}`)
       setCoursesList(response.data)
       setIsFetching(false)
     } catch (error) {

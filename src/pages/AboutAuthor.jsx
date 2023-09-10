@@ -37,7 +37,7 @@ function AboutAuthor() {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=articulo&id=${idArticle}`)
+            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=articulo&id=${idArticle}`)
             console.log(response.data)
             setaboutAuthor(response.data)
             setIsFetching(false)
@@ -93,6 +93,6 @@ function AboutAuthor() {
 
 export default AboutAuthor
 
-// en https://elliotfern.com/controller/blog.php?type=articulo&id=398
+// en https://api.elliotfern.com/blog.php?type=articulo&id=398
 
-// ca https://elliotfern.com/controller/blog.php?type=articulo&id=1744
+// ca https://api.elliotfern.com/blog.php?type=articulo&id=1744

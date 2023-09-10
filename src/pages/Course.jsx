@@ -22,7 +22,7 @@ function Course() {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=curso&paramName=${nameCourse}&langCurso=${lang}`)
+            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=curso&paramName=${nameCourse}&langCurso=${lang}`)
             setCourseArticlesList(response.data)
             setIsFetching(false)
         } catch (error) {

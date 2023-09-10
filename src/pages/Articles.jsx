@@ -58,7 +58,7 @@ function Articles() {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=articleName&paramName=${nameArticle}`)
+            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=articleName&paramName=${nameArticle}`)
             console.log(response.data)
             setArticle(response.data)
             setIsFetching(false)

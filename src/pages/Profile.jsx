@@ -34,8 +34,8 @@ function Profile() {
         setSavedLessonsList(userDetails.savedLessons);
     }, [userDetails.savedCourses, userDetails.savedLessons]); // Add userDetails.savedLessons as a dependency
 
-    const cursosApi = `https://elliotfern.com/controller/blog.php?type=listado-cursos&langCurso=${userLang}`;
-    const articlesApi = `https://elliotfern.com/controller/blog.php?type=listadoarticulos&lang=${userLang}`;
+    const cursosApi = `https://api.elliotfern.com/blog.php?type=listado-cursos&langCurso=${userLang}`;
+    const articlesApi = `https://api.elliotfern.com/blog.php?type=listadoarticulos&lang=${userLang}`;
 
     const getData = async () => {
         try {

@@ -21,7 +21,7 @@ const SearchResultsPage = () => {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`https://elliotfern.com/controller/blog.php?type=listadoarticulos&lang=${lang}`)
+            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=listadoarticulos&lang=${lang}`)
             setArticleList(response.data)
             setIsFetching(false)
         } catch (error) {
