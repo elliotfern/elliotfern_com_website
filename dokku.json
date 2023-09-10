@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "pathname": "/",
+      "type": "rewrite",
+      "target": "/index.html"
+    }
+  ]
+}
