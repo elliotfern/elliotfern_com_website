@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "main": "src/main.jsx",
     "start": "node /src/main.jsx",
     "dev": "vite",
     "build": "vite build",
