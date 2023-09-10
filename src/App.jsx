@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, Switch } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from './context/auth.context';
 import { Container } from 'react-bootstrap';
@@ -46,53 +46,47 @@ function App() {
           {isUserActive ?
             (
               <>
-                <Switch>
-                  <Route path="/" element={<Navigate to={`/${userLang}/homepage`} />} />
-                </Switch>
-
+                <Route path="/" element={<Navigate to={`/${userLang}/homepage`} />} />
               </>
             )
             : (
               <>
-                <Switch> <Route path="/" element={<Navigate to="/en/homepage" />} />
-                </Switch>
-
+                <Route path="/" element={<Navigate to="/en/homepage" />} />
               </>
             )
 
           }
 
-          <Switch><Route path="/en" element={<Navigate to="/en/homepage" />} /></Switch>
+          <Route path="/en" element={<Navigate to="/en/homepage" />} />
+          <Route path="/ca" element={<Navigate to="/ca/homepage" />} />
+          <Route path="/es" element={<Navigate to="/es/homepage" />} />
+          <Route path="/it" element={<Navigate to="/it/homepage" />} />
+          <Route path="/fr" element={<Navigate to="/fr/homepage" />} />
 
-          <Switch><Route path="/ca" element={<Navigate to="/ca/homepage" />} /></Switch>
-          <Switch><Route path="/es" element={<Navigate to="/es/homepage" />} /></Switch>
-          <Switch><Route path="/it" element={<Navigate to="/it/homepage" />} /></Switch>
-          <Switch><Route path="/fr" element={<Navigate to="/fr/homepage" />} /></Switch>
+          <Route path="/homepage" element={<Navigate to="/en/homepage" />} />
 
-          <Switch><Route path="/homepage" element={<Navigate to="/en/homepage" />} /></Switch>
+          <Route path="/:lang/homepage" element={<HomePage />} />
+          <Route path="/:lang/course/:nameCourse/" element={<Course />} />
+          <Route path="/:lang/article/:nameArticle" element={<Articles />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} />
+          <Route path="/profile/edit" element={<IsPrivate> <ProfileEdit /> </IsPrivate>} />
 
-          <Switch><Route path="/:lang/homepage" element={<HomePage />} /></Switch>
-          <Switch><Route path="/:lang/course/:nameCourse/" element={<Course />} /></Switch>
-          <Switch><Route path="/:lang/article/:nameArticle" element={<Articles />} /></Switch>
-          <Switch><Route path="/signup" element={<Signup />} /></Switch>
-          <Switch><Route path="/login" element={<Login />} /></Switch>
-          <Switch><Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} /></Switch>
-          <Switch><Route path="/profile/edit" element={<IsPrivate> <ProfileEdit /> </IsPrivate>} /></Switch>
+          <Route path="/:lang/about-author" element={<AboutAuthor />} />
+          <Route path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/:lang/contact" element={<Contact />} />
 
-          <Switch><Route path="/:lang/about-author" element={<AboutAuthor />} /></Switch>
-          <Switch><Route path="/:lang/privacy-policy" element={<PrivacyPolicy />} /></Switch>
-          <Switch><Route path="/:lang/contact" element={<Contact />} /></Switch>
+          <Route path="/about-author" element={<Navigate to="/en/about-author" />} />
+          <Route path="/privacy-policy" element={<Navigate to="/en/privacy-policy" />} />
+          <Route path="/contact" element={<Navigate to="/en/contact" />} />
 
-          <Switch><Route path="/about-author" element={<Navigate to="/en/about-author" />} /></Switch>
-          <Switch><Route path="/privacy-policy" element={<Navigate to="/en/privacy-policy" />} /></Switch>
-          <Switch><Route path="/contact" element={<Navigate to="/en/contact" />} /></Switch>
+          <Route path="/books" element={<Books />} />
 
-          <Switch><Route path="/books" element={<Books />} /></Switch>
+          <Route path="/:lang/search-results" element={<SearchResultsPage />} />
 
-          <Switch><Route path="/:lang/search-results" element={<SearchResultsPage />} /></Switch>
-
-          <Switch><Route path="/error" element={<Error />} /></Switch>
-          <Switch><Route path="*" element={<PageNotFound />} /></Switch>
+          <Route path="/error" element={<Error />} />
+          <Route path="*" element={<PageNotFound />} />
 
         </Routes>
       </Container>

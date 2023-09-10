@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "/some-route": {
+      "type": "rewrite",
+      "source": "/index.html"
+    }
+  }
+}
