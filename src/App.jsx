@@ -21,6 +21,7 @@ import SearchResultsPage from './pages/SearchResultsPage';
 import Error from './pages/Error';
 import PageNotFound from './pages/PageNotFound';
 import Contact from './pages/Contact';
+import ArticlesArchives from './pages/ArticlesArchives';
 
 function App() {
   const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
@@ -68,6 +69,9 @@ function App() {
           <Route path="/:lang/homepage" element={<HomePage />} />
           <Route path="/:lang/course/:nameCourse/" element={<Course />} />
           <Route path="/:lang/article/:nameArticle" element={<Articles />} />
+
+          <Route path="/:lang/history-archives" element={<ArticlesArchives />} />
+
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} />

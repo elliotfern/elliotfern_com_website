@@ -62,6 +62,9 @@ function NavBar(props) {
     const homepageUser = userLang + "/homepage";
     const homepageVisitor = "/en/homepage"
 
+    const archivesUser = userLang + "/history-archives";
+    const archivesVisitor = "/en/history-archives"
+
     return (
         <Navbar expand="lg" className="header">
             <Container fluid>
@@ -90,6 +93,9 @@ function NavBar(props) {
                             <li><Link to="/ca/homepage" onClick={() => handleLanguageChange('ca')}>Catalan</Link></li>
 
                         </NavDropdown>
+
+                        <Link className="nav-link" to={isUserActive ? archivesUser : archivesVisitor}>Article archives</Link>
+
                     </Nav>
                     <Form className="d-flex" onSubmit={handleSearch} >
                         <Form.Control
