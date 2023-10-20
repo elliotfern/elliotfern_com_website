@@ -1,16 +1,16 @@
-# Open History
+# Elliotfern.com website
 
-## [See the App!](https://open-history.netlify.app/en/homepage)
+## [See the App!](https://elliotfern.com)
 
 ![App Logo](https://media.elliotfern.com/img/openhistory.png)
 
 ## Description
 
-Open History is an independent publishing project that offers free access to History courses to its readers.
+Elliotfern.com it's my personal website. It's includes "Open History", an independent publishing project that offers free access to History courses to its readers.
 
-#### [Client Repo here](https://github.com/elliotfern/open-history-client)
+#### [Client Repo here](https://github.com/elliotfern/elliotfern-web)
 
-#### [Server Repo here](https://github.com/elliotfern/open-history-server)
+#### [Server Repo here](https://github.com/elliotfern/elliotfern-server)
 
 ## Backlog Functionalities
 
@@ -82,8 +82,8 @@ List here all the actions a user can do in the app. Example:
 
 ### Project
 
-[Client Repository](https://github.com/elliotfern/open-history-client)
+[Client Repository](https://github.com/elliotfern/elliotfern-web)
 
-[Server Repository](https://github.com/elliotfern/open-history-server)
+[Server Repository](https://github.com/elliotfern/elliotfern-server)
 
 [Deploy Link](https://elliotfern.com)
