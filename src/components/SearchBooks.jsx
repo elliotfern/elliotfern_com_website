@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 
 function SearchBooks(props) {
     const [queryInput, setQueryInput] = useState("");
@@ -11,7 +9,7 @@ function SearchBooks(props) {
 
         const terminoBusqueda = e.target.value.toLowerCase();
         const filteredArray = props.allBooks.filter((eachBook) => {
-            const bookName = eachBook.bookTitle.toLowerCase();
+            const bookName = eachBook.titol.toLowerCase();
             return bookName.includes(terminoBusqueda);
         });
 
@@ -27,8 +25,8 @@ function SearchBooks(props) {
     return (
         <div className="box-buscador">
             <h2>Search</h2>
-            <Form className="d-flex">
-                <Form.Control
+            <div>
+                <input
                     type="search"
                     placeholder="Buscar libro por título..."
                     value={queryInput}
@@ -37,10 +35,10 @@ function SearchBooks(props) {
                     aria-label="Search"
                     name="name"
                 />
-                <Button variant="secondary" onClick={handleClearSearch}>
+                <button variant="secondary" onClick={handleClearSearch}>
                     Borrar
-                </Button>
-            </Form>
+                </button>
+            </div>
         </div>
     )
 }

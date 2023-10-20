@@ -6,15 +6,9 @@ import { Link } from 'react-router-dom'
 import { useNavigate, useParams } from "react-router-dom"
 import he from 'he';
 
-// estilos boostrap
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-
 // para usar context
 import { useContext } from "react"
-import { AuthContext } from "../context/auth.context"
+//import { AuthContext } from "../context/auth.context"
 
 function HomePage() {
 
@@ -25,10 +19,14 @@ function HomePage() {
   // los Hooks se deben de invocar siempre
   const navigate = useNavigate()
   const { lang } = useParams();
-  const { isUserActive, userDetails } = useContext(AuthContext)
+  //const { isUserActive, userDetails } = useContext(AuthContext)
+
+  const userLang = "en";
+  const isUserActive = false;
+  const langUrlDinamico = "en";
 
   // estado para los id de los cursos guardados por el usuario
-  const [userSavedCourses, setUserSavedCourses] = useState(userDetails ? userDetails.savedCourses : []);
+  //const [userSavedCourses, setUserSavedCourses] = useState(userDetails ? userDetails.savedCourses : []);
 
   useEffect(() => {
     if (typeof userDetails !== 'undefined' && userDetails !== null) {
@@ -58,7 +56,7 @@ function HomePage() {
     } catch (error) {
       console.error('Error fetching data:', error);
       // redireccionar a /error
-      navigate("/error")
+      //navigate("/error")
 
     }
   }
@@ -69,30 +67,36 @@ function HomePage() {
   let webDescription = "";
   let webLinkCourse = "";
   let savedCourse = "";
+  let webOpenHistory = "";
 
   if (lang === "es") {
-    webTitle = "Historia Abierta"
-    webDescription = webTitle + " es un proyecto editorial independiente que ofrece acceso gratuito a cursos de Historia a sus lectores. Ahora puedes leer los artículos de historia en este sitio web."
+    webTitle = "Elliot Fernandez - Full Stack developer & Historiador";
+    webOpenHistory = "Historia Abierta";
+    webDescription = webOpenHistory + " es un proyecto editorial independiente que ofrece acceso gratuito a cursos de Historia a sus lectores. Ahora puedes leer los artículos de historia en este sitio web."
     webLinkCourse = "Ver todos los artículos"
     savedCourse = "Guardar curso";
   } else if (lang === "en") {
-    webTitle = "Open History"
-    webDescription = webTitle + " is an independent publishing project that offers free access to History courses to its readers. Now you can read the history articles in this website."
+    webTitle = "Elliot Fernandez - Full Stack developer & Historian"
+    webOpenHistory = "Open History";
+    webDescription = webOpenHistory + " is an independent publishing project that offers free access to History courses to its readers. Now you can read the history articles in this website."
     webLinkCourse = "View all articles"
     savedCourse = "Save course";
   } else if (lang === "fr") {
-    webTitle = "Open History"
-    webDescription = webTitle + " est un projet de publication indépendant qui offre à ses lecteurs un accès gratuit aux cours d'histoire. Vous pouvez désormais lire les articles d'histoire sur ce site"
+    webTitle = "Elliot Fernandez - Full Stack developer & Historien"
+    webOpenHistory = "Histoire Ouvert";
+    webDescription = webOpenHistory + " est un projet de publication indépendant qui offre à ses lecteurs un accès gratuit aux cours d'histoire. Vous pouvez désormais lire les articles d'histoire sur ce site"
     webLinkCourse = "Ver todos los artículos"
     savedCourse = "Guardar curso";
   } else if (lang === "ca") {
-    webTitle = "Història Oberta"
-    webDescription = webTitle + " és un projecte editorial independent que ofereix accés gratuït als cursos d'Història als seus lectors. Ara podeu llegir els articles d'història en aquest lloc web"
+    webTitle = "Elliot Fernandez - Full stack desenvolupador web & Historiador"
+    webOpenHistory = "Història Oberta";
+    webDescription = webOpenHistory + " és un projecte de publicació independent que ofereix als seus lectors accés gratuït a articles d'Història en molts cursos diferents. Ara podeu llegir els articles d'història en aquest lloc web."
     webLinkCourse = "Veure tots els articles"
     savedCourse = "Guardar curs";
   } else if (lang === "it") {
-    webTitle = "Storia Aperta"
-    webDescription = webTitle + " è un progetto editoriale indipendente che offre ai suoi lettori accesso gratuito ai corsi di Storia. Adesso potete leggere gli articoli di storia in questo sito"
+    webTitle = "Elliot Fernandez - Full stack developer & Storico"
+    webOpenHistory = "Storia Aperta";
+    webDescription = webOpenHistory + " è un progetto editoriale indipendente che offre ai suoi lettori accesso gratuito ai corsi di Storia. Adesso potete leggere gli articoli di storia in questo sito"
     webLinkCourse = "Leggere tutti gli articoli"
     savedCourse = "";
   } else {
@@ -134,61 +138,38 @@ function HomePage() {
 
   return (
     <>
-      <h2 className="text-center">{webTitle}</h2>
-      <h5 className="text-center">{webDescription}</h5>
+      <div className="container-principal">
+        <div className="content">
+          <h2 className="text-center">{webTitle}</h2>
+          <h5 className="text-center">{webDescription}</h5>
 
-      <p className="text-center"><button onClick={handleRefresh}>Refrescar</button></p>
+          <p className="text-center"><button onClick={handleRefresh}>Refrescar</button></p>
 
-      <Row xs={1} md={2} lg={4}>
-        {coursesList.map((eachCourse) => {
-          // Verificar si el ID del curso actual está en userSavedCourses
-          const isCourseSaved = userSavedCourses.toString().includes(eachCourse.id.toString());
-          //console.log("eachCourse.id:", eachCourse.id.toString());
-          //console.log("isCourseSaved:", isCourseSaved);
-          //console.log("estado", userSavedCourses.toString())
-          return (
-            <Col key={eachCourse.id}>
-
-              <Card style={{ marginBottom: '25px' }} key={eachCourse.id}>
-                <Link to={`/${lang}/course/${eachCourse.paramName}`} >
-                  <Card.Img variant="top" src={eachCourse.img} />
-                </Link>
-
-                <Card.Body>
-                  <Card.Title> <Link to={`/${lang}/course/${eachCourse.paramName}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <h3> {he.decode(eachCourse.nombreCurso)}</h3>
-                  </Link></Card.Title>
-                  <Card.Text>
-                    {he.decode(eachCourse.resumen)}
-                  </Card.Text>
-                </Card.Body>
-                <Card.Body>
+          <div className="grid-container">
+            {coursesList.map((eachCourse) => {
+              // Verificar si el ID del curso actual está en userSavedCourses
+              //const isCourseSaved = userSavedCourses.toString().includes(eachCourse.id.toString());
+              return (
+                <div className="grid-item" key={eachCourse.id}>
                   <Link to={`/${lang}/course/${eachCourse.paramName}`} >
-                    {webLinkCourse}</Link>
+                    <img src={eachCourse.img} />
+                  </Link>
 
-                  {/* Renderizar el botón solo si el curso no está guardado */}
-                  {isUserActive && !isCourseSaved && (
-                    <p>
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        name="idCourse"
-                        value={eachCourse.id}
-                        onClick={(e) => handleCourseSaved(e, eachCourse.id)} // Pasar el ID del curso
-                      >
-                        {savedCourse}
-                      </Button>
-                    </p>
-                  )}
-                </Card.Body>
-              </Card>
+                  <Link to={`/${lang}/course/${eachCourse.paramName}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <h3> {he.decode(eachCourse.nombreCurso)}</h3></Link>
 
-            </Col>
-          )
+                  {he.decode(eachCourse.resumen)}
 
-        })}
+                  <p><Link to={`/${lang}/course/${eachCourse.paramName}`} >
+                    {webLinkCourse}</Link></p>
+                </div>
+              )
 
-      </Row>
+            })}
+
+          </div>
+        </div>
+      </div>
     </>
   )
 }

@@ -1,8 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import he from 'he';
-import { Helmet } from 'react-helmet';
 
 function AboutAuthor() {
 
@@ -15,7 +13,6 @@ function AboutAuthor() {
 
     useEffect(() => {
         getData()
-
     }, [])
 
     // traducción cadenas de texto
@@ -38,7 +35,6 @@ function AboutAuthor() {
     const getData = async () => {
         try {
             const response = await axios.get(`https://api.elliotfern.com/blog.php?type=articulo&id=${idArticle}`)
-            console.log(response.data)
             setaboutAuthor(response.data)
             setIsFetching(false)
         } catch (error) {
@@ -82,11 +78,14 @@ function AboutAuthor() {
 
     return (
         <>
-            <h2>{aboutAuthor[0].post_title}</h2>
-            <p>
-                <div dangerouslySetInnerHTML={decodedContent} />
-            </p>
+            <div className="container-principal">
+                <div className="content text-article">
+                    <h2>{aboutAuthor[0].post_title}</h2>
 
+                    <div dangerouslySetInnerHTML={decodedContent} />
+
+                </div>
+            </div>
         </>
     )
 }

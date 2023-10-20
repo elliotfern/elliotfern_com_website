@@ -1,4 +1,3 @@
-import ListGroup from 'react-bootstrap/ListGroup';
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
@@ -28,9 +27,13 @@ function Course() {
         } catch (error) {
             console.error('Error fetching data:', error);
             // redireccionar a /error
-            navigate("/error")
+            //navigate("/error")
 
         }
+    }
+
+    const getTitle = () => {
+        document.title = `${courseArticlesList[0].courseName} - Elliot Fernandez`;
     }
 
     // Llamar a getTitle después de que article se haya cargado
@@ -39,12 +42,8 @@ function Course() {
         if (courseArticlesList && courseArticlesList[0] && courseArticlesList[0].courseName) {
             getTitle();
         }
+
     }, [courseArticlesList]);
-
-    const getTitle = () => {
-        document.title = `${courseArticlesList[0].courseName} - Open History`;
-    }
-
 
     if (isFetching === true) {
         return (
@@ -91,44 +90,43 @@ function Course() {
         webTextNoContent = "Questo corso è in preparazione"
         webTextReturns = "Ritorna alla homepage"
     }
-    console.log(courseArticlesList)
     return (
         <>
-            {courseArticlesList !== "No rows[]" ?
-                <>
-                    <Helmet>
-                        <meta name="description" content={he.decode(courseResumen)} />
-                    </Helmet>
+            <div className="container-principal">
+                <div className="content">
+                    {courseArticlesList !== "No rows[]" ?
+                        <>
+                            <Helmet>
+                                <meta name="description" content={he.decode(courseResumen)} />
+                            </Helmet>
 
-                    <h2 className='text-center'> {he.decode(courseName)}</h2>
-                    <h6 className='text-center italic'> {he.decode(courseDescription)}</h6>
+                            <h2 className='text-center'> {he.decode(courseName)}</h2>
+                            <h6 className='text-center italic'> {he.decode(courseDescription)}</h6>
 
-                    <h5 className="separador">{webContenidos}</h5>
+                            <h5 className="separador">{webContenidos}</h5>
 
-                    <ListGroup>
-                        {courseArticlesList.map((eachArticle) => {
-                            return (
-                                <ListGroup.Item action key={eachArticle.ID}>
-                                    <Link to={`/${lang}/article/${eachArticle.post_name}`} >
-                                        {eachArticle.post_title}
-                                    </Link>
-                                </ListGroup.Item>
-                            )
-                        }
-                        )}
-                    </ListGroup>
-                </>
-                :
-                <>
-                    <h2>{webTextNoContent}</h2>
-                    <br />
-                    <Link to={`/${lang}/homepage`}>
-                        <button>{webTextReturns}</button>
-                    </Link>
-                </>
-            }
-
-
+                            {courseArticlesList.map((eachArticle) => {
+                                return (
+                                    <div className="llistat-articles" key={eachArticle.ID}>
+                                        <Link to={`/${lang}/article/${eachArticle.post_name}`} >
+                                            {eachArticle.post_title}
+                                        </Link>
+                                    </div>
+                                )
+                            }
+                            )}
+                        </>
+                        :
+                        <>
+                            <h2>{webTextNoContent}</h2>
+                            <br />
+                            <Link to={`/${lang}/homepage`}>
+                                <button>{webTextReturns}</button>
+                            </Link>
+                        </>
+                    }
+                </div>
+            </div>
         </>
     )
 }

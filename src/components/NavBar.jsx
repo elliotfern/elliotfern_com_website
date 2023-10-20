@@ -1,151 +1,121 @@
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { useContext, useState, useEffect } from 'react'
-import { AuthContext } from '../context/auth.context'
-
-function NavBar(props) {
-
-
+function NavBar() {
     const currentUrl = window.location.href;
     const segments = currentUrl.split('/');
     const langUrl = segments[3];
 
-    const userLang = props.lang
-    console.log("user lang", langUrl)
-
-    // llamamos al hook useNavigate()
-    const navigate = useNavigate()
-
-    // llamamos a los estafos del contexto
-    const { isUserActive, userDetails, verifyToken, userFullName, setLangUrlDinamico, langUrlDinamico } = useContext(AuthContext)
-
-    //estado para controlar los cambios en el FullName user
-    const [userFullNameUpdated, setUserFullNameUpdated] = useState(null)
-    const [urlDinamica, setUrlDinamica] = useState(langUrlDinamico)
-
-    // estado para controlar el buscador
     const [query, setQuery] = useState('');
 
-    useEffect(() => {
-        setUserFullNameUpdated(userFullName)
-    }, [userFullName])
+    const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.removeItem("authToken")
-
-        verifyToken() // verificar un token que no existe para reiniciar los estados
-        navigate("/")
-    }
-
-    const handleProfile = () => {
-        navigate("/profile")
-    }
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-        // Redirige al usuario a la página de resultados de búsqueda con la consulta como parámetro de búsqueda
-        navigate(`/${isUserActive ? userLang : langUrl}/search-results?query=${query}`);
-        setQuery('');
-    };
-
-    const handleLanguageChange = (newLang) => {
-        // Llamar a la función de cambio de idioma del contexto
-        setLangUrlDinamico(newLang); // Asegúrate de importar changeUserLang desde tu contexto
-    };
+    const userLang = "en";
+    const isUserActive = false;
 
     const homepageUser = userLang + "/homepage";
-    const homepageVisitor = "/en/homepage"
+    const homepageVisitor = "/en/homepage";
 
     const archivesUser = userLang + "/history-archives";
     const archivesVisitor = "/en/history-archives"
 
+    const handleLanguageChange = (newLang) => {
+        // Llamar a la función de cambio de idioma del contexto
+        // setLangUrlDinamico(newLang); // Asegúrate de importar changeUserLang desde tu contexto
+    };
+
+    const toggleBtn = useRef(null);
+    const superMenuRef = useRef(null);
+    const headerSecondRef = useRef(null);
+    const MenuRef = useRef(null);
+
+    let menuTimeout;
+
+    const handleToggleBtnMouseEnter = () => {
+        clearTimeout(menuTimeout);
+        superMenuRef.current.style.display = 'block';
+        headerSecondRef.current.style.display = 'block';
+        setMenuVisible(true);
+    };
+
+    const handleSuperMenuMouseEnter = () => {
+        clearTimeout(menuTimeout);
+        setMenuVisible(true);
+    };
+
+    const handleSuperMenuMouseLeave = () => {
+        menuTimeout = setTimeout(() => {
+            setMenuVisible(false);
+            superMenuRef.current.style.display = 'none';
+            headerSecondRef.current.style.display = 'none';
+        }, 200);
+    };
+
+    const [menuVisible, setMenuVisible] = useState(false);
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        navigate(`/${isUserActive ? userLang : langUrl}/search-results?query=${query}`);
+        setQuery('');
+    };
+
+    const handleToggleMenu = () => {
+        if (MenuRef.current.style.display === 'none') {
+            MenuRef.current.style.display = 'block';
+        } else {
+            MenuRef.current.style.display = 'none';
+        }
+
+    };
+
     return (
-        <Navbar expand="lg" className="header">
-            <Container fluid>
-                <Link className="nav-link" to={isUserActive ? homepageUser : homepageVisitor}><Navbar.Brand> OpenHistory </Navbar.Brand></Link>
+        <>
+            <div className="header">
+                <Link className="nav-link" to={isUserActive ? homepageUser : homepageVisitor}>Elliot Fernandez</Link>
 
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
-                    >
+                <button className={`toggle-menu-button ${menuVisible ? 'menu-visible' : 'menu-hidden'}`} onClick={handleToggleMenu}>
+                    ☰
+                </button>
 
-                        <li className="links-menu"><Link to="/books">Books</Link></li>
+                <div className="container-menu" ref={MenuRef}>
+                    <ul>
+                        <li><Link to="/">HomePage</Link></li>
+                        <li><Link to="/en/about-author">About me</Link></li>
+                        <li><Link to="/books">Books</Link></li>
+                        <li><Link className="nav-link" to={isUserActive ? archivesUser : archivesVisitor}>History archives</Link></li>
+                        <li><Link className="nav-link" to="/blog">Blog</Link></li>
+                        <li><a href="#" id="toggle-btn" onMouseEnter={handleToggleBtnMouseEnter} ref={toggleBtn}>Languages</a></li>
+                    </ul>
+                </div>
 
-                        <NavDropdown title="Lang" id="navbarScrollingDropdown">
+                <div className="header-second" style={{ display: 'none' }} ref={superMenuRef} >
+                    <div className="super-menu1" ref={headerSecondRef} onMouseLeave={handleSuperMenuMouseLeave} >
+                        <ul>
+                            <li><Link to="/en/homepage">English</Link></li>{/* onClick={() => handleLanguageChange('en')}  */}
+                            <li><Link to="/es/homepage">Spanish</Link></li>{/* onClick={() => handleLanguageChange('es')} */}
+                            <li><Link to="/it/homepage">Italian</Link></li>{/* onClick={() => handleLanguageChange('it')} */}
+                            <li><Link to="/fr/homepage">French</Link></li>{/* onClick={() => handleLanguageChange('fr')} */}
+                            <li><Link to="/ca/homepage">Catalan</Link></li>{/* onClick={() => handleLanguageChange('ca')} */}
+                        </ul>
+                    </div>
+                </div>
 
-                            <li><Link to="/en/homepage" onClick={() => handleLanguageChange('en')}>English</Link></li>
-
-                            <li><Link to="/es/homepage" onClick={() => handleLanguageChange('es')}>Spanish</Link></li>
-
-                            <li><Link to="/it/homepage" onClick={() => handleLanguageChange('it')}>Italian</Link></li>
-
-                            <li><Link to="/fr/homepage" onClick={() => handleLanguageChange('fr')}>French</Link></li>
-
-                            <li><Link to="/ca/homepage" onClick={() => handleLanguageChange('ca')}>Catalan</Link></li>
-
-                        </NavDropdown>
-
-                        <Link className="nav-link" to={isUserActive ? archivesUser : archivesVisitor}>Article archives</Link>
-
-                    </Nav>
-                    <Form className="d-flex" onSubmit={handleSearch} >
-                        <Form.Control
-                            type="search"
-                            placeholder="Buscar artículo por título..."
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button type="submit" variant="outline-success">
-                            Search
-                        </Button>
-                    </Form>
-                </Navbar.Collapse>
-
-                <Navbar.Collapse className="justify-content-end">
-                    {isUserActive === true
-                        ? (
-                            <>
-                                <Navbar.Text>
-                                    <Button onClick={handleProfile} variant="outline-success espacio-izq"> Signed in as: <span className="underline">{userDetails.fullName ? (
-                                        <> {userFullNameUpdated} </>
-                                    )
-                                        : <> {userDetails.username} </>
-                                    }</span></Button>
-
-                                </Navbar.Text>
-
-                                <Navbar.Text>
-                                    <Button onClick={handleLogout} variant="outline-success espacio-izq">Log Out</Button>
-                                </Navbar.Text>
-
-                            </>
-                        )
-                        : (
-                            <>
-
-                                <Navbar.Text>
-                                    <Link to="/login"><Button variant="outline-success espacio-izq"> Log In</Button></Link>
-                                </Navbar.Text>
-
-                            </>
-                        )
-                    }
-                </Navbar.Collapse>
-
-            </Container>
-        </Navbar >
+                <form onSubmit={handleSearch} >
+                    <input
+                        type="search"
+                        placeholder="Buscar artículo por título..."
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        className="me-2"
+                        aria-label="Search"
+                    />
+                    <button type="submit" variant="outline-success">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </>
     )
 }
 
-export default NavBar
+export default NavBar;

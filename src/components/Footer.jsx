@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
 
-    const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
+    //const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
+    const userLang = "en";
+    const isUserActive = false;
+    const langUrlDinamico = "en";
 
     // textos
     const titolPB = "We release the contents to the Public Domain";
@@ -35,7 +38,7 @@ function Footer() {
                 <hr />
 
                 <div id="footer-elliotfern-petit">
-                    <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" aria-label="Creative Commons" target='_blank' rel='noopener' title="Creative commons"><img className="mx-auto d-block" src="https://elliotfern.com/img/elliotfern-icon/domini-public.gif" alt="Public Domain" title='Public Domain' width='88' height='31' /></a>
+                    <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" aria-label="Creative Commons" target='_blank' rel='noopener' title="Creative commons"><img className="mx-auto d-block" src="https://media.elliotfern.com/img/elliotfern-icon/domini-public.gif" alt="Public Domain" title='Public Domain' width='88' height='31' /></a>
 
                     <div className="text-footer">{textPB}</div>
 

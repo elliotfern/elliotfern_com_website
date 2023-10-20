@@ -3,35 +3,33 @@ import service from "../services/service.config";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import he from 'he';
-import Comment from "../components/Comment";
+//import Comment from "../components/Comment";
 import { Helmet } from 'react-helmet';
 import AuthorBox from "../components/AuthorBox";
 import { format } from "date-fns";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-import Button from 'react-bootstrap/Button';
-
 // para usar context
 import { useContext } from "react";
-import { AuthContext } from "../context/auth.context";
+//import { AuthContext } from "../context/auth.context";
+
 
 function Articles() {
     const [article, setArticle] = useState(null);
     const [isFetching, setIsFetching] = useState(true);
-    const [commentCount, setCommentCount] = useState(0);
+    //const [commentCount, setCommentCount] = useState(0);
 
-    const { isUserActive, userDetails, updateUserSavedLessons } = useContext(AuthContext);
+    //const { isUserActive, userDetails, updateUserSavedLessons } = useContext(AuthContext);
 
     // estado para los id de los articulos guardados por el usuario
-    const [userSavedLessons, setUserSavedLessons] = useState(userDetails ? userDetails.savedLessons : []);
+    //const [userSavedLessons, setUserSavedLessons] = useState(userDetails ? userDetails.savedLessons : []);
 
     // los Hooks se deben de invocar siempre
     const navigate = useNavigate();
     const { nameArticle, lang } = useParams();
-    const commentsSectionRef = useRef(null);
+    //const commentsSectionRef = useRef(null);
 
     // Función para desplazarse a la sección de comentarios al hacer clic en el icono
+    /*
     const scrollToComments = () => {
         commentsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
     };
@@ -48,24 +46,23 @@ function Articles() {
         setCommentCount(updatedCommentCount);
     }
 
-
+*/
     useEffect(() => {
-        if (typeof userDetails !== 'undefined' && userDetails !== null) {
+        /*if (typeof userDetails !== 'undefined' && userDetails !== null) {
             setUserSavedLessons(userDetails.savedLessons)
-        }
+        }*/
         getData()
     }, [])
 
     const getData = async () => {
         try {
             const response = await axios.get(`https://api.elliotfern.com/blog.php?type=articleName&paramName=${nameArticle}`)
-            console.log(response.data)
             setArticle(response.data)
             setIsFetching(false)
         } catch (error) {
             console.error('Error fetching data:', error);
             // redireccionar a /error
-            navigate("/error")
+            //navigate("/error")
 
         }
     }
@@ -79,10 +76,11 @@ function Articles() {
     }, [article]);
 
     const getTitle = () => {
-        document.title = `${article[0].post_title} - Open History`;
+        document.title = `${article[0].post_title} - Elliot Fernandez`;
     }
 
 
+    /*
     const handleLessonSaved = async (e, articleId) => {
         e.preventDefault();
         const savedLesson = e.target.value;
@@ -104,6 +102,7 @@ function Articles() {
         }
     }
 
+    */
     if (isFetching === true) {
         return (
             <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
@@ -157,24 +156,26 @@ function Articles() {
 
     return (
         <>
-            <Helmet>
-                <meta name="description" content={he.decode(article[0].post_excerpt)} />
-            </Helmet>
+            <div className="container-principal">
+                <div className="content">
+                    <Helmet>
+                        <meta name="description" content={he.decode(article[0].post_excerpt)} />
+                    </Helmet>
 
-            <h2 className='text-center bold'>{article[0].post_title}</h2>
-            <h5 className='text-center italic'><div dangerouslySetInnerHTML={decodedContentExcerpt} /></h5>
+                    <h2 className='text-center bold'>{article[0].post_title}</h2>
+                    <h5 className='text-center italic'><div dangerouslySetInnerHTML={decodedContentExcerpt} /></h5>
 
-            <AuthorBox />
+                    <AuthorBox />
 
-            <hr />
+                    <hr />
 
-            <p>{webPostDate} {datePost_format} | {webPostModified} {dateModified_format}</p>
-            <div className="icon-comments"><Link to="#" onClick={scrollToComments}>
+                    <p>{webPostDate} {datePost_format} | {webPostModified} {dateModified_format}</p>
+                    {/*<div className="icon-comments"><Link to="#" onClick={scrollToComments}>
                 <FontAwesomeIcon icon={faComment} /> {webCommentsText} ({commentCount})
             </Link>
             </div>
 
-            {/* Renderizar el botón solo si el articulo no está guardado */}
+             Renderizar el botón solo si el articulo no está guardado 
             {isUserActive && (
                 <p>
                     <Button
@@ -188,15 +189,18 @@ function Articles() {
                     </Button>
                 </p>
             )}
+            */}
+                    <hr />
 
+                    <div className="text-article" dangerouslySetInnerHTML={decodedContentArticle} />
 
-            <div dangerouslySetInnerHTML={decodedContentArticle} />
-
-            <hr />
-
+                    <hr />
+                    {/*
             <div ref={commentsSectionRef}>
                 <Comment idArticle={idArticle} updateCommentCount={setCommentCount} onCommentPosted={handleCommentPosted}
                     onCommentDeleted={handleCommentDeleted} />
+            </div> */}
+                </div>
             </div>
         </>
     )

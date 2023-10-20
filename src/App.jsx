@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
-import { AuthContext } from './context/auth.context';
-import { Container } from 'react-bootstrap';
+//import { AuthContext } from './context/auth.context';
 
 import Articles from "./pages/Articles"
 import NavBar from './components/NavBar'
@@ -22,9 +21,15 @@ import Error from './pages/Error';
 import PageNotFound from './pages/PageNotFound';
 import Contact from './pages/Contact';
 import ArticlesArchives from './pages/ArticlesArchives';
+import Blog from './pages/Blog';
+import BlogArticles from './pages/BlogArticles';
 
 function App() {
-  const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
+  //const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
+
+  const isUserActive = false;
+  const userLang = "en";
+  const langUrlDinamico = "en";
 
   //estado para controlar los cambios en userLang
   const [userLangRedirect, setUserLangRedirect] = useState("")
@@ -41,7 +46,7 @@ function App() {
   return (
     <>
       <NavBar lang={isUserActive ? userLang : langUrlDinamico} />
-      <Container className="principal">
+      <div className="principal">
         <Routes>
 
           {isUserActive ?
@@ -87,13 +92,16 @@ function App() {
 
           <Route path="/books" element={<Books />} />
 
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:blogArticle" element={<BlogArticles />} />
+
           <Route path="/:lang/search-results" element={<SearchResultsPage />} />
 
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<PageNotFound />} />
 
         </Routes>
-      </Container>
+      </div>
       <Footer />
     </>
   )

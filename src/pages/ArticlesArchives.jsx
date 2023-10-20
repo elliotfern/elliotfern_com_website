@@ -1,42 +1,24 @@
 import axios from "axios";
-import service from "../services/service.config";
-import { useEffect, useState, useRef } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import he from 'he';
-import Comment from "../components/Comment";
-import { Helmet } from 'react-helmet';
-import AuthorBox from "../components/AuthorBox";
-import { format } from "date-fns";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-import Button from 'react-bootstrap/Button';
-
-// para usar context
-import { useContext } from "react";
-import { AuthContext } from "../context/auth.context";
 
 function ArticlesArchives() {
-
     const { lang } = useParams();
 
     const [articlesData, setArticlesData] = useState([]);
 
     useEffect(() => {
-        getData()
-
-        setArticlesData(data);
+        getData();
     }, []);
 
     const getData = async () => {
         try {
-            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=archivo-articulos&lang=${lang}`)
-            setArticlesData(response.data)
+            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=archivo-articulos&lang=${lang}`);
+            setArticlesData(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);
-            // redireccionar a /error
-            navigate("/error")
-
+            // Handle error and redirection to /error if needed
         }
     }
 
@@ -59,25 +41,33 @@ function ArticlesArchives() {
 
     // Agrupar los artículos por curso
     const groupedArticles = groupArticlesByCourse(articlesData);
+    console.log(groupedArticles)
 
     return (
-        <div>
-            <h1>Listado de Artículos Agrupados por Curso</h1>
-            {Object.keys(groupedArticles).map((courseName) => (
-                <div key={courseName}>
-                    <h2>{courseName}</h2>
-                    <ul>
-                        {groupedArticles[courseName].map((article, index) => (
-                            <li key={index}>
-                                <h3>{article.post_title}</h3>
-                                <p>Nombre del artículo: {article.post_name}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            ))}
+        <div className="container-principal">
+            <div className="content text-article">
+                <h1>Article archives</h1>
+                {Object.keys(groupedArticles).map((courseName) => (
+                    <div key={courseName}>
+                        <h4>
+                            {/* Enlace al curso con la estructura deseada */}
+                            <Link to={`/${lang}/course/${groupedArticles[courseName][0].cursParam}`}>{courseName}</Link>
+                        </h4>
+                        <ol>
+                            {groupedArticles[courseName].map((article, index) => (
+                                <li key={index}>
+
+                                    <Link to={`/${lang}/article/${article.post_name}`}>{he.decode(article.post_title)}</Link>
+
+                                </li>
+                            ))}
+                        </ol>
+                        <hr />
+                    </div>
+                ))}
+            </div>
         </div>
-    )
+    );
 }
 
-export default ArticlesArchives
+export default ArticlesArchives;

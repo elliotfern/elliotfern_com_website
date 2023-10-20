@@ -1,10 +1,7 @@
 import service from "../services/service.config";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { Card, Form, Button } from 'react-bootstrap';
-
 import { AuthContext } from '../context/auth.context'
-import Alert from 'react-bootstrap/Alert';
 
 function Comment(props) {
     const navigate = useNavigate();

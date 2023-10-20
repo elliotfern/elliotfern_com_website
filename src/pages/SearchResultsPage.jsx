@@ -35,14 +35,9 @@ const SearchResultsPage = () => {
     // lista de artículos llamada articleList
     // filtro por la consulta de búsqueda.
     const filteredArticles = articleList.filter((article) => {
-        console.log('article:', article);
-        console.log('query:', query);
 
         const title = article.post_title && unorm.nfd(article.post_title.toLowerCase()); // Normaliza el título
         const queryLowerCase = query && unorm.nfd(query.toLowerCase()); // Normaliza la consulta
-
-        console.log('title:', title);
-        console.log('queryLowerCase:', queryLowerCase);
 
         return title && queryLowerCase && title.includes(queryLowerCase);
     });
@@ -77,15 +72,17 @@ const SearchResultsPage = () => {
     }
 
     return (
-        <div>
-            <h2>{webSearchTitle} "{query}":</h2>
-            <h5>{webSearchSubTitle}</h5>
-            <ul>
-                {filteredArticles.map((article) => (
-                    <li key={article.ID}>  <Link to={`/${lang}/article/${article.post_name}`}> {article.post_title}</Link>
-                    </li>
-                ))}
-            </ul>
+        <div className="container-principal">
+            <div className="content text-article">
+                <h2>{webSearchTitle} "{query}":</h2>
+                <h5>{webSearchSubTitle}</h5>
+                <ul>
+                    {filteredArticles.map((article) => (
+                        <li key={article.ID}>  <Link to={`/${lang}/article/${article.post_name}`}> {article.post_title}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

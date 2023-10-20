@@ -1,4 +1,0 @@
-routes:
-  - src: /
-    dest: /index.html
-    type: SPA

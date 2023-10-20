@@ -5,9 +5,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import service from "../services/service.config";
 
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-
 function ProfileEdit() {
 
     // llamamos al hook useNavigate()

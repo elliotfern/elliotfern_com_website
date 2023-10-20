@@ -34,7 +34,7 @@ function AuthWrapper(props) {
     const [langUrlDinamico, setLangUrlDinamico] = useState(langUrl);
 
     useEffect(() => {
-        verifyToken()
+        //verifyToken()
     }, [])
 
     const updateUserSavedCourses = (newCourses) => {
@@ -52,10 +52,10 @@ function AuthWrapper(props) {
 
         try {
 
-            const response = await service.get("/auth/verify")
+            //const response = await service.get("/auth/verify")
             //console.log(response)
 
-            const userData = await service.get("/profile")
+            //const userData = await service.get("/profile")
             //console.log(userData)
             //console.log("user full name", userData.data.fullName)
 

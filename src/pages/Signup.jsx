@@ -1,10 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import service from "../services/service.config";
 import { useNavigate, Link } from "react-router-dom";
-
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
 
 import { AuthContext } from "../context/auth.context";
 

@@ -2,7 +2,6 @@ import axios from "axios";
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/auth.context';
 import { useNavigate, Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 
 function Profile() {
     const navigate = useNavigate();
