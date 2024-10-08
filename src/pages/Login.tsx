@@ -1,12 +1,13 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import service from "../services/service.config";
 import { useNavigate, Link } from "react-router-dom";
+import { Form, Alert, Button} from 'react-bootstrap';
 
-import { AuthContext } from "../context/auth.context";
+//import { AuthContext } from "../context/auth.context";
 
 function Login() {
     // tenemos que llamar al verifyToken
-    const { verifyToken } = useContext(AuthContext)
+    //const { verifyToken } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -15,7 +16,7 @@ function Login() {
 
     // estados de errores
     const [errorMessageEmail, setErrorMessageEmail] = useState("")
-    const [errorMessagePassword, setErrorMessagePassword] = useState("")
+    //const [errorMessagePassword, setErrorMessagePassword] = useState("")
 
     // los handlers
     const handleEmailChange = (e) => setEmail(e.target.value);
@@ -34,7 +35,7 @@ function Login() {
             // almacenamos el token en el LocalStorage
             localStorage.setItem("authToken", response.data.authToken)
 
-            await verifyToken()
+           // await verifyToken()
             navigate("/")
 
         } catch (error) {
@@ -85,11 +86,11 @@ function Login() {
                     </Form.Text>
                 </Form.Group>
 
-                {errorMessagePassword ?
+                {/*errorMessagePassword ?
                     <Alert variant="danger">
                         {errorMessagePassword}
                     </Alert>
-                    : null}
+                    : null*/}
 
                 <Button variant="primary" type="submit" onClick={handleSignup}>
                     Log In

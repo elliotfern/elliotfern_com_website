@@ -1,7 +1,10 @@
+/*
+
 import axios from "axios";
-import { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from '../context/auth.context';
 import { useNavigate, Link } from "react-router-dom";
+import { Button} from 'react-bootstrap';
 
 function Profile() {
     const navigate = useNavigate();
@@ -133,3 +136,5 @@ function Profile() {
 }
 
 export default Profile;
+
+*/

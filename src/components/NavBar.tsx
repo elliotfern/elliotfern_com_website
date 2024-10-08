@@ -19,10 +19,12 @@ function NavBar() {
     const archivesUser = userLang + "/history-archives";
     const archivesVisitor = "/en/history-archives"
 
+    /*
     const handleLanguageChange = (newLang) => {
         // Llamar a la función de cambio de idioma del contexto
         // setLangUrlDinamico(newLang); // Asegúrate de importar changeUserLang desde tu contexto
     };
+*/
 
     const toggleBtn = useRef(null);
     const superMenuRef = useRef(null);
@@ -38,10 +40,13 @@ function NavBar() {
         setMenuVisible(true);
     };
 
+    /*
     const handleSuperMenuMouseEnter = () => {
         clearTimeout(menuTimeout);
         setMenuVisible(true);
     };
+
+    */
 
     const handleSuperMenuMouseLeave = () => {
         menuTimeout = setTimeout(() => {
@@ -109,7 +114,7 @@ function NavBar() {
                         className="me-2"
                         aria-label="Search"
                     />
-                    <button type="submit" variant="outline-success">
+                    <button type="submit">
                         Search
                     </button>
                 </form>

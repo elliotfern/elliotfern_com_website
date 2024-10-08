@@ -1,12 +1,14 @@
+/*
 import service from "../services/service.config";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from '../context/auth.context'
+import { Form, Button, Alert, Card } from 'react-bootstrap';
 
 function Comment(props) {
     const navigate = useNavigate();
     const { lang } = useParams();
-    const { activeUserId, userDetails } = useContext(AuthContext);
+  //  const { activeUserId, userDetails } = useContext(AuthContext);
 
     if (typeof userDetails !== 'undefined' && userDetails !== null) {
         const userRole = userDetails.role
@@ -165,7 +167,6 @@ function Comment(props) {
                 </Alert>
             )}
 
-            {/* Mostrar el formulario si showForm es true */}
             {showForm && (
                 <Card>
                     <Card.Body>
@@ -239,3 +240,5 @@ function Comment(props) {
 }
 
 export default Comment;
+
+*/

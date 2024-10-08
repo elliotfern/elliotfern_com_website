@@ -1,17 +1,12 @@
 import axios from "axios";
-import { useEffect, useState, useRef } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import he from 'he';
-import { Helmet } from 'react-helmet';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import AuthorBox from "../components/AuthorBox";
-import { format } from "date-fns";
-
 function BlogArticles() {
     const [article, setArticle] = useState(null);
     const [isFetching, setIsFetching] = useState(true);
 
     // los Hooks se deben de invocar siempre
-    const navigate = useNavigate();
     const { blogArticle } = useParams();
 
     useEffect(() => {
@@ -59,16 +54,15 @@ function BlogArticles() {
     // idArticle
     const idArticle = article[0].ID
 
-    const datePost_format = format(new Date(article[0].post_date), "dd-MM-yyyy");
-    const dateModified_format = format(new Date(article[0].post_modified), "dd-MM-yyyy");
+    const datePost_format = article[0].post_date;
+    const dateModified_format = article[0].post_modified;
 
     return (
         <>
             <div className="container-principal">
                 <div className="content text-article">
-                    <Helmet>
-                        <meta name="description" content={he.decode(article[0].post_excerpt)} />
-                    </Helmet>
+                  
+                        <meta name="description" content={article[0].post_excerpt} />
 
                     <h2 className='text-center bold'>{article[0].post_title}</h2>
                     <h5 className='text-center italic'><div dangerouslySetInnerHTML={decodedContentExcerpt} /></h5>

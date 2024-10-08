@@ -1,9 +1,7 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios"
-import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
-import { useNavigate, useParams } from "react-router-dom"
-import he from 'he';
-import { Helmet } from 'react-helmet';
+import { useParams } from "react-router-dom"
 
 function Course() {
 
@@ -11,7 +9,6 @@ function Course() {
     const [isFetching, setIsFetching] = useState(true)
 
     // los Hooks se deben de invocar siempre
-    const navigate = useNavigate()
     const { lang, nameCourse } = useParams();
 
     useEffect(() => {
@@ -61,7 +58,7 @@ function Course() {
     // obtener titulo y descripcion del curso
     const primerCurso = courseArticlesList[0];
     const courseName = primerCurso.courseName;
-    const courseDescription = primerCurso.descriptionCourse;
+    const courseDescription = primerCurso.courseDescription;
     const courseResumen = primerCurso.resumen;
 
     // traducción cadenas de texto
@@ -96,12 +93,10 @@ function Course() {
                 <div className="content">
                     {courseArticlesList !== "No rows[]" ?
                         <>
-                            <Helmet>
-                                <meta name="description" content={he.decode(courseResumen)} />
-                            </Helmet>
+                                <meta name="description" content={courseResumen} />
 
-                            <h2 className='text-center'> {he.decode(courseName)}</h2>
-                            <h6 className='text-center italic'> {he.decode(courseDescription)}</h6>
+                            <h2 className='text-center'> {courseName}</h2>
+                            <h6 className='text-center italic'> {courseDescription}</h6>
 
                             <h5 className="separador">{webContenidos}</h5>
 

@@ -35,7 +35,7 @@ function SearchBooks(props) {
                     aria-label="Search"
                     name="name"
                 />
-                <button variant="secondary" onClick={handleClearSearch}>
+                <button onClick={handleClearSearch}>
                     Borrar
                 </button>
             </div>

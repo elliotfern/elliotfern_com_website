@@ -1,8 +1,10 @@
-import { useState, useContext, useEffect } from "react";
+/*
+
+import { useState, useContext } from "react";
 import service from "../services/service.config";
 import { useNavigate, Link } from "react-router-dom";
-
 import { AuthContext } from "../context/auth.context";
+import { Form, Button, Alert } from 'react-bootstrap';
 
 function Signup() {
   const navigate = useNavigate()
@@ -193,3 +195,5 @@ function Signup() {
   );
 }
 export default Signup
+
+*/

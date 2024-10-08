@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import he from 'he';
 
 function ArticlesArchives() {
     const { lang } = useParams();
@@ -57,7 +56,7 @@ function ArticlesArchives() {
                             {groupedArticles[courseName].map((article, index) => (
                                 <li key={index}>
 
-                                    <Link to={`/${lang}/article/${article.post_name}`}>{he.decode(article.post_title)}</Link>
+                                    <Link to={`/${lang}/article/${article.post_name}`}>{article.post_title}</Link>
 
                                 </li>
                             ))}

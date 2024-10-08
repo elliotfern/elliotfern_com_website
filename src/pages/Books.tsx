@@ -1,9 +1,6 @@
-import { useEffect, useState, useContext } from "react";
-import { AuthContext } from '../context/auth.context'
+import React, { useEffect, useState } from "react";
 import SearchBooks from "../components/SearchBooks";
-
 import axios from "axios";
-import he from 'he';
 
 function Books() {
     //const { activeUserId, userDetails } = useContext(AuthContext);
@@ -38,11 +35,10 @@ function Books() {
                     {books.map((book) => (
                         <div className="grid-item" key={book.id}>
                             <img className="bookPhoto"
-                                variant="top"
                                 src={book.nameImg ? `https://media.elliotfern.com/img/library-book/${book.nameImg}.jpg` : "https://media.elliotfern.com/img/book_default.png"}
                                 alt={`Portada de ${book.titol}`}
                             />
-                            {he.decode(book.titol)}
+                            {book.titol}
                             {book.AutNom} {book.AutCognom1}
                             <p>Year: {book.any}</p>
                             <p>Original language: {book.lang}</p>

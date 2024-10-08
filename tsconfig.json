@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "jsx": "react-jsx", // Habilita JSX
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Especifica el directorio de salida
+    "rootDir": "./", // Cambiar a la raíz del proyecto
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "vite.config.ts"
+    
+  ],
+
+}
