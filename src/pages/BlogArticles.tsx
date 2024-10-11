@@ -52,7 +52,6 @@ function BlogArticles() {
     const decodedContentExcerpt = { __html: article[0].post_excerpt };
 
     // idArticle
-    const idArticle = article[0].ID
 
     const datePost_format = article[0].post_date;
     const dateModified_format = article[0].post_modified;
@@ -67,7 +66,7 @@ function BlogArticles() {
                     <h2 className='text-center bold'>{article[0].post_title}</h2>
                     <h5 className='text-center italic'><div dangerouslySetInnerHTML={decodedContentExcerpt} /></h5>
 
-                    <AuthorBox lang={"ca"} />
+                    <AuthorBox/>
 
                     <hr />
 

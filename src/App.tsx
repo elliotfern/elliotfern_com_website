@@ -16,14 +16,21 @@ import Contact from "./pages/Contact";
 import ArticlesArchives from "./pages/ArticlesArchives";
 import Blog from "./pages/Blog";
 import BlogArticles from "./pages/BlogArticles";
+import i18n from './config/i18n';
 
-function App() {
+// Lista de idiomas permitidos
+const supportedLanguages = ['en', 'ca', 'es', 'it', 'fr'];
+
+function App() { 
+  const userLang = i18n.language;
+  const redirectLang = supportedLanguages.includes(userLang) ? userLang : 'en';
+ 
   return (
     <>
       <NavBar />
       <div className="principal">
         <Routes>
-          <Route path="/" element={<Navigate to="/en/homepage" />} />
+        <Route path="/" element={<Navigate to={`/${redirectLang}/homepage`} />} />
           <Route path="/en" element={<Navigate to="/en/homepage" />} />
           <Route path="/ca" element={<Navigate to="/ca/homepage" />} />
           <Route path="/es" element={<Navigate to="/es/homepage" />} />
