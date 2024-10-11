@@ -4,7 +4,8 @@
     "moduleResolution": "node",
     "target": "esnext",
     "jsx": "react-jsx", // Habilita JSX
-    "esModuleInterop": true,
+    "resolveJsonModule": true, // Permite la importación de archivos JSON
+    "esModuleInterop": true, 
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist", // Especifica el directorio de salida

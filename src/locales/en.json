@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About author",
+    "books": "Books",
+    "historyArchives": "Archive",
+    "blog": "Blog",
+    "languages": "Languages",
+    "english": "English",
+    "spanish": "Spanish",
+    "catalan": "Catalan",
+    "italian": "Italian",
+    "french": "French"
+  },
+  
+    "welcome": "Welcome to our site",
+    "home": "Home",
+    "about_us": "About Us",
+    "contact": "Contact",
+    "services": "Services",
+    "webPostDate": "Posted on",
+    "webPostModified": "Modified on",
+    "webCommentsText": "Comments",
+    "webAuthorDescrip": "He holds a degree in History from the Autonomous University of Barcelona (2009) and a Master's in World History from Pompeu Fabra University (2011).",
+    "webCursNameError": "Course not available",
+    "webCursDescripcioError": "This course is in preparation",
+    "webwebCursContingut": "Course contents:",
+    "webwebCursContingutError": "There is no content available for this course"
+  } 

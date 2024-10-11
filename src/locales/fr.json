@@ -1,0 +1,29 @@
+{
+  "nav": {
+      "home": "Accueil",
+      "about": "À propos de l'auteur",
+      "books": "Livres",
+      "historyArchives": "Archives",
+      "blog": "Blog",
+      "languages": "Langues",
+      "english": "Anglais",
+      "spanish": "Espagnol",
+      "catalan": "Catalan",
+      "italian": "Italien",
+      "french": "Français"
+  },
+  
+    "welcome": "Welcome to our site",
+    "home": "Home",
+    "about_us": "About Us",
+    "contact": "Contact",
+    "services": "Services",
+    "webPostDate": "Publié le",
+    "webPostModified": "Modifié le",
+    "webCommentsText": "Commentaires",
+    "webAuthorDescrip": "Il est titulaire d'un diplôme en histoire de l'Université autonome de Barcelone (2009) et d'un master en histoire mondiale de l'Université Pompeu Fabra (2011).",
+    "webCursNameError": "Cours non disponible",
+    "webCursDescripcioError": "Ce cours est en préparation",
+    "webwebCursContingut": "Contenus du cours :",
+    "webwebCursContingutError": "Aucun contenu disponible dans ce cours"
+  } 

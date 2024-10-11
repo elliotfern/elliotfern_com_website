@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import he from "he";
 
 function ArticlesArchives() {
     const { lang } = useParams();
@@ -13,7 +14,7 @@ function ArticlesArchives() {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=archivo-articulos&lang=${lang}`);
+            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=arxiuArticles&lang=${lang}`);
             setArticlesData(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -40,7 +41,6 @@ function ArticlesArchives() {
 
     // Agrupar los artículos por curso
     const groupedArticles = groupArticlesByCourse(articlesData);
-    console.log(groupedArticles)
 
     return (
         <div className="container-principal">
@@ -50,13 +50,13 @@ function ArticlesArchives() {
                     <div key={courseName}>
                         <h4>
                             {/* Enlace al curso con la estructura deseada */}
-                            <Link to={`/${lang}/course/${groupedArticles[courseName][0].cursParam}`}>{courseName}</Link>
+                            <Link to={`/${lang}/course/${groupedArticles[courseName][0].cursParam}`}>{he.decode(courseName)}</Link>
                         </h4>
                         <ol>
                             {groupedArticles[courseName].map((article, index) => (
                                 <li key={index}>
 
-                                    <Link to={`/${lang}/article/${article.post_name}`}>{article.post_title}</Link>
+                                    <Link to={`/${lang}/article/${article.post_name}`}>{he.decode(article.post_title)}</Link>
 
                                 </li>
                             ))}

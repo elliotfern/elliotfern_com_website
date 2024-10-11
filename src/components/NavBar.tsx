@@ -1,30 +1,60 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function NavBar() {
-    const currentUrl = window.location.href;
-    const segments = currentUrl.split('/');
-    const langUrl = segments[3];
-
+    const { t, i18n } = useTranslation();
     const [query, setQuery] = useState('');
 
     const navigate = useNavigate();
 
-    const userLang = "en";
-    const isUserActive = false;
+    const routes = {
+        en: {
+            homepage: "/en/homepage",
+            about: "/en/about-author",
+            books: "/en/books",
+            historyArchives: "/en/history-archives",
+            blog: "/en/blog",
+        },
 
-    const homepageUser = userLang + "/homepage";
-    const homepageVisitor = "/en/homepage";
+        es: {
+            homepage: "/es/homepage",
+            about: "/es/about-author",
+            books: "/es/books",
+            historyArchives: "/es/history-archives",
+            blog: "/es/blog",
+        },
 
-    const archivesUser = userLang + "/history-archives";
-    const archivesVisitor = "/en/history-archives"
+        ca: {
+            homepage: "/ca/homepage",
+            about: "/ca/about-author",
+            books: "/ca/books",
+            historyArchives: "/ca/history-archives",
+            blog: "/ca/blog",
+        },
 
-    /*
-    const handleLanguageChange = (newLang) => {
-        // Llamar a la función de cambio de idioma del contexto
-        // setLangUrlDinamico(newLang); // Asegúrate de importar changeUserLang desde tu contexto
+        fr: {
+            homepage: "/fr/homepage",
+            about: "/fr/about-author",
+            books: "/fr/books",
+            historyArchives: "/fr/history-archives",
+            blog: "/fr/blog",
+        },
+
+        it: {
+            homepage: "/it/homepage",
+            about: "/it/about-author",
+            books: "/it/books",
+            historyArchives: "/it/history-archives",
+            blog: "/it/blog",
+        },
+       
     };
-*/
+
+    const handleLanguageChange = (newLang) => {
+        i18n.changeLanguage(newLang);
+        navigate(`/${newLang}/homepage`);
+    };
 
     const toggleBtn = useRef(null);
     const superMenuRef = useRef(null);
@@ -40,14 +70,6 @@ function NavBar() {
         setMenuVisible(true);
     };
 
-    /*
-    const handleSuperMenuMouseEnter = () => {
-        clearTimeout(menuTimeout);
-        setMenuVisible(true);
-    };
-
-    */
-
     const handleSuperMenuMouseLeave = () => {
         menuTimeout = setTimeout(() => {
             setMenuVisible(false);
@@ -58,9 +80,10 @@ function NavBar() {
 
     const [menuVisible, setMenuVisible] = useState(false);
 
-    const handleSearch = (e) => {
+    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        navigate(`/${isUserActive ? userLang : langUrl}/search-results?query=${query}`);
+        const newLang = i18n.language;
+        navigate(`/${newLang}/search-results?query=${query}`);
         setQuery('');
     };
 
@@ -76,7 +99,7 @@ function NavBar() {
     return (
         <>
             <div className="header">
-                <Link className="nav-link" to={isUserActive ? homepageUser : homepageVisitor}>Elliot Fernandez</Link>
+                <Link className="nav-link" to={routes[i18n.language].homepage}>Elliot Fernandez</Link>
 
                 <button className={`toggle-menu-button ${menuVisible ? 'menu-visible' : 'menu-hidden'}`} onClick={handleToggleMenu}>
                     ☰
@@ -84,23 +107,23 @@ function NavBar() {
 
                 <div className="container-menu" ref={MenuRef}>
                     <ul>
-                        <li><Link to="/">HomePage</Link></li>
-                        <li><Link to="/en/about-author">About me</Link></li>
-                        <li><Link to="/books">Books</Link></li>
-                        <li><Link className="nav-link" to={isUserActive ? archivesUser : archivesVisitor}>History archives</Link></li>
-                        <li><Link className="nav-link" to="/blog">Blog</Link></li>
-                        <li><a href="#" id="toggle-btn" onMouseEnter={handleToggleBtnMouseEnter} ref={toggleBtn}>Languages</a></li>
+                        <li><Link to={routes[i18n.language].homepage}>{t('nav.home')}</Link></li>
+                            <li><Link to={routes[i18n.language].about}>{t('nav.about')}</Link></li>
+                            <li><Link to={routes[i18n.language].books}>{t('nav.books')}</Link></li>
+                            <li><Link to={routes[i18n.language].historyArchives}>{t('nav.historyArchives')}</Link></li>
+                            <li><Link to={routes[i18n.language].blog}>{t('nav.blog')}</Link></li>
+                        <li><a href="#" id="toggle-btn" onMouseEnter={handleToggleBtnMouseEnter} ref={toggleBtn}>{t('nav.languages')}</a></li>
                     </ul>
                 </div>
 
                 <div className="header-second" style={{ display: 'none' }} ref={superMenuRef} >
                     <div className="super-menu1" ref={headerSecondRef} onMouseLeave={handleSuperMenuMouseLeave} >
                         <ul>
-                            <li><Link to="/en/homepage">English</Link></li>{/* onClick={() => handleLanguageChange('en')}  */}
-                            <li><Link to="/es/homepage">Spanish</Link></li>{/* onClick={() => handleLanguageChange('es')} */}
-                            <li><Link to="/it/homepage">Italian</Link></li>{/* onClick={() => handleLanguageChange('it')} */}
-                            <li><Link to="/fr/homepage">French</Link></li>{/* onClick={() => handleLanguageChange('fr')} */}
-                            <li><Link to="/ca/homepage">Catalan</Link></li>{/* onClick={() => handleLanguageChange('ca')} */}
+                            <li><a href="#" onClick={() => handleLanguageChange('en')}>{t('nav.english')}</a></li>
+                            <li><a href="#" onClick={() => handleLanguageChange('es')}>{t('nav.spanish')}</a></li>
+                            <li><a href="#" onClick={() => handleLanguageChange('it')}>{t('nav.italian')}</a></li>
+                            <li><a href="#" onClick={() => handleLanguageChange('fr')}>{t('nav.french')}</a></li>
+                            <li><a href="#" onClick={() => handleLanguageChange('ca')}>{t('nav.catalan')}</a></li>
                         </ul>
                     </div>
                 </div>

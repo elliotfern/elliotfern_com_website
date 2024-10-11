@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre el autor",
+    "books": "Libros",
+    "historyArchives": "Archivos",
+    "blog": "Blog",
+    "languages": "Idiomas",
+    "english": "Inglés",
+    "spanish": "Español",
+    "catalan": "Catalán",
+    "italian": "Italiano",
+    "french": "Francés"
+  },
+  
+    "welcome": "Welcome to our site",
+    "home": "Home",
+    "about_us": "About Us",
+    "contact": "Contact",
+    "services": "Services",
+    "webPostDate": "Publicado el",
+    "webPostModified": "Modificado el",
+    "webCommentsText": "Comentarios",
+    "webAuthorDescrip": "Es licenciado en Historia por la Universidad Autónoma de Barcelona (2009) y Máster en Historia del Mundo por la Universidad Pompeu Fabra (2011).",
+    "webCursNameError": "Curso no disponible",
+    "webCursDescripcioError": "Este curso está en preparación",
+    "webwebCursContingut": "Contenidos del curso:",
+    "webwebCursContingutError": "No hay contenido disponible en este curso"
+  }

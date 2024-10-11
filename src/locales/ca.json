@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Inici",
+    "about": "Sobre l'autor",
+    "books": "Llibres",
+    "historyArchives": "Arxius",
+    "blog": "Blog",
+    "languages": "Idiomes",
+    "english": "Anglès",
+    "spanish": "Castellà",
+    "catalan": "Català",
+    "italian": "Italià",
+    "french": "Francès"
+  },
+
+  "welcome": "Welcome to our site",
+  "services": "Serveis",
+  "webPostDate": "Publicat el",
+  "webPostModified": "Modificat el",
+  "webCommentsText": "Comentaris",
+  "webAuthorDescrip": "És llicenciat en Història per la Universitat Autònoma de Barcelona (2009) i Màster en Història del Món per la Universitat Pompeu Fabra (2011).",
+  "webCursNameError": "Curs no disponible",
+  "webCursDescripcioError": "Aquest curs està en preparació",
+  "webwebCursContingut": "Continguts del curs:",
+  "webwebCursContingutError": "No hi ha cap contingut disponible en aquest curs"
+}
