@@ -15,6 +15,7 @@ function NavBar() {
             books: "/en/books",
             historyArchives: "/en/history-archives",
             blog: "/en/blog",
+            links: "en/links"
         },
 
         es: {
@@ -23,6 +24,7 @@ function NavBar() {
             books: "/es/books",
             historyArchives: "/es/history-archives",
             blog: "/es/blog",
+            links: "es/links"
         },
 
         ca: {
@@ -31,6 +33,7 @@ function NavBar() {
             books: "/ca/books",
             historyArchives: "/ca/history-archives",
             blog: "/ca/blog",
+            links: "ca/links"
         },
 
         fr: {
@@ -39,6 +42,7 @@ function NavBar() {
             books: "/fr/books",
             historyArchives: "/fr/history-archives",
             blog: "/fr/blog",
+            links: "fr/links"
         },
 
         it: {
@@ -47,6 +51,7 @@ function NavBar() {
             books: "/it/books",
             historyArchives: "/it/history-archives",
             blog: "/it/blog",
+            links: "it/links"
         },
        
     };
@@ -112,6 +117,7 @@ function NavBar() {
                             <li><Link to={routes[i18n.language].books}>{t('nav.books')}</Link></li>
                             <li><Link to={routes[i18n.language].historyArchives}>{t('nav.historyArchives')}</Link></li>
                             <li><Link to={routes[i18n.language].blog}>{t('nav.blog')}</Link></li>
+                            <li><Link to={routes[i18n.language].links}>{t('nav.links')}</Link></li>
                         <li><a href="#" id="toggle-btn" onMouseEnter={handleToggleBtnMouseEnter} ref={toggleBtn}>{t('nav.languages')}</a></li>
                     </ul>
                 </div>

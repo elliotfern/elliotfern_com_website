@@ -5,12 +5,27 @@
     "books": "Llibres",
     "historyArchives": "Arxius",
     "blog": "Blog",
+    "links": "Enllaços",
     "languages": "Idiomes",
     "english": "Anglès",
     "spanish": "Castellà",
     "catalan": "Català",
     "italian": "Italià",
     "french": "Francès"
+  },
+  "link": {
+    "PaginaTitol" : "Enllaços d'interès",
+    "Categories": "Categories:",
+    "Topics": "Temes:",
+    "showAllLinks": "Veure'ls tots",
+    "web": "Pàgina web",
+    "url": "URL",
+    "categoria": "Categoria",
+    "idioma": "Idioma",
+    "tema": "Tema",
+    "tipus": "Tipus",
+    "data": "Data de modificació",
+    "refreshTable": "Actualitzar dades"
   },
 
   "welcome": "Welcome to our site",

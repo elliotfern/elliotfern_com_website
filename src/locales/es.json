@@ -5,6 +5,7 @@
     "books": "Libros",
     "historyArchives": "Archivos",
     "blog": "Blog",
+    "links": "Links",
     "languages": "Idiomas",
     "english": "Inglés",
     "spanish": "Español",
@@ -12,7 +13,23 @@
     "italian": "Italiano",
     "french": "Francés"
   },
-  
+
+  "link": {
+  "PaginaTitol": "Enlaces de Interés",
+  "Categories": "Categorías:",
+  "Topics": "Temas:",
+  "showAllLinks": "Ver Todos",
+  "web": "Página web",
+  "url": "URL",
+  "categoria": "Categoría",
+  "idioma": "Idioma",
+  "tema": "Tema",
+  "tipus": "Tipo",
+  "data": "Fecha de Modificación",
+  "refreshTable": "Actualizar Datos"
+},
+
+
     "welcome": "Welcome to our site",
     "home": "Home",
     "about_us": "About Us",

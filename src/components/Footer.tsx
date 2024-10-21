@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import CookieBanner from './CookieBanner'
 
 function Footer() {
+  
 
     //const { isUserActive, userLang, langUrlDinamico } = useContext(AuthContext);
     const userLang = "en";
@@ -44,7 +46,7 @@ function Footer() {
                 </div>
 
             </div>
-
+            <CookieBanner />
         </>
     )
 }

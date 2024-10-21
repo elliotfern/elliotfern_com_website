@@ -5,6 +5,7 @@
     "books": "Books",
     "historyArchives": "Archive",
     "blog": "Blog",
+    "links": "Links",
     "languages": "Languages",
     "english": "English",
     "spanish": "Spanish",
@@ -12,6 +13,21 @@
     "italian": "Italian",
     "french": "French"
   },
+
+  "link": {
+  "PaginaTitol": "Bookmarks",
+  "Categories": "Categories:",
+  "Topics": "Topics:",
+  "showAllLinks": "View All",
+  "web": "Website",
+  "url": "URL",
+  "categoria": "Category",
+  "idioma": "Language",
+  "tema": "Topic",
+  "tipus": "Type",
+  "data": "Modification Date",
+  "refreshTable": "Refresh Data"
+},
   
     "welcome": "Welcome to our site",
     "home": "Home",

@@ -382,3 +382,126 @@ img {
     width: 100%;
   }
 }
+
+/* Estilos base */
+.links-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box; /* Asegura que el padding se incluye en el ancho total */
+}
+
+h1 {
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  flex: 0 1 auto; /* Evita que los botones ocupen todo el ancho */
+  text-align: center;
+  min-width: 150px; /* Establece un ancho mínimo para los botones */
+}
+
+.tab-button-categoria {
+  background-color: #001d3b;
+}
+
+.center-button {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+.tab-button-topic {
+  background-color: #585858;
+}
+
+.tab-button-all-button {
+  background-color: #00501b;
+}
+
+.tab-button:hover {
+  background-color: #0056b3;
+}
+
+.tab-button.active {
+  background-color: #000000;
+}
+
+/* Estilos de la tabla */
+.links-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.links-table th, .links-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.links-table th {
+  background-color: #0f0f0f;
+  color: white;
+}
+
+.links-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.links-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Estilos responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .tab-button {
+      flex: 1 1 45%; /* Permite que se ajusten hasta dos botones por línea en pantallas pequeñas */
+      margin: 10px;
+  }
+
+  .links-table th, .links-table td {
+      padding: 12px; /* Aumenta el padding para mejorar la legibilidad */
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-button {
+      flex: 1 1 100%; /* En pantallas muy pequeñas, cada botón ocupará toda la línea */
+  }
+
+  .links-table th, .links-table td {
+      padding: 10px; /* Ajuste fino para pantallas muy pequeñas */
+      font-size: 14px; /* Texto más pequeño */
+  }
+}
+
+.center-title {
+  width: 100%; /* Asegura que el título esté en su propia línea */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los botones pasen a la siguiente línea si no caben */
+  justify-content: center;
+  gap: 10px; /* Espacio entre los botones */
+}

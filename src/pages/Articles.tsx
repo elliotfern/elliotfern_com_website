@@ -18,6 +18,7 @@ function Articles() {
         try {
           const response = await axios.get(`https://api.elliotfern.com/blog.php?type=articleName&paramName=${nameArticle}`);
           setArticle(response.data);
+          document.title = `${response.data.post_title} - Elliot Fernandez`;
           setIsFetching(false);
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -28,17 +29,6 @@ function Articles() {
         getData();
       }, [getData]);
 
-    // Llamar a getTitle después de que article se haya cargado
-    useEffect(() => {
-
-        if (article && article[0] && article[0].post_title) {
-            getTitle();
-        }
-    }, [article]);
-
-    const getTitle = () => {
-        document.title = `${article[0].post_title} - Elliot Fernandez`;
-    }
 
 
     if (isFetching === true) {

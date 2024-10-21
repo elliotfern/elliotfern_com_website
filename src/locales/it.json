@@ -5,6 +5,7 @@
     "books": "Libri",
     "historyArchives": "Archivi",
     "blog": "Blog",
+    "links": "Links",
     "languages": "Lingue",
     "english": "Inglese",
     "spanish": "Spagnolo",
@@ -13,6 +14,20 @@
     "french": "Francese"
   },
   
+  "link": {
+  "PaginaTitol": "Collegamenti di Interesse",
+  "Categories": "Categorie :",
+  "Topics": "Argomenti :",
+  "showAllLinks": "Mostra Tutti",
+  "web": "Sito Web",
+  "url": "URL",
+  "categoria": "Categoria",
+  "idioma": "Lingua",
+  "tema": "Argomento",
+  "tipus": "Tipo",
+  "data": "Data di Modifica",
+  "refreshTable": "Aggiorna Dati"
+},
     "welcome": "Welcome to our site",
     "home": "Home",
     "about_us": "About Us",
