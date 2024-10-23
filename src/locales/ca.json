@@ -25,7 +25,8 @@
     "tema": "Tema",
     "tipus": "Tipus",
     "data": "Data de modificació",
-    "refreshTable": "Actualitzar dades"
+    "refreshTable": "Actualitzar dades",
+    "buscar": "Cercador"
   },
 
   "welcome": "Welcome to our site",

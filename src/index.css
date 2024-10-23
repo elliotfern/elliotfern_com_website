@@ -444,50 +444,96 @@ h1 {
 }
 
 /* Estilos de la tabla */
+/* Contenedor de la tabla */
 .links-table {
-  width: 100%;
-  border-collapse: collapse;
+  width: 100%; /* Ancho completo */
+  border-collapse: collapse; /* Colapsar bordes */
+  overflow-x: auto; /* Permitir desplazamiento horizontal */
 }
 
+/* Estilos para las celdas de la tabla */
 .links-table th, .links-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde de las celdas */
+  text-align: left; /* Alinear texto a la izquierda */
 }
 
+/* Estilo para el encabezado */
 .links-table th {
-  background-color: #0f0f0f;
-  color: white;
+  background-color: #000000; /* Color de fondo del encabezado */
+  color: white; /* Color del texto del encabezado */
 }
 
+/* Estilo para filas alternas */
 .links-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Color de fondo para filas pares */
 }
 
-.links-table tr:hover {
-  background-color: #ddd;
+
+@media (min-width: 800px) {
+  .links-table td.url-column {
+  max-width: 200px; /* Ajusta el ancho máximo solo para la columna de URL */
+  white-space: nowrap; /* Evita que el texto haga saltos de línea */
+  overflow: hidden; /* Oculta el texto que exceda el tamaño */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto es muy largo */
 }
 
-/* Estilos responsive para pantallas pequeñas */
+.links-table td.url-column a {
+  word-break: break-all; /* Rompe palabras largas para ajustarlas dentro del ancho de la celda */
+  text-decoration: none; /* Elimina el subrayado */
+  color: #007bff; /* Estilo del enlace */
+}
+
+.links-table td.url-column a:hover {
+  text-decoration: underline; /* Muestra el subrayado al pasar el mouse */
+}
+ }
+
+ .links-table td a svg {
+  margin-right: 5px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  width: 12px;
+  height: 12px;
+}
+
+/* Hacer que las celdas se ajusten en pantallas pequeñas */
 @media (max-width: 768px) {
-  .tab-button {
-      flex: 1 1 45%; /* Permite que se ajusten hasta dos botones por línea en pantallas pequeñas */
-      margin: 10px;
-  }
-
   .links-table th, .links-table td {
-      padding: 12px; /* Aumenta el padding para mejorar la legibilidad */
-  }
-}
-
-@media (max-width: 480px) {
-  .tab-button {
-      flex: 1 1 100%; /* En pantallas muy pequeñas, cada botón ocupará toda la línea */
+    display: block; /* Cambiar a bloque */
+    width: 100%; /* Ancho completo */
+    box-sizing: border-box; /* Incluir borde y padding en el ancho total */
   }
 
-  .links-table th, .links-table td {
-      padding: 10px; /* Ajuste fino para pantallas muy pequeñas */
-      font-size: 14px; /* Texto más pequeño */
+  /* Ocultar el encabezado para filas en pantallas pequeñas */
+  .links-table th {
+    display: none; /* Ocultar encabezados en vista móvil */
+  }
+
+  /* Añadir un estilo para las filas en pantallas pequeñas */
+  .links-table tr {
+    margin-bottom: 10px; /* Espacio entre filas */
+    border: 1px solid #ccc; /* Borde alrededor de la fila */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+  }
+
+  /* Estilo para mostrar datos en filas móviles */
+  .links-table td {
+    text-align: right; /* Alinear texto a la derecha */
+    position: relative; /* Posición relativa para el pseudo-elemento */
+    padding-left: 50%; /* Espaciado izquierdo */
+  }
+
+  /* Pseudo-elemento para mostrar el encabezado en vista móvil */
+  .links-table td::before {
+    content: attr(data-label); /* Contenido basado en el atributo data-label */
+    position: absolute; /* Posición absoluta */
+    left: 10px; /* Espacio a la izquierda */
+    text-align: left; /* Alinear texto a la izquierda */
+    font-weight: bold; /* Negrita */
+    color: #007bff; /* Color del texto */
   }
 }
 
@@ -504,4 +550,61 @@ h1 {
   flex-wrap: wrap; /* Permitir que los botones pasen a la siguiente línea si no caben */
   justify-content: center;
   gap: 10px; /* Espacio entre los botones */
+}
+
+/* Estilos generales para el contenedor del buscador */
+.search-container {
+  display: flex; /* Usar flexbox para alinear elementos */
+  flex-direction: column; /* Colocar los elementos en columna */
+  align-items: center; /* Centrar los elementos horizontalmente */
+  margin: 20px 0; /* Margen superior e inferior */
+}
+
+/* Estilos para la barra de búsqueda */
+.search-input {
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde de la barra de búsqueda */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  transition: border-color 0.3s; /* Transición suave al enfocar */
+}
+
+/* Efecto al enfocar la barra de búsqueda */
+.search-input:focus {
+  border-color: #007bff; /* Color del borde al enfocar */
+  outline: none; /* Sin contorno */
+}
+
+/* Estilo para el botón de búsqueda */
+.search-button {
+  padding: 10px 15px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #007bff; /* Color de fondo */
+  color: white; /* Color del texto */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambiar cursor al pasar */
+  margin-top: 10px; /* Margen superior */
+  transition: background-color 0.3s; /* Transición suave al pasar */
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.search-button:hover {
+  background-color: #0056b3; /* Color más oscuro al pasar */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column; /* Colocar elementos en columna */
+    align-items: stretch; /* Estirar elementos al ancho completo */
+  }
+
+  .search-input {
+    margin-bottom: 10px; /* Margen inferior */
+  }
+
+  .search-button {
+    width: 100%; /* Ancho completo para el botón */
+  }
 }

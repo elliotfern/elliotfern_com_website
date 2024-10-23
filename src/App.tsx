@@ -69,7 +69,8 @@ function App() {
 
           <Route path="/:lang/books" element={<Books />} />
 
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog" element={<Navigate to="/en/blog" />} />
+          <Route path="/:lang/blog" element={<Blog />} />
           <Route path="/blog/:blogArticle" element={<BlogArticles />} />
 
           <Route path="/:lang/search-results" element={<SearchResultsPage />} />

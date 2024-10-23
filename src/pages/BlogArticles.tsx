@@ -15,7 +15,7 @@ function BlogArticles() {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=blog-articulo&paramName=${blogArticle}`)
+            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=blogArticle&paramName=${blogArticle}`)
             setArticle(response.data)
             setIsFetching(false)
         } catch (error) {
