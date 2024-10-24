@@ -28,6 +28,19 @@
     "refreshTable": "Actualitzar dades",
     "buscar": "Cercador"
   },
+  "book" : {
+    "titolPagina": "Llibres recomanats",
+    "year": "Any de publicació",
+    "originalLanguage": "Idioma original",
+    "allGenres": "Tots els gèneres",
+    "genres": "Filtrar per gènere",
+    "languages": "Filtrar per idioma",
+    "allLanguages": "Tots els idiomes",
+    "esborrar" : "Cancel·lar resultats",
+    "titolCercador" : "Cercador de llibres",
+    "cercadorPlaceHolder": "Cercar per títol del llibre"
+
+  },
 
   "welcome": "Welcome to our site",
   "services": "Serveis",

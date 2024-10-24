@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactGA from "react-ga4";
 
 const CookieBanner: React.FC = () => {
     const [bannerVisible, setBannerVisible] = useState<boolean>(false);
@@ -44,23 +45,14 @@ const CookieBanner: React.FC = () => {
     };
 
     const loadGoogleAnalytics = () => {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0L7VP04REK';
-        document.head.appendChild(script);
-    
-        interface GTagArgs {
-            event: string;
-            [key: string]: unknown; // Cambia 'any' por un tipo más específico si es posible
-        }
-    
-        window.dataLayer = window.dataLayer || [];
-        function gtag(args: GTagArgs) {
-            window.dataLayer.push(args);
-        }
-    
-        gtag({ event: 'js', 'event_callback': new Date() });
-        gtag({ event: 'config', 'tracking_id': 'G-0L7VP04REK' });
+        ReactGA.initialize("G-0L7VP04REK", {
+            gaOptions: {
+              anonymizeIp: true,
+            },
+          });
+
+    // Rastrear la página actual después de aceptar las cookies
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
     };
 
     if (!bannerVisible) return null; // No renderiza nada si el banner no es visible

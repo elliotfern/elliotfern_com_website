@@ -1,5 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import i18n from "./config/i18n";
+import React, { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 import Articles from "./pages/Articles";
 import NavBar from "./components/NavBar";
@@ -17,17 +19,54 @@ import ArticlesArchives from "./pages/ArticlesArchives";
 import Blog from "./pages/Blog";
 import BlogArticles from "./pages/BlogArticles";
 import Links from "./pages/Links";
+import CookieBanner from "./components/CookieBanner"; // Asegúrate de importar tu CookieBanner
 
 // Lista de idiomas permitidos
 const supportedLanguages = ["en", "ca", "es", "it", "fr"];
 
 function App() {
+  const location = useLocation();
   const userLang = i18n.language;
   const redirectLang = supportedLanguages.includes(userLang) ? userLang : "en";
+
+  const getCookie = (name: string): string | null => {
+    const cookieArr = document.cookie.split(";");
+    for (let i = 0; i < cookieArr.length; i++) {
+      const cookiePair = cookieArr[i].split("=");
+      if (name === cookiePair[0].trim()) {
+        return decodeURIComponent(cookiePair[1]);
+      }
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    // Verificar si las cookies ya fueron aceptadas
+    const cookiesAccepted = getCookie("cookiesAccepted");
+
+    if (cookiesAccepted === "true") {
+      // Inicializar Google Analytics solo una vez
+      ReactGA.initialize("G-0L7VP04REK", {
+        gaOptions: {
+          anonymizeIp: true,
+        },
+      });
+    }
+  }, []); // Solo ejecutar al montar el componente
+
+  useEffect(() => {
+    const cookiesAccepted = getCookie("cookiesAccepted");
+
+    if (cookiesAccepted === "true") {
+      // Enviar un pageview cada vez que cambie location.pathname
+      ReactGA.send({ hitType: "pageview", page: location.pathname });
+    }
+  }, [location.pathname]); // Ejecutar cuando cambie location.pathname
 
   return (
     <>
       <NavBar />
+      <CookieBanner /> {/* Asegúrate de renderizar el banner de cookies */}
       <div className="principal">
         <Routes>
           <Route

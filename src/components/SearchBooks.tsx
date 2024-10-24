@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function SearchBooks(props) {
     const [queryInput, setQueryInput] = useState("");
-
+    const { t } = useTranslation();
+    
     // handler para disparar la query del buscador de libros
     const handleSearch = (e) => {
         setQueryInput(e.target.value);
@@ -24,11 +26,11 @@ function SearchBooks(props) {
 
     return (
         <div className="box-buscador">
-            <h2>Search</h2>
+            <h2>{t("book.titolCercador")}</h2>
             <div>
                 <input
                     type="search"
-                    placeholder="Buscar libro por título..."
+                    placeholder={t("book.cercadorPlaceHolder")}
                     value={queryInput}
                     onChange={handleSearch}
                     className="me-2"
@@ -36,7 +38,7 @@ function SearchBooks(props) {
                     name="name"
                 />
                 <button onClick={handleClearSearch}>
-                    Borrar
+                {t("book.esborrar")}
                 </button>
             </div>
         </div>
