@@ -29,6 +29,32 @@
   "refreshTable": "Actualizar Datos"
 },
 
+"book": {
+  "titolPagina": "Libros recomendados",
+  "year": "Año de publicación",
+  "originalLanguage": "Idioma original",
+  "autor": "Autor/a",
+  "tematica": "Temática principal",
+  "allGenres": "Todos los géneros",
+  "genres": "Filtrar por género",
+  "languages": "Filtrar por idioma",
+  "allLanguages": "Todos los idiomas",
+  "esborrar": "Cancelar resultados",
+  "titolCercador": "Buscador de libros",
+  "cercadorPlaceHolder": "Buscar por título del libro",
+  "paginaAutors": "Puedes consultar la página de autores/as"
+},
+"bookAuthors": {
+  "titolPagina": "Todos los Autores/as",
+  "countries": "Filtrar por país de origen",
+  "allCountries": "Todos los países",
+  "professions": "Filtrar por profesión",
+  "allProfessions": "Todas las profesiones",
+  "country": "País",
+  "profession": "Profesión",
+  "yearBorn": "Año de nacimiento",
+  "yearDie": "Año de defunción"
+},
 
     "welcome": "Welcome to our site",
     "home": "Home",

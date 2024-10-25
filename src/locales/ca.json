@@ -32,13 +32,30 @@
     "titolPagina": "Llibres recomanats",
     "year": "Any de publicació",
     "originalLanguage": "Idioma original",
+    "autor": "Autor/a",
+    "tematica": "Temàtica principal",
     "allGenres": "Tots els gèneres",
     "genres": "Filtrar per gènere",
     "languages": "Filtrar per idioma",
     "allLanguages": "Tots els idiomes",
     "esborrar" : "Cancel·lar resultats",
     "titolCercador" : "Cercador de llibres",
-    "cercadorPlaceHolder": "Cercar per títol del llibre"
+    "cercadorPlaceHolder": "Cercar per títol del llibre",
+    "paginaAutors": "Pots consultar la pàgina d'autors/es",
+    "bookDetailsBtn": "Veure més detalls del llibre"
+
+  },
+
+  "bookAuthors" : {
+    "titolPagina": "Tots els Autors/es",
+    "countries": "Filtrar per país d'orígen",
+    "allCountries": "Tots els països",
+    "professions": "Filtrar per professió",
+    "allProfessions": "Totes les professions",
+    "country" : "País",
+    "profession": "Professió",
+    "yearBorn": "Any de naixement",
+    "yearDie": "Any de defunció"
 
   },
 

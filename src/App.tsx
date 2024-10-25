@@ -19,7 +19,9 @@ import ArticlesArchives from "./pages/ArticlesArchives";
 import Blog from "./pages/Blog";
 import BlogArticles from "./pages/BlogArticles";
 import Links from "./pages/Links";
-import CookieBanner from "./components/CookieBanner"; // Asegúrate de importar tu CookieBanner
+import CookieBanner from "./components/CookieBanner";
+import BookAuthors from "./pages/BookAuthors"
+import BookDetails from "./pages/BookDetails"
 
 // Lista de idiomas permitidos
 const supportedLanguages = ["en", "ca", "es", "it", "fr"];
@@ -107,6 +109,8 @@ function App() {
           <Route path="/contact" element={<Navigate to="/en/contact" />} />
 
           <Route path="/:lang/books" element={<Books />} />
+          <Route path="/:lang/books/:slug" element={<BookDetails />} />
+          <Route path="/:lang/authors" element={<BookAuthors />} />
 
           <Route path="/blog" element={<Navigate to="/en/blog" />} />
           <Route path="/:lang/blog" element={<Blog />} />

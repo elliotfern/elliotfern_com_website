@@ -28,6 +28,33 @@
   "data": "Modification Date",
   "refreshTable": "Refresh Data"
 },
+
+"book": {
+    "titolPagina": "Recommended Books",
+    "year": "Publication Year",
+    "originalLanguage": "Original Language",
+    "autor": "Author",
+    "tematica": "Main Theme",
+    "allGenres": "All Genres",
+    "genres": "Filter by Genre",
+    "languages": "Filter by Language",
+    "allLanguages": "All Languages",
+    "esborrar": "Cancel Results",
+    "titolCercador": "Book Search",
+    "cercadorPlaceHolder": "Search by Book Title",
+    "paginaAutors": "You can check the authors' page"
+  },
+  "bookAuthors": {
+    "titolPagina": "All Authors",
+    "countries": "Filter by Country of Origin",
+    "allCountries": "All Countries",
+    "professions": "Filter by Profession",
+    "allProfessions": "All Professions",
+    "country": "Country",
+    "profession": "Profession",
+    "yearBorn": "Year of Birth",
+    "yearDie": "Year of Death"
+  },
   
     "welcome": "Welcome to our site",
     "home": "Home",

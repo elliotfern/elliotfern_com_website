@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import SearchBooks from "../components/SearchBooks";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
@@ -14,6 +15,8 @@ interface Book {
   lang: string;
   genere: string;
   nameImg: string;
+  tema: string;
+  bookSlug: string;
 }
 
 function Books() {
@@ -23,16 +26,46 @@ function Books() {
   const [selectedLang, setSelectedLang] = useState<string | null>(null); // idioma seleccionado
   const [currentPage, setCurrentPage] = useState<number>(0); // página actual
 
-  const articlesPerPage = 15; // número de libros por página
-  const { t } = useTranslation();
+  const { lang } = useParams();
+  const navigate = useNavigate(); // Añadir useNavigate
+  const { t, i18n } = useTranslation();
+
+  const handleViewDetails = (bookSlug: string) => {
+    navigate(`/${i18n.language}/books/${bookSlug}`);
+  };
+
+  const articlesPerPage = 16; // número de libros por página
+
+  const routes = {
+    en: {
+      autors: "/en/authors",
+    },
+
+    es: {
+      autors: "/es/authors",
+    },
+
+    ca: {
+      autors: "/ca/authors",
+    },
+
+    fr: {
+      autors: "/fr/authors",
+    },
+
+    it: {
+      autors: "/it/authors",
+    },
+  };
 
   // Obtener los libros desde la API
   const fetchBooks = async () => {
     try {
       const response = await axios.get(
-        "https://api.elliotfern.com/book.php?type=books"
+        `https://api.elliotfern.com/book.php?type=totsLlibres&lang=${lang}`
       );
       setBooks(response.data);
+      document.title = `${t("book.titolPagina")} - Elliot Fernandez`;
       setAllBooks(response.data); // actualiza la lista completa de libros
     } catch (error) {
       console.error("Error al obtener libros:", error);
@@ -107,7 +140,13 @@ function Books() {
   return (
     <div className="container-principal">
       <div className="content">
-        <h2>{t("book.titolPagina")}</h2>
+        <h2 className="bold">{t("book.titolPagina")}</h2>
+
+        <Link to={routes[i18n.language].autors}>
+          <button className="tab-button tab-button-all-button">
+            {t("book.paginaAutors")}
+          </button>
+        </Link>
 
         {/* Componente del buscador */}
         <SearchBooks
@@ -182,20 +221,35 @@ function Books() {
                 src={
                   book.nameImg
                     ? `https://media.elliotfern.com/img/library-book/${book.nameImg}.jpg`
-                    : "https://media.elliotfern.com/img/book_default.png"
+                    : "https://media.elliotfern.com/img/library-book/book_default.jpg"
                 }
                 alt={`Portada de ${book.titol}`}
+                title={he.decode(book.titol)}
+                onClick={() => handleViewDetails(book.bookSlug)} // Añadir el evento onClick aquí
+                style={{ cursor: "pointer" }} // Opcional: Cambia el cursor al pasar sobre la imagen
               />
-              <p>{he.decode(book.titol)}</p>
               <p>
-                {book.AutNom} {book.AutCognom1}
+                <strong>{he.decode(book.titol)}</strong>
               </p>
               <p>
-                {t("book.year")}: {book.any}
+                <strong>{t("book.autor")}:</strong> {book.AutNom}{" "}
+                {book.AutCognom1}
               </p>
               <p>
-                {t("book.originalLanguage")}: {book.lang}
+                <strong>{t("book.year")}:</strong> {book.any}
               </p>
+              <p>
+                <strong>{t("book.originalLanguage")}:</strong> {book.lang}
+              </p>
+              <p>
+                <strong>{t("book.tematica")}:</strong> {book.tema}
+              </p>
+              <button
+                className="tab-button tab-button-categoria"
+                onClick={() => handleViewDetails(book.bookSlug)}
+              >
+                {t("book.bookDetailsBtn")}
+              </button>
             </div>
           ))}
         </div>

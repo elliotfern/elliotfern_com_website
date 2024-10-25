@@ -555,8 +555,7 @@ h1 {
 /* Estilos generales para el contenedor del buscador */
 .search-container {
   display: flex; /* Usar flexbox para alinear elementos */
-  flex-direction: column; /* Colocar los elementos en columna */
-  align-items: center; /* Centrar los elementos horizontalmente */
+  flex-direction: column; /* Colocar los elementos en columna *//* Centrar los elementos horizontalmente */
   margin: 20px 0; /* Margen superior e inferior */
 }
 
@@ -606,5 +605,50 @@ h1 {
 
   .search-button {
     width: 100%; /* Ancho completo para el botón */
+  }
+}
+
+.authorPhoto {
+  width: 100%;       /* O el ancho deseado */
+  height: 300px;     /* Altura fija para todas las imágenes */
+  object-fit: cover; /* Ajusta la imagen sin deformarla */
+}
+
+/* pagina detalles libro */
+.container-principal-book {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  padding: 20px;
+  margin-top:100px;
+}
+
+.content-book {
+  display: flex;
+  max-width: 1200px; /* Ajusta el ancho máximo según tus necesidades */
+  width: 100%;
+  gap: 60px; /* Espaciado entre columnas */
+}
+
+.book-image {
+  width: 100%;
+  max-width: 400px; /* Ajusta el tamaño máximo de la imagen */
+  height: auto;
+  border-radius: 8px; /* Esquinas redondeadas para la imagen */
+}
+
+.details {
+  flex: 1; /* Permite que el contenedor de detalles tome el espacio restante */
+  display: flex;
+  flex-direction: column; /* Asegura que los detalles se apilen verticalmente */
+}
+
+@media (max-width: 768px) {
+  .content-book {
+    flex-direction: column; /* Cambia a una columna en pantallas pequeñas */
+    align-items: center; /* Centra los elementos */
+  }
+
+  .book-image {
+    max-width: 100%; /* La imagen ocupará todo el ancho disponible */
   }
 }

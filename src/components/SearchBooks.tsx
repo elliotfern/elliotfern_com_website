@@ -24,8 +24,8 @@ function SearchBooks(props) {
         props.setBooks(props.allBooks); // Restablece la lista de libros
     };
 
-    return (
-        <div className="box-buscador">
+    return ( 
+        <div className="search-container">
             <h2>{t("book.titolCercador")}</h2>
             <div>
                 <input
@@ -33,11 +33,11 @@ function SearchBooks(props) {
                     placeholder={t("book.cercadorPlaceHolder")}
                     value={queryInput}
                     onChange={handleSearch}
-                    className="me-2"
+                    className="search-input"
                     aria-label="Search"
                     name="name"
                 />
-                <button onClick={handleClearSearch}>
+                <button onClick={handleClearSearch} className="tab-button tab-button-topic">
                 {t("book.esborrar")}
                 </button>
             </div>
