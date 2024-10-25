@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ReactPaginate from "react-paginate";
 import he from "he";
@@ -27,15 +27,17 @@ function BooksAuthors() {
   const [currentPage, setCurrentPage] = useState<number>(0); // página actual
 
   const authorsPerPage = 16; // número de autores por página
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
+  const navigate = useNavigate(); // Añadir useNavigate
   const { lang } = useParams();
 
   // Obtener los autores desde la API
   const fetchAuthors = async () => {
     try {
       const response = await axios.get(
-        `https://api.elliotfern.com/book.php?type=totsAutors&lang=${lang}`);
+        `https://api.elliotfern.com/book.php?type=totsAutors&lang=${lang}`
+      );
       setAuthors(response.data);
       setAllAuthors(response.data); // actualiza la lista completa de autores
     } catch (error) {
@@ -86,6 +88,10 @@ function BooksAuthors() {
   const professions = Array.from(
     new Set(allAuthors.map((author) => author.professio))
   );
+
+  const handleViewDetails = (autorSlug: string) => {
+    navigate(`/${i18n.language}/authors/${autorSlug}`);
+  };
 
   return (
     <div className="container-principal">
@@ -160,6 +166,9 @@ function BooksAuthors() {
                     : "https://media.elliotfern.com/img/library-author/author_default.jpg"
                 }
                 alt={`Foto de ${author.nom} ${author.cognoms}`}
+                title={`${author.nom} ${author.cognoms}`}
+                onClick={() => handleViewDetails(author.autorSlug)} // Añadir el evento onClick aquí
+                style={{ cursor: "pointer" }} // Opcional: Cambia el cursor al pasar sobre la imagen
               />
               <p>
                 <strong>
@@ -181,6 +190,13 @@ function BooksAuthors() {
                   <strong>{t("bookAuthors.yearDie")}:</strong> {author.yearDie}
                 </p>
               )}
+
+              <button
+                className="tab-button tab-button-categoria"
+                onClick={() => handleViewDetails(author.autorSlug)}
+              >
+                {t("bookAuthors.authorDetailsBtn")}
+              </button>
             </div>
           ))}
         </div>

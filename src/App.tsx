@@ -22,6 +22,7 @@ import Links from "./pages/Links";
 import CookieBanner from "./components/CookieBanner";
 import BookAuthors from "./pages/BookAuthors"
 import BookDetails from "./pages/BookDetails"
+import BookAuthorDetails from "./pages/BookAuthorDetails";
 
 // Lista de idiomas permitidos
 const supportedLanguages = ["en", "ca", "es", "it", "fr"];
@@ -111,6 +112,7 @@ function App() {
           <Route path="/:lang/books" element={<Books />} />
           <Route path="/:lang/books/:slug" element={<BookDetails />} />
           <Route path="/:lang/authors" element={<BookAuthors />} />
+          <Route path="/:lang/authors/:slug" element={<BookAuthorDetails />} />
 
           <Route path="/blog" element={<Navigate to="/en/blog" />} />
           <Route path="/:lang/blog" element={<Blog />} />

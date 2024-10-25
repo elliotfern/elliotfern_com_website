@@ -634,6 +634,7 @@ h1 {
   max-width: 400px; /* Ajusta el tamaño máximo de la imagen */
   height: auto;
   border-radius: 8px; /* Esquinas redondeadas para la imagen */
+  object-fit: cover;
 }
 
 .details {
