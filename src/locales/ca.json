@@ -11,7 +11,9 @@
     "spanish": "Castellà",
     "catalan": "Català",
     "italian": "Italià",
-    "french": "Francès"
+    "french": "Francès",
+    "privacyPolicy": "Política de Privacitat",
+    "contact": "Contacte"
   },
   "link": {
     "PaginaTitol" : "Enllaços d'interès",
@@ -45,6 +47,12 @@
     "bookDetailsBtn": "Veure més detalls del llibre"
 
   },
+"footer": {
+  "titolPB": "Aquesta pàgina web allibera els seus continguts al Domini Públic",
+  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.ca",
+  "textPB": "Tots els continguts d'aquesta pàgina web es publiquen i es fan arribar al domini públic renunciant a tots els drets sobre l'obra en relació amb la propietat intel·lectual, incloent els drets relacionats, tant com sigui possible amb la llei aplicable. Podeu copiar, modificar, distribuir l'obra i fer comunicació pública, fins i tot amb fins comercials, sense demanar cap tipus de permís.",
+  "textAbout": "Història Oberta és un projecte editorial independent que ofereix als lectors accés gratuït a cursos d'història."
+},
 
   "bookAuthors" : {
     "titolPagina": "Tots els Autors/es",

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: import.meta.env.VITE_SERVER_URL || "https://server.elliotfern.com/api",
+    baseURL: import.meta.env.VITE_SERVER_URL || "https://api.elliotfern.com/api",
 })
 
 // configuramos que en TODAS las llamadas al backend

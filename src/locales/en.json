@@ -11,7 +11,9 @@
     "spanish": "Spanish",
     "catalan": "Catalan",
     "italian": "Italian",
-    "french": "French"
+    "french": "French",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact"
   },
 
   "link": {
@@ -55,6 +57,13 @@
     "yearBorn": "Year of Birth",
     "yearDie": "Year of Death"
   },
+
+  "footer": {
+  "titolPB": "We release the contents to the Public Domain",
+  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "textPB": "All the contents of this web page are published and sent to the public domain by renouncing all rights to the work in relation to intellectual property, including related rights, as far as it is possible with the applicable law applicable. You can copy, modify, distribute the work and make public communication, even for commercial purposes, without asking for any kind of permission.",
+  "textAbout": "Open History is an independent publishing project that offers readers free access history courses."
+},
   
     "welcome": "Welcome to our site",
     "home": "Home",

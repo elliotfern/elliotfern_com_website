@@ -11,7 +11,9 @@
     "spanish": "Spagnolo",
     "catalan": "Catalano",
     "italian": "Italiano",
-    "french": "Francese"
+    "french": "Francese",
+    "privacyPolicy": "Informativa sulla privacy",
+    "contact": "Contatto"
   },
   
   "link": {
@@ -56,6 +58,13 @@
     "yearBorn": "Anno di nascita",
     "yearDie": "Anno di morte"
   },
+
+  "footer": {
+  "titolPB": "Questa pagina web rilascia i suoi contenuti nel Pubblico Dominio",
+  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.it",
+  "textPB": "Tutti i contenuti di questa pagina web sono pubblicati e inviati nel pubblico dominio rinunciando a tutti i diritti sull'opera in relazione alla proprietà intellettuale, compresi i diritti connessi, per quanto possibile secondo la legge applicabile. Puoi copiare, modificare, distribuire l'opera e fare comunicazione pubblica, anche per fini commerciali, senza chiedere alcun tipo di permesso.",
+  "textAbout": "Storia Aperta è un progetto editoriale indipendente che offre ai lettori accesso gratuito a corsi di storia."
+},
 
     "welcome": "Welcome to our site",
     "home": "Home",
