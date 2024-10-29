@@ -66,6 +66,12 @@
     "yearDie": "Any de defunció"
 
   },
+  "cookieBanner": {
+    "titol": "Benvinguts a ElliotFern.com!",
+    "missatge": "Nosaltres i els nostres socis emmagatzemem i/o accedim a informació al seu dispositiu a través de cookies, i processem dades personals, com identificadors únics i informació estàndard enviada per un dispositiu per a anuncis i contingut personalitzats, mesurament d'anuncis i contingut, i informació sobre l'audiència, així com per desenvolupar i millorar productes. Amb el vostre permís, nosaltres i els nostres socis podem utilitzar dades de geolocalització precises i identificació mitjançant l'escaneig del dispositiu. Podeu fer clic per donar el vostre consentiment al nostre processament. Alternativament, podeu fer clic per negar-se a donar el vostre consentiment o accedir a informació més detallada i canviar les vostres preferències abans de donar el vostre consentiment. Tingueu en compte que és possible que alguns tractaments de les vostres dades personals no requereixin el vostre consentiment, però vostè té dret a oposar-se a aquest tractament. Les vostres preferències s'aplicaran únicament a aquest lloc web. Podeu canviar les vostres preferències en qualsevol moment tornant a aquest lloc o visitant la nostra política de privadesa.",
+    "acceptar": "Acceptar",
+    "rebutjar": "Rebutjar"
+  },
 
   "welcome": "Welcome to our site",
   "services": "Serveis",

@@ -66,6 +66,13 @@
   "textAbout": "Storia Aperta è un progetto editoriale indipendente che offre ai lettori accesso gratuito a corsi di storia."
 },
 
+"cookieBanner": {
+  "titol": "Benvenuto su ElliotFern.com!",
+  "missatge": "Noi e i nostri partner archiviamo e/o accediamo alle informazioni sul tuo dispositivo tramite cookie ed elaboriamo dati personali, come identificatori univoci e informazioni standard inviate da un dispositivo per annunci e contenuti personalizzati, misurazione di annunci e contenuti e informazioni sul pubblico, nonché per sviluppare e migliorare i prodotti. Con il tuo permesso, noi e i nostri partner possiamo utilizzare dati di geolocalizzazione precisi e scansione del dispositivo. Puoi fare clic per dare il tuo consenso al nostro trattamento. In alternativa, puoi fare clic per rifiutare di fornire il tuo consenso o per accedere a informazioni più dettagliate e modificare le tue preferenze prima di prestare il tuo consenso Tieni presente che alcuni trattamenti dei tuoi dati personali non richiedono il tuo consenso, ma hai il diritto di opporti a tale trattamento. Le tue preferenze si applicheranno solo a questo sito web. Puoi modificare le tue preferenze in qualsiasi momento tornando su questo sito o visitando la nostra informativa sulla privacy.",
+  "acceptar": "Accetta",
+  "rebutjar": "Rifiutare"
+},
+
     "welcome": "Welcome to our site",
     "home": "Home",
     "about_us": "About Us",

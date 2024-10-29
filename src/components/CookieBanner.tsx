@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ReactGA from "react-ga4";
+import { useTranslation } from 'react-i18next';
 
 const CookieBanner: React.FC = () => {
+    const { t } = useTranslation();
     const [bannerVisible, setBannerVisible] = useState<boolean>(false);
 
     useEffect(() => {
@@ -58,10 +60,11 @@ const CookieBanner: React.FC = () => {
     if (!bannerVisible) return null; // No renderiza nada si el banner no es visible
 
     return (
-        <div id="cookie-banner" style={{ position: 'fixed', bottom: '0', background: 'lightgray', padding: '10px', width: '100%', textAlign: 'center' }}>
-            <p>This website uses cookies to enhance the user experience.</p>
-            <button id="accept-cookies" onClick={acceptCookies}>Accept</button>
-            <button id="reject-cookies" onClick={rejectCookies}>Reject</button>
+        <div id="cookie-banner" style={{ position: 'fixed', bottom: '0', padding: '10px', width: '100%', textAlign: 'center' }}>
+            <h2>{t('cookieBanner.titol')}</h2>
+            <p>{t('cookieBanner.missatge')}</p>
+            <button id="accept-cookies-btn" onClick={acceptCookies}>{t('cookieBanner.acceptar')}</button>
+            <button id="reject-cookies-btn" onClick={rejectCookies}>{t('cookieBanner.rebutjar')}</button>
         </div>
     );
 };
