@@ -44,7 +44,15 @@
     "esborrar": "Cancel Results",
     "titolCercador": "Book Search",
     "cercadorPlaceHolder": "Search by Book Title",
-    "paginaAutors": "You can check the authors' page"
+    "paginaAutors": "You can check the authors' page",
+    "bookDetailsBtn": "View more Book Details",
+    "title": "Title in English",
+    "author": "Author",
+    "language": "Original Language",
+    "genre": "Category",
+    "topic": "Topic",
+    "editorial": "Publisher",
+    "tipusLlibre": "Type"
   },
   "bookAuthors": {
     "titolPagina": "All Authors",
@@ -55,7 +63,11 @@
     "country": "Country",
     "profession": "Profession",
     "yearBorn": "Year of Birth",
-    "yearDie": "Year of Death"
+    "yearDie": "Year of Death",
+    "description": "Description",
+    "wikipedia": "Wikipedia Page",
+    "booksByAuthor": "Books by the Author",
+    "authorDetailsBtn": "View More Author Details"
   },
 
   "footer": {
@@ -84,5 +96,7 @@
     "webCursNameError": "Course not available",
     "webCursDescripcioError": "This course is in preparation",
     "webwebCursContingut": "Course contents:",
-    "webwebCursContingutError": "There is no content available for this course"
+    "webwebCursContingutError": "There is no content available for this course",
+    "dataCreacio": "Data Creation Date",
+    "dataModificacio": "Data Modification Date"
   } 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import he from "he";
+import { routes } from "../services/routes";
 
 interface Author {
   id: string;
@@ -17,23 +18,41 @@ interface Author {
   AutDescrip: string;
   dateCreated: string;
   dateModified: string;
+  nomMov: string;
+  nameOc: string;
+}
+
+interface Book {
+  id: string;
+  any: string;
+  titol: string;
+  slug: string;
 }
 
 function BookAuthorDetails() {
   const { lang, slug } = useParams<{ lang: string; slug: string }>();
   const [author, setAuthor] = useState<Author | null>(null);
-  const { t } = useTranslation();
+  const [books, setBooks] = useState<Book[]>([]);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const fetchAuthorDetails = async () => {
       try {
-        const response = await axios.get(
+        // Primera llamada a la API para obtener los detalles del autor
+        const authorResponse = await axios.get(
           `https://api.elliotfern.com/book.php?type=autorDetalls&slug=${slug}&lang=${lang}`
         );
-        setAuthor(response.data);
-        document.title = `${response.data.AutNom} ${response.data.AutCognom1} - Elliot Fernandez`;
+        const authorData = authorResponse.data;
+        setAuthor(authorData);
+        document.title = `${authorData.AutNom} ${authorData.AutCognom1} - Elliot Fernandez`;
+
+        // Segunda llamada a la API para obtener los libros del autor
+        const booksResponse = await axios.get(
+          `https://api.elliotfern.com/book.php?type=autorsLlibres&id=${authorData.id}`
+        );
+        setBooks(booksResponse.data); // Actualiza el estado con los datos de los libros
       } catch (error) {
-        console.error("Error al obtener detalles del autor:", error);
+        console.error("Error al obtener detalles del autor o libros:", error);
       }
     };
 
@@ -45,52 +64,104 @@ function BookAuthorDetails() {
   }
 
   return (
-    <div className="container-principal-book">
-      <div className="content-book">
-        <img
-          src={
-            author.nameImg
-              ? `https://media.elliotfern.com/img/library-author/${author.nameImg}.jpg`
-              : "https://media.elliotfern.com/img/library-author/author_default.jpg"
-          }
-          alt={`Foto de ${author.AutNom} ${author.AutCognom1}`}
-          className="book-image"
-        />
-        <div className="details">
-          <h2 className="bold">{author.AutNom} {author.AutCognom1}</h2>
-          <p>
-            <strong>{t("author.yearBorn")}:</strong> {author.yearBorn}
-          </p>
-          {author.yearDie && (
+    <>
+      <div className="container-principal-book">
+        <div className="content-book">
+          <img
+            src={
+              author.nameImg
+                ? `https://media.elliotfern.com/img/library-author/${author.nameImg}.jpg`
+                : "https://media.elliotfern.com/img/library-author/author_default.jpg"
+            }
+            alt={`Foto de ${author.AutNom} ${author.AutCognom1}`}
+            className="book-image"
+          />
+          <div className="details">
+            <h2 className="bold">
+              {author.AutNom} {author.AutCognom1}
+            </h2>
             <p>
-              <strong>{t("author.yearDie")}:</strong> {author.yearDie}
+              <strong>{t("bookAuthors.yearBorn")}:</strong> {author.yearBorn}
             </p>
-          )}
-          <p>
-            <strong>{t("author.country")}:</strong> {author.nomPais}
-          </p>
-          <p>
-            <strong>{t("author.description")}:</strong> {he.decode(author.AutDescrip)}
-          </p>
-          <p>
-            <strong>{t("author.wikipedia")}:</strong> 
-            {author.AutWikipedia ? (
-              <a href={author.AutWikipedia} target="_blank" rel="noopener noreferrer">
-                {author.AutWikipedia}
-              </a>
-            ) : (
-              t("author.noWikipedia")
+            {author.yearDie && (
+              <p>
+                <strong>{t("bookAuthors.yearDie")}:</strong> {author.yearDie}
+              </p>
             )}
-          </p>
-          <p>
-            <strong>{t("author.dataCreacio")}:</strong> {dayjs(author.dateCreated).format("DD/MM/YYYY")}
-          </p>
-          <p>
-            <strong>{t("author.dataModificacio")}:</strong> {dayjs(author.dateModified).format("DD/MM/YYYY")}
-          </p>
+            <p>
+              <strong>{t("bookAuthors.country")}:</strong> {author.nomPais}
+            </p>
+            <p>
+              <strong>{t("bookAuthors.description")}: </strong>
+              {he.decode(author.AutDescrip)}
+            </p>
+            <p>
+              <strong>{t("bookAuthors.profession")}: </strong> 
+              {he.decode(author.nameOc)}
+            </p>
+            <p>
+              <strong>{t("bookAuthors.moviment")}: </strong> 
+              {he.decode(author.nomMov)}
+            </p>
+            <p>
+              <strong>{t("bookAuthors.wikipedia")}: </strong>
+              {author.AutWikipedia ? (
+                <a
+                  href={author.AutWikipedia}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {he.decode(author.AutWikipedia)}
+                </a>
+              ) : (
+                t("bookAuthors.noWikipedia")
+              )}
+            </p>
+            <p>
+              <strong>{t("dataCreacio")}:</strong>{" "}
+              {dayjs(author.dateCreated).format("DD/MM/YYYY")}
+            </p>
+            {author.dateModified ? (
+              <p>
+                <strong>{t("dataModificacio")}:</strong>{" "}
+                {dayjs(author.dateModified).format("DD/MM/YYYY")}
+              </p>
+            ) : null}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Tabla de libros fuera del contenedor principal */}
+      <div className="container-principal">
+        <div className="content">
+          <h3>{t("bookAuthors.booksByAuthor")}</h3>
+          {books.length > 0 ? (
+            <table className="links-table mt-4">
+              <thead>
+                <tr>
+                  <th>{t("book.year")}</th>
+                  <th>{t("book.title")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {books.map((book) => (
+                  <tr key={book.id}>
+                    <td>{book.any}</td>
+                    <td>
+                      <Link to={`${routes[i18n.language].books}/${book.slug}`}>
+                        {he.decode(book.titol)}
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>{t("bookAuthors.noBooks")}</p>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 

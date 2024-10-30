@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
+import { routes } from "../services/routes";
+import he from "he";
 
 // Interfaz completa para Book
 interface Book {
@@ -22,12 +24,13 @@ interface Book {
   dateCreated: string;
   dateModified: string;
   titolEng: string;
+  autorSlug: string;
 }
 
 function BookDetails() {
   const { lang, slug } = useParams<{ lang: string; slug: string }>(); // Asegúrate de que slug está incluido aquí
   const [book, setBook] = useState<Book | null>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,7 +41,7 @@ function BookDetails() {
           `https://api.elliotfern.com/book.php?type=llibreDetalls&slug=${slug}&lang=${lang}`
         );
         setBook(response.data);
-        document.title = `${response.data.titol} - Elliot Fernandez`;
+        document.title = `${he.decode(response.data.titol)} - Elliot Fernandez`;
       } catch (error) {
         console.error("Error al obtener detalles del libro:", error);
       }
@@ -60,16 +63,25 @@ function BookDetails() {
               ? `https://media.elliotfern.com/img/library-book/${book.nameImg}.jpg`
               : "https://media.elliotfern.com/img/library-book/book_default.jpg"
           }
-          alt={`Portada de ${book.titol}`}
+          alt={`Portada de ${he.decode(book.titol)}`}
           className="book-image"
         />
-        <div className="details"> {/* Añadir un contenedor para los detalles */}
-          <h2 className="bold">{book.titol}</h2>
+        <div className="details">
+          {" "}
+          {/* Añadir un contenedor para los detalles */}
+          <h2 className="bold">{he.decode(book.titol)}</h2>
           <p>
-            <strong>{t("book.title")}:</strong> {book.titolEng}
+            {book.titolEng ? (
+              <>
+                <strong>{t("book.title")}:</strong> {he.decode(book.titolEng)}
+              </>
+            ) : null}
           </p>
           <p>
-            <strong>{t("book.author")}:</strong> {book.AutNom} {book.AutCognom1}
+            <strong>{t("book.author")}: </strong>
+            <Link to={`${routes[i18n.language].authors}/${book.autorSlug}`}>
+              {book.AutNom} {book.AutCognom1}
+            </Link>
           </p>
           <p>
             <strong>{t("book.year")}:</strong> {book.any}
@@ -90,16 +102,17 @@ function BookDetails() {
             <strong>{t("book.tipusLlibre")}:</strong> {book.tipusLlibre}
           </p>
           <p>
-            <strong>{t("book.dataCreacio")}:</strong> {dayjs(book.dateCreated).format("DD/MM/YYYY")}
+            <strong>{t("dataCreacio")}:</strong>{" "}
+            {dayjs(book.dateCreated).format("DD/MM/YYYY")}
           </p>
           <p>
-            <strong>{t("book.dataModificacio")}:</strong> {dayjs(book.dateModified).format("DD/MM/YYYY")}
+            <strong>{t("dataModificacio")}:</strong>{" "}
+            {dayjs(book.dateModified).format("DD/MM/YYYY")}
           </p>
         </div>
       </div>
     </div>
   );
-  
 }
 
 export default BookDetails;

@@ -44,7 +44,15 @@
   "esborrar": "Annuler les résultats",
   "titolCercador": "Moteur de recherche de livres",
   "cercadorPlaceHolder": "Rechercher par titre du livre",
-  "paginaAutors": "Vous pouvez consulter la page des auteurs/trices"
+  "paginaAutors": "Vous pouvez consulter la page des auteurs/trices",
+   "bookDetailsBtn": "Voir plus de détails sur le livre",
+  "title": "Titre en anglais",
+  "author": "Auteur(e)",
+  "language": "Langue originale",
+  "genre": "Catégorie",
+  "topic": "Sujet",
+  "editorial": "Éditeur",
+  "tipusLlibre": "Type"
 },
 "bookAuthors": {
   "titolPagina": "Tous les Auteurs/trices",
@@ -55,7 +63,11 @@
   "country": "Pays",
   "profession": "Profession",
   "yearBorn": "Année de naissance",
-  "yearDie": "Année de décès"
+  "yearDie": "Année de décès",
+  "description": "Description",
+    "wikipedia": "Page Wikipédia",
+    "booksByAuthor": "Livres de l'auteur(e)",
+    "authorDetailsBtn": "Voir plus de détails sur l'auteur(e)"
 },
 
 "footer": {
@@ -84,5 +96,7 @@
     "webCursNameError": "Cours non disponible",
     "webCursDescripcioError": "Ce cours est en préparation",
     "webwebCursContingut": "Contenus du cours :",
-    "webwebCursContingutError": "Aucun contenu disponible dans ce cours"
+    "webwebCursContingutError": "Aucun contenu disponible dans ce cours",
+     "dataCreacio": "Date de création de l'enregistrement",
+    "dataModificacio": "Date de modification des données"
   } 
