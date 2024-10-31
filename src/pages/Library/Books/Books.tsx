@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import SearchBooks from "../components/SearchBooks";
+import SearchBooks from "../../../components/SearchBooks";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import ReactPaginate from "react-paginate";
@@ -139,7 +139,7 @@ function Books() {
 
   return (
     <div className="container-principal">
-      <div className="content">
+      <div className="content text-article">
         <h2 className="bold">{t("book.titolPagina")}</h2>
 
         <Link to={routes[i18n.language].autors}>

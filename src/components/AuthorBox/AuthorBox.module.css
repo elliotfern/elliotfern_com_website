@@ -1,0 +1,53 @@
+/* Author.module.css */
+
+.boxAuthor {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Espacio entre la imagen y el texto */
+    padding: 16px;
+    background-color: #e9e9e9;
+    border-radius: 8px;
+    margin: auto;
+    transition: all 0.3s ease; /* Transición suave */
+  }
+  
+  .boxAuthor img {
+    border-radius: 50%;
+    min-width: 100px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .boxAuthor div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .boxAuthor h6 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .boxAuthor p {
+    margin: 4px 0 0 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  /* Responsive para dispositivos móviles */
+  @media (max-width: 768px) {
+    .boxAuthor {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .boxAuthor img {
+      width: 100px;
+      height: 100px;
+    }
+  }

@@ -3,8 +3,9 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
-import { routes } from "../services/routes";
+import { routes } from "../../../services/routes";
 import he from "he";
+import styles from "./BookDetails.module.css";
 
 // Interfaz completa para Book
 interface Book {
@@ -48,15 +49,16 @@ function BookDetails() {
     };
 
     fetchBookDetails();
-  }, [lang, navigate]);
+  }, [lang, slug, navigate]);
 
   if (!book) {
     return <div>{t("loading")}</div>; // Mostrar un mensaje de carga mientras se obtiene la información
   }
 
   return (
-    <div className="container-principal-book">
-      <div className="content-book">
+    <div className={styles.container}>
+      <h2 className="bold">{t("book.titolPagina")}</h2>
+      <div className={styles.contentBook}>
         <img
           src={
             book.nameImg

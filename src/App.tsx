@@ -7,10 +7,10 @@ import Articles from "./pages/Articles";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Course from "./pages/Course";
-import AboutAuthor from "./pages/AboutAuthor";
+import AboutAuthor from "./pages/AboutAuthor/AboutAuthor";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import HomePage from "./pages/HomePage";
-import Books from "./pages/Books";
+import Books from "./pages/Library/Books/Books";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import Error from "./pages/Error";
 import PageNotFound from "./pages/PageNotFound";
@@ -19,10 +19,10 @@ import ArticlesArchives from "./pages/ArticlesArchives";
 import Blog from "./pages/Blog";
 import BlogArticles from "./pages/BlogArticles";
 import Links from "./pages/Links";
-import CookieBanner from "./components/CookieBanner";
-import BookAuthors from "./pages/BookAuthors"
-import BookDetails from "./pages/BookDetails"
-import BookAuthorDetails from "./pages/BookAuthorDetails";
+import CookieBanner from "./components/CookieBanner/CookieBanner";
+import BookAuthors from "./pages/Library/Authors/BookAuthors"
+import BookDetails from "./pages/Library/BookDetails/BookDetails"
+import BookAuthorDetails from "./pages/Library/AuthorDetails/BookAuthorDetails";
 
 // Lista de idiomas permitidos
 const supportedLanguages = ["en", "ca", "es", "it", "fr"];

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactGA from "react-ga4";
 import { useTranslation } from 'react-i18next';
+import styles from "./CookieBanner.module.css";
 
 const CookieBanner: React.FC = () => {
     const { t } = useTranslation();
@@ -60,11 +61,13 @@ const CookieBanner: React.FC = () => {
     if (!bannerVisible) return null; // No renderiza nada si el banner no es visible
 
     return (
-        <div id="cookie-banner" style={{ position: 'fixed', bottom: '0', padding: '10px', width: '100%', textAlign: 'center' }}>
+        <div className={styles.cookieBanner}>
+            <div className={styles.box}>
             <h2>{t('cookieBanner.titol')}</h2>
             <p>{t('cookieBanner.missatge')}</p>
-            <button id="accept-cookies-btn" onClick={acceptCookies}>{t('cookieBanner.acceptar')}</button>
-            <button id="reject-cookies-btn" onClick={rejectCookies}>{t('cookieBanner.rebutjar')}</button>
+            <button id="accept-cookies-btn" className={`${styles.button} ${styles.acceptCookiesBtn}`} onClick={acceptCookies}>{t('cookieBanner.acceptar')}</button>
+            <button id="reject-cookies-btn"  className={`${styles.button} ${styles.rejectCookiesBtn}`} onClick={rejectCookies}>{t('cookieBanner.rebutjar')}</button>
+            </div>
         </div>
     );
 };

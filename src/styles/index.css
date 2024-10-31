@@ -1,18 +1,14 @@
+/* Asegúrate de que no haya margenes o padding inesperados en el contenedor principal */
 html,
-body {
-  margin: 0 !important;
-  padding: 0;
+body,
+#root {
+  margin: 0; /* Asegúrate de que no haya margen por defecto */
+  padding: 0; /* Asegúrate de que no haya padding por defecto */
+  overflow-x: hidden; /* Previene el scroll horizontal */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial,
     Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol, Noto Color Emoji;
   font-size: 15px;
-}
-
-.container-fluid {
-  margin: 0;
-  padding-bottom: 0;
-  padding-right: 0px !important;
-  padding-left: 0px !important;
 }
 
 .container-principal {
@@ -23,7 +19,16 @@ body {
 }
 
 .content {
+  justify-content: center; /* Centra el contenido horizontalmente */
+  padding: 20px;
   width: 1200px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column; /* Cambia a una columna en pantallas pequeñas */
+    align-items: center; /* Centra los elementos */
+  }
 }
 
 .grid-container {
@@ -61,7 +66,7 @@ body {
 }
 
 .principal {
-  margin-top: 30px;
+  margin-top: 100px;
   margin-bottom: 50px;
 }
 
@@ -158,41 +163,6 @@ img {
   margin-bottom: 15px;
 }
 
-/* BANNER COOKIES */
-#cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #000000;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  z-index: 9999;
-  /* Asegura que esté por encima de todo lo demás */
-}
-
-#cookie-banner button {
-  margin: 5px;
-  padding: 8px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-#accept-cookies-btn {
-  background-color: #4CAF50;
-}
-
-#reject-cookies-btn {
-  background-color: #f44336;
-}
-
-
-.boxAuthor {
-  max-width: 700px !important;
-  margin-left: 0px !important;
-}
-
 .formBox {
   max-width: 700px;
   background-color: rgb(192, 192, 192);
@@ -251,7 +221,7 @@ img {
 
 .text-article {
   line-height: 1.5;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 /* HEADER */
@@ -456,7 +426,6 @@ h1 {
   margin-top: 30px;
 }
 
-
 .tab-button-topic {
   background-color: #585858;
 }
@@ -482,7 +451,8 @@ h1 {
 }
 
 /* Estilos para las celdas de la tabla */
-.links-table th, .links-table td {
+.links-table th,
+.links-table td {
   padding: 10px; /* Espaciado interno */
   border: 1px solid #ccc; /* Borde de las celdas */
   text-align: left; /* Alinear texto a la izquierda */
@@ -499,27 +469,26 @@ h1 {
   background-color: #f2f2f2; /* Color de fondo para filas pares */
 }
 
-
 @media (min-width: 800px) {
   .links-table td.url-column {
-  max-width: 200px; /* Ajusta el ancho máximo solo para la columna de URL */
-  white-space: nowrap; /* Evita que el texto haga saltos de línea */
-  overflow: hidden; /* Oculta el texto que exceda el tamaño */
-  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto es muy largo */
+    max-width: 200px; /* Ajusta el ancho máximo solo para la columna de URL */
+    white-space: nowrap; /* Evita que el texto haga saltos de línea */
+    overflow: hidden; /* Oculta el texto que exceda el tamaño */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto es muy largo */
+  }
+
+  .links-table td.url-column a {
+    word-break: break-all; /* Rompe palabras largas para ajustarlas dentro del ancho de la celda */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #007bff; /* Estilo del enlace */
+  }
+
+  .links-table td.url-column a:hover {
+    text-decoration: underline; /* Muestra el subrayado al pasar el mouse */
+  }
 }
 
-.links-table td.url-column a {
-  word-break: break-all; /* Rompe palabras largas para ajustarlas dentro del ancho de la celda */
-  text-decoration: none; /* Elimina el subrayado */
-  color: #007bff; /* Estilo del enlace */
-}
-
-.links-table td.url-column a:hover {
-  text-decoration: underline; /* Muestra el subrayado al pasar el mouse */
-}
- }
-
- .links-table td a svg {
+.links-table td a svg {
   margin-right: 5px;
   fill: none;
   stroke: currentColor;
@@ -530,7 +499,8 @@ h1 {
 
 /* Hacer que las celdas se ajusten en pantallas pequeñas */
 @media (max-width: 768px) {
-  .links-table th, .links-table td {
+  .links-table th,
+  .links-table td {
     display: block; /* Cambiar a bloque */
     width: 100%; /* Ancho completo */
     box-sizing: border-box; /* Incluir borde y padding en el ancho total */
@@ -585,7 +555,7 @@ h1 {
 /* Estilos generales para el contenedor del buscador */
 .search-container {
   display: flex; /* Usar flexbox para alinear elementos */
-  flex-direction: column; /* Colocar los elementos en columna *//* Centrar los elementos horizontalmente */
+  flex-direction: column; /* Colocar los elementos en columna */ /* Centrar los elementos horizontalmente */
   margin: 20px 0; /* Margen superior e inferior */
 }
 
@@ -639,47 +609,7 @@ h1 {
 }
 
 .authorPhoto {
-  width: 100%;       /* O el ancho deseado */
-  height: 300px;     /* Altura fija para todas las imágenes */
+  width: 100%; /* O el ancho deseado */
+  height: 300px; /* Altura fija para todas las imágenes */
   object-fit: cover; /* Ajusta la imagen sin deformarla */
-}
-
-/* pagina detalles libro */
-.container-principal-book {
-  display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
-  padding: 20px;
-  margin-top:100px;
-}
-
-.content-book {
-  display: flex;
-  max-width: 1200px; /* Ajusta el ancho máximo según tus necesidades */
-  width: 100%;
-  gap: 60px; /* Espaciado entre columnas */
-}
-
-.book-image {
-  width: 100%;
-  max-width: 400px; /* Ajusta el tamaño máximo de la imagen */
-  height: auto;
-  border-radius: 8px; /* Esquinas redondeadas para la imagen */
-  object-fit: cover;
-}
-
-.details {
-  flex: 1; /* Permite que el contenedor de detalles tome el espacio restante */
-  display: flex;
-  flex-direction: column; /* Asegura que los detalles se apilen verticalmente */
-}
-
-@media (max-width: 768px) {
-  .content-book {
-    flex-direction: column; /* Cambia a una columna en pantallas pequeñas */
-    align-items: center; /* Centra los elementos */
-  }
-
-  .book-image {
-    max-width: 100%; /* La imagen ocupará todo el ancho disponible */
-  }
 }

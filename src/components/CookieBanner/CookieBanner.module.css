@@ -1,0 +1,55 @@
+/* BANNER COOKIES */
+.cookieBanner {
+  position: fixed;
+  bottom: 0;
+  padding: 20px; /* Reducido para dispositivos móviles */
+  width: 100%;
+  background-color: #000000;
+  color: #fff;
+  text-align: center;
+  z-index: 9999;
+  display: flex; /* Usar flexbox para alinear elementos */
+  flex-direction: column; /* Colocar los elementos en columna */
+  align-items: center; /* Centrar elementos horizontalmente */
+}
+
+/* Añadir caja para texto */
+.box {
+  width: 90%;
+  margin: 0 auto; /* Centrar el contenido */
+}
+
+/* Estilos de botones */
+.cookieBanner button {
+  margin: 5px;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.cookieBanner .acceptCookiesBtn {
+  background-color: #4caf50;
+}
+
+.cookieBanner .rejectCookiesBtn {
+  background-color: #f44336;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+  .cookieBanner {
+    padding: 10px;
+  }
+
+  .box {
+    width: 90%; /* O cualquier otro valor que funcione */
+    max-width: 100%; /* Asegúrate de que no se corte */
+    margin: 0 auto; /* Centra el contenido */
+    padding-right: 5%;
+  }
+
+  .cookieBanner button {
+    width: 100%; /* Botones ocupan el 100% en móviles */
+    margin: 5px 0; /* Espaciado vertical entre botones */
+  }
+}

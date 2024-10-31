@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import AuthorBox from "../components/AuthorBox";
+import AuthorBox from "../components/AuthorBox/AuthorBox";
 import he from "he";
 import { useTranslation } from 'react-i18next';
 import dayjs from "dayjs";
