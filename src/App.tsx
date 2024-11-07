@@ -3,10 +3,12 @@ import i18n from "./config/i18n";
 import React, { useEffect } from "react";
 import ReactGA from "react-ga4";
 
-import Articles from "./pages/Articles";
-import NavBar from "./components/NavBar";
+import Articles from "./pages/OpenHistory/Articles";
+import ArticlesArchives from "./pages/OpenHistory/ArticlesArchives";
+import Course from "./pages/OpenHistory/Course";
+
+import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer";
-import Course from "./pages/Course";
 import AboutAuthor from "./pages/AboutAuthor/AboutAuthor";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import HomePage from "./pages/HomePage";
@@ -15,13 +17,12 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 import Error from "./pages/Error";
 import PageNotFound from "./pages/PageNotFound";
 import Contact from "./pages/Contact";
-import ArticlesArchives from "./pages/ArticlesArchives";
-import Blog from "./pages/Blog";
-import BlogArticles from "./pages/BlogArticles";
+import Blog from "./pages/Blog/Blog";
+import BlogArticles from "./pages/Blog/BlogArticles";
 import Links from "./pages/Links";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
-import BookAuthors from "./pages/Library/Authors/BookAuthors"
-import BookDetails from "./pages/Library/BookDetails/BookDetails"
+import BookAuthors from "./pages/Library/Authors/BookAuthors";
+import BookDetails from "./pages/Library/BookDetails/BookDetails";
 import BookAuthorDetails from "./pages/Library/AuthorDetails/BookAuthorDetails";
 
 // Lista de idiomas permitidos
@@ -70,7 +71,7 @@ function App() {
     <>
       <NavBar />
       <CookieBanner /> {/* Asegúrate de renderizar el banner de cookies */}
-      <div className="principal">
+      <div className="main-container">
         <Routes>
           <Route
             path="/"

@@ -138,138 +138,136 @@ function Books() {
   const langs = Array.from(new Set(allBooks.map((book) => book.lang)));
 
   return (
-    <div className="container-principal">
-      <div className="content text-article">
-        <h2 className="bold">{t("book.titolPagina")}</h2>
+    <>
+      <h2 className="bold">{t("book.titolPagina")}</h2>
 
-        <Link to={routes[i18n.language].autors}>
-          <button className="tab-button tab-button-all-button">
-            {t("book.paginaAutors")}
-          </button>
-        </Link>
+      <Link to={routes[i18n.language].autors}>
+        <button className="tab-button tab-button-all-button">
+          {t("book.paginaAutors")}
+        </button>
+      </Link>
 
-        {/* Componente del buscador */}
-        <SearchBooks
-          books={books}
-          setBooks={setBooks}
-          allBooks={allBooks}
-          onSearch={handleSearch}
-        />
+      {/* Componente del buscador */}
+      <SearchBooks
+        books={books}
+        setBooks={setBooks}
+        allBooks={allBooks}
+        onSearch={handleSearch}
+      />
 
-        {/* Fila de botones para seleccionar Géneros */}
-        <div className="filter-buttons">
-          <h3>{t("book.genres")}</h3>
-          {generes.map((genere) => (
-            <button
-              key={genere}
-              className={`tab-button tab-button-topic ${
-                selectedGenere === genere ? "active" : ""
-              }`}
-              onClick={() => {
-                setSelectedGenere(genere);
-                setCurrentPage(0); // Resetea a la primera página al seleccionar un género
-              }}
-            >
-              {genere}
-            </button>
-          ))}
+      {/* Fila de botones para seleccionar Géneros */}
+      <div className="filter-buttons">
+        <h3>{t("book.genres")}</h3>
+        {generes.map((genere) => (
           <button
-            className="tab-button tab-button-all-button"
+            key={genere}
+            className={`tab-button tab-button-topic ${
+              selectedGenere === genere ? "active" : ""
+            }`}
             onClick={() => {
-              setSelectedGenere(null);
-              setCurrentPage(0); // Resetea a la primera página al seleccionar "todos"
+              setSelectedGenere(genere);
+              setCurrentPage(0); // Resetea a la primera página al seleccionar un género
             }}
           >
-            {t("book.allGenres")}
+            {genere}
           </button>
-        </div>
-
-        {/* Fila de botones para seleccionar Idiomas */}
-        <div className="filter-buttons">
-          <h3>{t("book.languages")}</h3>
-          {langs.map((lang) => (
-            <button
-              key={lang}
-              className={`tab-button tab-button-categoria ${
-                selectedLang === lang ? "active" : ""
-              }`}
-              onClick={() => {
-                setSelectedLang(lang);
-                setCurrentPage(0); // Resetea a la primera página al seleccionar un idioma
-              }}
-            >
-              {lang}
-            </button>
-          ))}
-          <button
-            className="tab-button tab-button-all-button"
-            onClick={() => {
-              setSelectedLang(null);
-              setCurrentPage(0); // Resetea a la primera página al seleccionar "todos"
-            }}
-          >
-            {t("book.allLanguages")}
-          </button>
-        </div>
-
-        {/* Grid de libros */}
-        <div className="grid-container">
-          {currentBooks.map((book) => (
-            <div className="grid-item" key={book.id}>
-              <img
-                className="bookPhoto"
-                src={
-                  book.nameImg
-                    ? `https://media.elliotfern.com/img/library-book/${book.nameImg}.jpg`
-                    : "https://media.elliotfern.com/img/library-book/book_default.jpg"
-                }
-                alt={`Portada de ${book.titol}`}
-                title={he.decode(book.titol)}
-                onClick={() => handleViewDetails(book.bookSlug)} // Añadir el evento onClick aquí
-                style={{ cursor: "pointer" }} // Opcional: Cambia el cursor al pasar sobre la imagen
-              />
-              <p>
-                <strong>{he.decode(book.titol)}</strong>
-              </p>
-              <p>
-                <strong>{t("book.autor")}:</strong> {book.AutNom}{" "}
-                {book.AutCognom1}
-              </p>
-              <p>
-                <strong>{t("book.year")}:</strong> {book.any}
-              </p>
-              <p>
-                <strong>{t("book.originalLanguage")}:</strong> {book.lang}
-              </p>
-              <p>
-                <strong>{t("book.tematica")}:</strong> {book.tema}
-              </p>
-              <button
-                className="tab-button tab-button-categoria"
-                onClick={() => handleViewDetails(book.bookSlug)}
-              >
-                {t("book.bookDetailsBtn")}
-              </button>
-            </div>
-          ))}
-        </div>
-
-        {/* Paginación */}
-        <div className="pagination-container">
-          <ReactPaginate
-            previousLabel={"Anterior"}
-            nextLabel={"Següent"}
-            pageCount={Math.ceil(filteredBooks.length / articlesPerPage)}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            onPageChange={handlePageChange}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
-            pageLinkClassName={"pagination-link"}
-          />
-        </div>
+        ))}
+        <button
+          className="tab-button tab-button-all-button"
+          onClick={() => {
+            setSelectedGenere(null);
+            setCurrentPage(0); // Resetea a la primera página al seleccionar "todos"
+          }}
+        >
+          {t("book.allGenres")}
+        </button>
       </div>
-    </div>
+
+      {/* Fila de botones para seleccionar Idiomas */}
+      <div className="filter-buttons">
+        <h3>{t("book.languages")}</h3>
+        {langs.map((lang) => (
+          <button
+            key={lang}
+            className={`tab-button tab-button-categoria ${
+              selectedLang === lang ? "active" : ""
+            }`}
+            onClick={() => {
+              setSelectedLang(lang);
+              setCurrentPage(0); // Resetea a la primera página al seleccionar un idioma
+            }}
+          >
+            {lang}
+          </button>
+        ))}
+        <button
+          className="tab-button tab-button-all-button"
+          onClick={() => {
+            setSelectedLang(null);
+            setCurrentPage(0); // Resetea a la primera página al seleccionar "todos"
+          }}
+        >
+          {t("book.allLanguages")}
+        </button>
+      </div>
+
+      {/* Grid de libros */}
+      <div className="grid-container">
+        {currentBooks.map((book) => (
+          <div className="grid-item" key={book.id}>
+            <img
+              className="bookPhoto"
+              src={
+                book.nameImg
+                  ? `https://media.elliotfern.com/img/library-book/${book.nameImg}.jpg`
+                  : "https://media.elliotfern.com/img/library-book/book_default.jpg"
+              }
+              alt={`Portada de ${book.titol}`}
+              title={he.decode(book.titol)}
+              onClick={() => handleViewDetails(book.bookSlug)} // Añadir el evento onClick aquí
+              style={{ cursor: "pointer" }} // Opcional: Cambia el cursor al pasar sobre la imagen
+            />
+            <p>
+              <strong>{he.decode(book.titol)}</strong>
+            </p>
+            <p>
+              <strong>{t("book.autor")}:</strong> {book.AutNom}{" "}
+              {book.AutCognom1}
+            </p>
+            <p>
+              <strong>{t("book.year")}:</strong> {book.any}
+            </p>
+            <p>
+              <strong>{t("book.originalLanguage")}:</strong> {book.lang}
+            </p>
+            <p>
+              <strong>{t("book.tematica")}:</strong> {book.tema}
+            </p>
+            <button
+              className="tab-button tab-button-categoria"
+              onClick={() => handleViewDetails(book.bookSlug)}
+            >
+              {t("book.bookDetailsBtn")}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Paginación */}
+      <div className="pagination-container">
+        <ReactPaginate
+          previousLabel={"Anterior"}
+          nextLabel={"Següent"}
+          pageCount={Math.ceil(filteredBooks.length / articlesPerPage)}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageChange}
+          containerClassName={"pagination"}
+          activeClassName={"active"}
+          pageLinkClassName={"pagination-link"}
+        />
+      </div>
+    </>
   );
 }
 

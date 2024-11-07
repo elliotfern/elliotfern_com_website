@@ -13,7 +13,9 @@
       "italian": "Italien",
       "french": "Français",
       "privacyPolicy": "Politique de confidentialité",
-      "contact": "Contact"
+      "contact": "Contact",
+       "buscadorPlaceHolder": "Chercher sur le site...",
+      "buscadorCerca": "Chercher"
   },
   
   "link": {
@@ -84,11 +86,22 @@
   "rebutjar": "Rejeter"
 },
 
-    "welcome": "Welcome to our site",
-    "home": "Home",
-    "about_us": "About Us",
-    "contact": "Contact",
-    "services": "Services",
+"search" : {
+  "title" : "Résultats de recherche pour ",
+  "subTitol": "Vous recherchez des articles en français",
+  "errorEmptyQuery": "Erreur de recherche, veuillez essayer de faire une nouvelle recherche.",
+    "noResults": "Aucun résultat trouvé, veuillez essayer de faire une nouvelle recherche.",
+    "loading": "Chargement des résultats de la recherche."
+},
+
+"homepage": {
+    "titleSeo": "Elliot Fernandez - Développeur web et Historien",
+    "descripcioSeo": "Le site web du Développeur web et Historien Elliot Fernandez, où vous pouvez voir ses travaux et articles d'histoire.",
+    "webTitle": "Développeur Web spécialisé en Front-end et Historien",
+    "webDescription": "Histoire Ouverte est un projet de publication indépendant qui offre à ses lecteurs un accès gratuit aux articles d'histoire sur de nombreux cours différents. Vous pouvez maintenant lire les articles d'histoire sur ce site web.",
+    "webLinkCourse": "Voir tous les articles"
+  },
+
     "webPostDate": "Publié le",
     "webPostModified": "Modifié le",
     "webCommentsText": "Commentaires",

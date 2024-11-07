@@ -1,0 +1,305 @@
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 70px;
+  z-index: 10;
+}
+
+.headerContent {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.headerContent > .logo {
+  flex: 0 1 auto;
+}
+
+.logo {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+/* Ajuste de espacio para el logo en pantallas grandes */
+@media (min-width: 768px) {
+  .headerContent {
+    gap: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .headerContent > .logo {
+    flex: 0 1 200px;
+  }
+
+  .headerContent > .containerMenu {
+    flex: 1;
+    display: flex;
+    justify-content:space-between; 
+  }
+
+  .logo {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+}
+
+/* En dispositivos móviles, el logo y el menú ocupan su espacio normal */
+@media (max-width: 767px) {
+  .headerContent > .logo {
+    flex: 0 1 auto;
+  }
+
+  .headerContent > .containerMenu {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centra el menú en la versión móvil */
+  }
+}
+
+.headerSecond {
+  display: flex;
+  top: 110px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c4c4c4;
+  height: 70px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  z-index: 20;
+}
+
+.searchForm {
+  margin-left: 20px;
+}
+
+.containerMenu {
+  text-align: center;
+  justify-content: space-between;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  transition: all 0.3s ease-in-out; /* Para la transición suave del menú */
+}
+
+.containerMenu ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding-top: 5px;
+}
+
+.containerMenu li {
+  margin-right: 10px; /* Espacio entre elementos */
+}
+
+.containerMenu li:last-child {
+  margin-right: 0; /* Elimina el espacio después del último elemento */
+}
+
+.containerMenu a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.containerMenu a:hover {
+  background-color: #f0f0f0;
+}
+
+.superMenu1 {
+  width: 100px;
+  padding: 20px;
+}
+
+.superMenu1 a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.superMenu1 a:hover {
+  background-color: #f0f0f0;
+}
+
+.superMenu1 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Para que los elementos 'li' estén en fila */
+}
+
+.superMenu1 li {
+  margin-right: 20px;  /* Espacio entre los elementos del menú */
+  display: inline-block; /* Esto puede ser opcional dependiendo de la estructura */
+}
+
+.superMenu1 li:last-child {
+  margin-right: 0; /* El último elemento no tendrá margen derecho */
+}
+
+.toggleMenuButton {
+  display: none; /* Mostrar el botón en pantallas más pequeñas */
+}
+
+.menuVisible {
+  display: block;
+}
+
+.menuHidden {
+  display: none;
+}
+
+.closeButton {
+  background-color: transparent; /* Fondo transparente */
+  border: none; /* Sin bordes */
+  color: #333; /* Color del icono */
+  font-size: 1.5rem; /* Tamaño del icono */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  right: 10px;
+  transition: color 0.3s ease; 
+}
+
+/* Estilos para pantallas más pequeñas (ejemplo: móviles) */
+@media (max-width: 767px) {
+  .menuOpen {
+    display: block;
+  }
+  
+  .menuClosed {
+    display: none;
+  }
+  
+  .headerContent {
+    flex-direction: column;  /* Los elementos se alinean verticalmente */
+    align-items: center;
+  }
+
+  .containerMenu {
+    display: none;  /* Menú oculto en móviles */
+    flex-direction: column; /* Cambia la dirección a columna en móviles */
+    width: 100%; /* Asegura que el menú ocupe el ancho completo */
+    align-items: center; /* Centra los elementos */
+  }
+
+  /* El botón toggleMenuButton se muestra solo en pantallas pequeñas */
+  .toggleMenuButton {
+    display: block; /* Mostrar el botón en pantallas más pequeñas */
+    font-size: 24px; /* Tamaño del ícono */
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  /* Estilo para mostrar el botón cuando el menú está visible */
+  .toggleMenuButton.menuVisible + .containerMenu {
+    display: flex; /* Muestra el menú cuando tiene la clase "menuVisible" */
+  }
+
+  /* Estilo para ocultar el menú cuando el botón tiene la clase "menuHidden" */
+  .toggleMenuButton.menuHidden + .containerMenu {
+    display: none; /* Oculta el menú cuando tiene la clase "menuHidden" */
+  }
+
+  .containerMenu ul {
+    flex-direction: column;
+    align-items: center; /* Alinea los elementos en columna */
+  }
+
+  .containerMenu li {
+    margin: 15px 0;
+  }
+
+  .containerMenu a {
+    padding: 10px;
+    width: 100%; /* Asegura que los enlaces ocupen el 100% del ancho */
+    text-align: center;
+  }
+
+  .header {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headerSecond {
+    height: auto;
+    top: 80px;
+  }
+
+  .superMenu1 {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .superMenu1 ul {
+    flex-direction: column; /* Apilar los elementos del segundo menú */
+    align-items: center; /* Centrar los elementos */
+  }
+
+  .superMenu1 li {
+    margin: 15px 0; /* Espacio entre los elementos en móviles */
+  }
+}
+
+/* SearchForm.module.css */
+.searchForm {
+  max-width: 350px;
+}
+
+.searchInput {
+  font-size: 1rem;  
+  outline: none;
+  transition: border-color 0.3s ease;
+  border: 1px solid #ddd;
+  margin-right:15px;
+  padding: 7px;
+}
+
+.searchInput:focus {
+  border-color: #000000;       /* Borde azul al hacer foco */
+}
+
+.searchButton {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 7px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #1a3450;    /* Fondo azul más oscuro al pasar el ratón */
+}
+
+@media (max-width: 768px) {
+  .searchForm {
+    flex-direction: column;     /* Los elementos se apilan en pantallas pequeñas */
+  }
+
+  .searchInput {
+    margin-bottom: 10px;         /* Añadir espacio entre el input y el botón */
+  }
+}

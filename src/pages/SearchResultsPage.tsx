@@ -1,94 +1,89 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useLocation, useParams, Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import unorm from "unorm";
+import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
+import he from "he";
 
 const SearchResultsPage = () => {
-    const { lang } = useParams();
-    const navigate = useNavigate();
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const query = queryParams.get('query');
+  const { t } = useTranslation();
+  const { lang } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("query");
 
-    const [articleList, setArticleList] = useState([]);
-    const [isFetching, setIsFetching] = useState(true);
+  const [articleList, setArticleList] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
+  const [error, setError] = useState(null);
 
-    // Declarar getData correctamente
-    const getData = useCallback(async () => {
-        try {
-            const response = await axios.get(`https://api.elliotfern.com/blog.php?type=listadoarticulos&lang=${lang}`);
-            setArticleList(response.data);
-            setIsFetching(false);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            // Redireccionar a /error
-            navigate("/error");
-        }
-    }, [lang, navigate]);
-
-    useEffect(() => {
-        getData();
-    }, [getData]);
-
-    // Filtrar artículos
-    const filteredArticles = articleList.filter((article) => {
-        const title = article.post_title && unorm.nfd(article.post_title.toLowerCase()); // Normaliza el título
-        const queryLowerCase = query && unorm.nfd(query.toLowerCase()); // Normaliza la consulta
-        return title && queryLowerCase && title.includes(queryLowerCase);
-    });
-
-    if (isFetching) {
-        return (
-            <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
-                <h3>Cargando ... </h3>
-            </div>
-        );
+  // Función para obtener datos desde la API de WordPress
+  const getData = useCallback(async () => {
+    if (!query) {
+      setError(t("search.errorEmptyQuery"));
+      setIsFetching(false);
+      return; // No hacer la búsqueda si la query está vacía
     }
 
-    // Traducción cadenas de texto
-    let webSearchTitle = "";
-    let webSearchSubTitle = "";
+    setIsFetching(true);
+    setError(null); // Resetear el error antes de la nueva búsqueda
 
-    switch (lang) {
-        case "ca":
-            webSearchTitle = "Resultats de la cerca per a ";
-            webSearchSubTitle = "Estàs fent una cerca d'articles en català";
-            break;
-        case "es":
-            webSearchTitle = "Resultados de la búsqueda para";
-            webSearchSubTitle = "Estás buscando artículos en español";
-            break;
-        case "en":
-            webSearchTitle = "Search results for";
-            webSearchSubTitle = "You are searching articles in English";
-            break;
-        case "fr":
-            webSearchTitle = "Résultats de recherche pour";
-            webSearchSubTitle = "Vous recherchez des articles en français";
-            break;
-        case "it":
-            webSearchTitle = "Cerca risultati per";
-            webSearchSubTitle = "Stai cercando articoli in italiano";
-            break;
-        default:
-            break;
+    try {
+      // Realizar consulta a la API de WordPress
+      const response = await axios.get(
+        `https://editor.elliotfern.com/wp-json/wp/v2/posts?search=${query}&lang=${lang}`
+      );
+      setArticleList(response.data);
+      setIsFetching(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      navigate("/error");
     }
+  }, [query, lang, navigate, t]);
 
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
+  if (isFetching) {
     return (
-        <div className="container-principal">
-            <div className="content text-article">
-                <h2>{webSearchTitle} "{query}":</h2>
-                <h5>{webSearchSubTitle}</h5>
-                <ul>
-                    {filteredArticles.map((article) => (
-                        <li key={article.ID}>
-                            <Link to={`/${lang}/article/${article.post_name}`}>{article.post_title}</Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
+      >
+        <h3>{t("search.loading")}</h3>
+      </div>
     );
+  }
+
+  return (
+    <>
+      <h2>
+        {t("search.title")} "{query}":
+      </h2>
+      <h5>{t("search.subTitol")}</h5>
+      
+      {error && (
+        <div style={{ color: "red", textAlign: "center", marginTop: "20px" }}>
+          <p>{error}</p>
+        </div>
+      )}
+
+      {!error && articleList.length === 0 && (
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <p>{t("search.noResults")}</p>
+        </div>
+      )}
+
+      <ul>
+        {articleList.map((article) => (
+          <li key={article.id}>
+            <Link to={`/${lang}/article/${article.slug}`}>
+              {he.decode(article.title.rendered)}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 export default SearchResultsPage;

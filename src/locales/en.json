@@ -13,7 +13,9 @@
     "italian": "Italian",
     "french": "French",
     "privacyPolicy": "Privacy Policy",
-    "contact": "Contact"
+    "contact": "Contact",
+    "buscadorPlaceHolder": "Search on the website...",
+   "buscadorCerca": "Search"
   },
 
   "link": {
@@ -83,12 +85,23 @@
   "acceptar": "Accept",
   "rebutjar": "Reject"
 },
+
+  "search" : {
+    "title" : "Search results for ",
+    "subTitol": "You are searching articles in English",
+    "errorEmptyQuery": "Search error, please try making a new search.",
+    "noResults": "No results found, please try making a new search.",
+    "loading": "Loading search results."
+  },
   
-    "welcome": "Welcome to our site",
-    "home": "Home",
-    "about_us": "About Us",
-    "contact": "Contact",
-    "services": "Services",
+  "homepage": {
+    "titleSeo": "Elliot Fernandez - Web Developer and Historian",
+    "descripcioSeo": "The website of Web Developer and Historian Elliot Fernandez, where you can view his works and history articles.",
+    "webTitle": "Web Developer specialized in Front-end and Historian",
+    "webDescription": "Open History is an independent publishing project that offers its readers free access to history articles on many different courses. You can now read the history articles on this website.",
+    "webLinkCourse": "See all articles"
+  },
+
     "webPostDate": "Posted on",
     "webPostModified": "Modified on",
     "webCommentsText": "Comments",

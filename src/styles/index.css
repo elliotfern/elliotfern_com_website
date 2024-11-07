@@ -1,27 +1,107 @@
-/* Asegúrate de que no haya margenes o padding inesperados en el contenedor principal */
-html,
-body,
-#root {
-  margin: 0; /* Asegúrate de que no haya margen por defecto */
-  padding: 0; /* Asegúrate de que no haya padding por defecto */
-  overflow-x: hidden; /* Previene el scroll horizontal */
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial,
     Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol, Noto Color Emoji;
-  font-size: 15px;
+  font-size: clamp(14px, 1.5vw + 1px, 16px);
+  line-height: 1.6;
+  color: #333; /* Color de texto legible */
+  display: flex;
+  justify-content: center;
+  background-color: #f4f4f4;
 }
 
-.container-principal {
-  display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: center; /* Centra el contenido verticalmente */
-  margin-top: 100px;
+/* Ajustes para encabezados */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #000000;
+  line-height: 1.3;
+  margin-top: 1.2em;
+  margin-bottom: 0.8em;
+}
+
+/* Tamaños de fuente adaptativos para encabezados */
+h1 {
+  font-size: clamp(24px, 2.5vw, 36px);
+}
+
+h2 {
+  font-size: clamp(20px, 2vw, 30px);
+}
+
+h3 {
+  font-size: clamp(18px, 1.8vw, 26px);
+}
+
+h4 {
+  font-size: clamp(16px, 1.5vw, 22px);
+}
+
+h5 {
+  font-size: clamp(14px, 1.3vw, 18px);
+}
+
+h6 {
+  font-size: clamp(13px, 1.1vw, 16px);
+}
+
+/* Párrafos */
+p {
+  margin: 1em 0;
+  font-size: 1rem;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    font-size: clamp(13px, 3vw, 15px);
+  }
+
+  h1 {
+    font-size: clamp(22px, 5vw, 32px);
+  }
+
+  h2 {
+    font-size: clamp(18px, 4vw, 28px);
+  }
+
+  h3 {
+    font-size: clamp(16px, 3.5vw, 24px);
+  }
+}
+
+ul, ol {
+    margin-left: 40px;
+  }
+
+  p {
+    margin-top: 1.5em auto;
+  }
+
+
+/* Contenedor principal */
+.main-container {
+  max-width: 1400px;
+  width: 100%;
+  padding-top: calc(70px);
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 100px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .content {
   justify-content: center; /* Centra el contenido horizontalmente */
-  padding: 20px;
-  width: 1200px;
+  margin-bottom: 20px;
+  margin-top: 100px;
 }
 
 @media (max-width: 768px) {
@@ -63,11 +143,6 @@ body,
   background-color: #7abcf0;
   padding: 20px;
   border-radius: 10px;
-}
-
-.principal {
-  margin-top: 100px;
-  margin-bottom: 50px;
 }
 
 .text-center {
@@ -195,6 +270,7 @@ img {
   justify-content: center;
   list-style: none;
   padding: 0;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten cuando el espacio es limitado */
 }
 
 .pagination li {
@@ -219,169 +295,31 @@ img {
   color: #007bff;
 }
 
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .pagination li {
+    font-size: 14px;
+    padding: 4px 8px;  /* Reducir el tamaño del padding */
+  }
+
+  .pagination {
+    margin: 10px 0; /* Espaciado vertical adecuado */
+  }
+}
+
+/* Estilos adicionales para pantallas más pequeñas */
+@media (max-width: 480px) {
+  .pagination li {
+    font-size: 12px; /* Reducir más el tamaño de fuente en pantallas pequeñas */
+    padding: 3px 6px; /* Asegurarse de que los botones no se vean demasiado grandes */
+  }
+}
 .text-article {
   line-height: 1.5;
   font-size: 1.1em;
 }
 
-/* HEADER */
-.header {
-  position: fixed;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #c4c4c4;
-  width: 100%;
-  height: 70px;
-  z-index: 10;
-}
 
-.header-second {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #c4c4c4;
-  width: 100%;
-  height: 150px;
-  position: fixed;
-  top: 70px; /* Añadí "px" para especificar unidades */
-  left: 0;
-  z-index: 9; /* Ajusta según sea necesario para la superposición */
-}
-
-.container-menu {
-  text-align: center;
-  width: 1200px;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.container-menu ul {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.container-menu li {
-  margin-right: 10px; /* Espacio entre elementos */
-}
-
-.container-menu li:last-child {
-  margin-right: 0; /* Elimina el espacio después del último elemento */
-}
-
-.container-menu a {
-  text-decoration: none;
-  color: #333;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.container-menu a:hover {
-  background-color: #f0f0f0;
-}
-
-.super-menu1 {
-  display: none;
-  text-align: left;
-  max-width: 100%; /* No permite que supere el ancho de .header-second */
-  margin: 0 auto; /* Centra el div horizontalmente */
-  width: 1200px; /* Ajusta el ancho según tus necesidades */
-}
-
-.super-menu1 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.super-menu1 li {
-  margin-bottom: 10px;
-}
-
-/*
-.super-menu1 a {
-}
-
-.super-menu1 a:hover {
-}
-*/
-.super-menu2 {
-  display: none;
-  text-align: left;
-  max-width: 100%; /* No permite que supere el ancho de .header-second */
-  margin: 0 auto; /* Centra el div horizontalmente */
-  width: 1200px; /* Ajusta el ancho según tus necesidades */
-}
-
-.super-menu2 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.super-menu2 li {
-  margin-bottom: 10px;
-}
-
-.toggle-menu-button {
-  display: none; /* Mostrar el botón en pantallas más pequeñas */
-}
-
-/* Estilos para pantallas más pequeñas (ejemplo: móviles) */
-@media (max-width: 767px) {
-  .toggle-menu-button {
-    display: block; /* Mostrar el botón en pantallas más pequeñas */
-    font-size: 24px; /* Tamaño del ícono */
-    padding: 0;
-    border: none;
-    background: none;
-  }
-
-  .toggle-menu-button.menu-visible {
-    display: none;
-  }
-
-  .toggle-menu-button.menu-hidden {
-    display: block;
-  }
-
-  .container-menu {
-    display: none; /* Oculta el menú en pantallas más pequeñas */
-  }
-
-  .header {
-    height: auto;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .container-menu ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .container-menu li {
-    margin: 5px 0;
-  }
-
-  .container-menu a {
-    padding: 10px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .header-second {
-    height: auto;
-  }
-
-  .super-menu1,
-  .super-menu2 {
-    width: 100%;
-  }
-}
 
 /* Estilos base */
 .links-container {
@@ -391,9 +329,6 @@ img {
   box-sizing: border-box; /* Asegura que el padding se incluye en el ancho total */
 }
 
-h1 {
-  text-align: center;
-}
 
 .tabs {
   display: flex;
@@ -594,6 +529,10 @@ h1 {
 
 /* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
+  .main-container {
+    padding-top: calc(130px);
+  }
+
   .search-container {
     flex-direction: column; /* Colocar elementos en columna */
     align-items: stretch; /* Estirar elementos al ancho completo */

@@ -56,8 +56,8 @@ function BookDetails() {
   }
 
   return (
-    <div className={styles.container}>
-      <h2 className="bold">{t("book.titolPagina")}</h2>
+    <>
+      <h2 className="bold">Llibre: {he.decode(book.titol)}</h2>
       <div className={styles.contentBook}>
         <img
           src={
@@ -71,14 +71,14 @@ function BookDetails() {
         <div className="details">
           {" "}
           {/* Añadir un contenedor para los detalles */}
-          <h2 className="bold">{he.decode(book.titol)}</h2>
-          <p>
+          
+     
             {book.titolEng ? (
               <>
                 <strong>{t("book.title")}:</strong> {he.decode(book.titolEng)}
               </>
             ) : null}
-          </p>
+          
           <p>
             <strong>{t("book.author")}: </strong>
             <Link to={`${routes[i18n.language].authors}/${book.autorSlug}`}>
@@ -113,7 +113,7 @@ function BookDetails() {
           </p>
         </div>
       </div>
-    </div>
+      </>
   );
 }
 

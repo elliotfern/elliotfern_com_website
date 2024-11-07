@@ -1,14 +1,9 @@
 /* BookAuthorDetails.module.css */
-
-.container {
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: auto; /* Centrar el contenedor */
-    padding: 20px; /* Espaciado alrededor */
-  }
-  
+ 
   .contentBook {
     display: flex; /* Usar flexbox para las columnas */
-    gap: 20px; /* Espacio entre columnas */
+   padding: 20px; 
+   gap: 20px; /* Espacio entre columnas */
   }
   
   .bookImage {

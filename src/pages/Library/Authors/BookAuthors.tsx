@@ -94,8 +94,7 @@ function BooksAuthors() {
   };
 
   return (
-    <div className="container-principal">
-      <div className="content">
+    <>
         <h2 className="bold">{t("bookAuthors.titolPagina")}</h2>
 
         {/* Fila de botones para seleccionar País */}
@@ -215,8 +214,7 @@ function BooksAuthors() {
             pageLinkClassName={"pagination-link"}
           />
         </div>
-      </div>
-    </div>
+        </>
   );
 }
 

@@ -69,7 +69,7 @@ function BookAuthorDetails() {
   }
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.contentBook}>
         <img
           src={
@@ -96,18 +96,25 @@ function BookAuthorDetails() {
             <strong>{t("bookAuthors.country")}:</strong> {author.nomPais}
           </p>
           <p>
-            <strong>{t("bookAuthors.description")}:</strong> {he.decode(author.AutDescrip)}
+            <strong>{t("bookAuthors.description")}:</strong>{" "}
+            {he.decode(author.AutDescrip)}
           </p>
           <p>
-            <strong>{t("bookAuthors.profession")}:</strong> {he.decode(author.nameOc)}
+            <strong>{t("bookAuthors.profession")}:</strong>{" "}
+            {he.decode(author.nameOc)}
           </p>
           <p>
-            <strong>{t("bookAuthors.moviment")}:</strong> {he.decode(author.nomMov)}
+            <strong>{t("bookAuthors.moviment")}:</strong>{" "}
+            {he.decode(author.nomMov)}
           </p>
           <p>
             <strong>{t("bookAuthors.wikipedia")}:</strong>
             {author.AutWikipedia ? (
-              <a href={author.AutWikipedia} target="_blank" rel="noopener noreferrer">
+              <a
+                href={author.AutWikipedia}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {he.decode(author.AutWikipedia)}
               </a>
             ) : (
@@ -154,7 +161,7 @@ function BookAuthorDetails() {
           <p>{t("bookAuthors.noBooks")}</p>
         )}
       </div>
-    </div>
+    </>
   );
 }
 

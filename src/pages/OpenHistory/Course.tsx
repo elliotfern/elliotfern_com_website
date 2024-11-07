@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from "react-i18next";
 
 function Course() {
-const { t } = useTranslation();
+  const { t } = useTranslation();
   const [courseArticlesList, setCourseArticlesList] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
 
@@ -59,33 +59,29 @@ const { t } = useTranslation();
 
   return (
     <>
-      <div className="container-principal">
-        <div className="content">
-          <h2 className="text-center">
-            {courseArticlesList && courseArticlesList.length > 0
-              ? courseArticlesList[0].courseName
-              : t('webCursNameError')}
-          </h2>
-          <h6 className="text-center italic">
-            {courseArticlesList && courseArticlesList.length > 0
-              ? courseArticlesList[0].courseDescription
-              : t('webCursDescripcioError')}
-          </h6>
-          <h5 className="separador">{t('webwebCursContingut')}</h5>
+      <h2 className="text-center">
+        {courseArticlesList && courseArticlesList.length > 0
+          ? courseArticlesList[0].courseName
+          : t("webCursNameError")}
+      </h2>
+      <h6 className="text-center italic">
+        {courseArticlesList && courseArticlesList.length > 0
+          ? courseArticlesList[0].courseDescription
+          : t("webCursDescripcioError")}
+      </h6>
+      <h5 className="separador">{t("webwebCursContingut")}</h5>
 
-          {courseArticlesList && courseArticlesList.length > 0 ? (
-            courseArticlesList.map((eachArticle) => (
-              <div className="llistat-articles" key={eachArticle.ID}>
-                <Link to={`/${lang}/article/${eachArticle.post_name}`}>
-                  {eachArticle.post_title}
-                </Link>
-              </div>
-            ))
-          ) : (
-            <div>{t('webwebCursContingutError')}</div> // Mensaje alternativo
-          )}
-        </div>
-      </div>
+      {courseArticlesList && courseArticlesList.length > 0 ? (
+        courseArticlesList.map((eachArticle) => (
+          <div className="llistat-articles" key={eachArticle.ID}>
+            <Link to={`/${lang}/article/${eachArticle.post_name}`}>
+              {eachArticle.post_title}
+            </Link>
+          </div>
+        ))
+      ) : (
+        <div>{t("webwebCursContingutError")}</div> // Mensaje alternativo
+      )}
     </>
   );
 }

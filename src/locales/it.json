@@ -13,7 +13,9 @@
     "italian": "Italiano",
     "french": "Francese",
     "privacyPolicy": "Informativa sulla privacy",
-    "contact": "Contatto"
+    "contact": "Contatto",
+     "buscadorPlaceHolder": "Cerca nel sito web...",
+  "buscadorCerca": "Cerca"
   },
   
   "link": {
@@ -85,11 +87,23 @@
   "rebutjar": "Rifiutare"
 },
 
-    "welcome": "Welcome to our site",
-    "home": "Home",
-    "about_us": "About Us",
-    "contact": "Contact",
-    "services": "Services",
+"search" : {
+  "title" : "Cerca risultati per ",
+  "subTitol": "Stai cercando articoli in italiano",
+  "errorEmptyQuery": "Errore nella ricerca, per favore prova a fare una nuova ricerca.",
+  "noResults": "Nessun risultato trovato, per favore prova a fare una nuova ricerca.",
+  "loading": "Caricando i risultati della ricerca."
+},
+
+
+"homepage": {
+  "titleSeo": "Elliot Fernandez - Sviluppatore Web e Storico",
+  "descripcioSeo": "Sito web dello sviluppatore web e storico Elliot Fernandez, dove puoi vedere i suoi lavori e articoli di storia.",
+  "webTitle": "Sviluppatore Web specializzato in Front-end e Storico",
+  "webDescription": "Storia Aperta è un progetto editoriale indipendente che offre ai suoi lettori l'accesso gratuito a articoli di storia su molti corsi diversi. Ora puoi leggere gli articoli di storia su questo sito web.",
+  "webLinkCourse": "Vedi tutti gli articoli"
+},
+
     "webPostDate": "Pubblicato il",
     "webPostModified": "Modificato il",
     "webCommentsText": "Commenti",

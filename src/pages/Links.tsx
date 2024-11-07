@@ -116,8 +116,6 @@ const Links = () => {
       });
 
   return (
-    <div className="container-principal">
-      <div className="content">
         <div className="links-container">
           <h1>{t("link.PaginaTitol")}</h1>
 
@@ -246,8 +244,6 @@ const Links = () => {
             </div>
           )}
         </div>
-      </div>
-    </div>
   );
 };
 
