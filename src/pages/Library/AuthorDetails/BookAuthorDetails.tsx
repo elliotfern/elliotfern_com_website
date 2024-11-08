@@ -115,7 +115,7 @@ function BookAuthorDetails() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {he.decode(author.AutWikipedia)}
+                Consultar web
               </a>
             ) : (
               t("bookAuthors.noWikipedia")

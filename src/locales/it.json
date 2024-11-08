@@ -106,7 +106,8 @@
 },
 
 "article": {
-  "index": "Indice dei contenuti"
+  "index": "Indice dei contenuti",
+  "articleNoDisponible": "Ci dispiace, ma questo contenuto non è disponibile al momento."
 },
 
     "webPostDate": "Pubblicato il",

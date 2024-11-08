@@ -104,7 +104,8 @@
   },
 
   "article" : {
-    "index": "Índex de continguts"
+    "index": "Índex de continguts",
+    "articleNoDisponible": "Ho sentim, però aquest contingut no està disponible en aquest moment."
   },
 
   "welcome": "Welcome to our site",

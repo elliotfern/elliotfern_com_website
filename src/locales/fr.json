@@ -104,7 +104,8 @@
   },
 
   "article": {
-    "index": "Table des matières"
+    "index": "Table des matières",
+    "articleNoDisponible": "Désolé, mais ce contenu n'est pas disponible pour le moment."
   },
 
     "webPostDate": "Publié le",

@@ -116,13 +116,15 @@
 
 .containerMenu a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   padding: 10px;
   border: 1px solid #ccc;
+  background-color: #091e4b;
 }
 
 .containerMenu a:hover {
   background-color: #f0f0f0;
+  color: black;
 }
 
 .superMenu1 {
@@ -132,7 +134,7 @@
 
 .superMenu1 a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   padding: 10px;
   border: 1px solid #ccc;
 }
@@ -198,7 +200,11 @@
     display: none;  /* Menú oculto en móviles */
     flex-direction: column; /* Cambia la dirección a columna en móviles */
     width: 100%; /* Asegura que el menú ocupe el ancho completo */
-    align-items: center; /* Centra los elementos */
+    align-items: start; /* Centra los elementos */
+  }
+
+  .containerMenu ul {
+    align-items: start; /* Centra los elementos */
   }
 
   /* El botón toggleMenuButton se muestra solo en pantallas pequeñas */
@@ -223,7 +229,8 @@
 
   .containerMenu ul {
     flex-direction: column;
-    align-items: center; /* Alinea los elementos en columna */
+    align-items: start;
+    padding-left: 6%;
   }
 
   .containerMenu li {
@@ -250,11 +257,12 @@
   .superMenu1 {
     width: 100%;
     flex-direction: column;
+    align-items: start;
   }
 
   .superMenu1 ul {
     flex-direction: column; /* Apilar los elementos del segundo menú */
-    align-items: center; /* Centrar los elementos */
+    align-items: start; /* Centrar los elementos */
   }
 
   .superMenu1 li {

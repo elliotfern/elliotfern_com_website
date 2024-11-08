@@ -11,6 +11,7 @@ function Articles() {
   const { t } = useTranslation();
   const [article, setArticle] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
+  const [hasError, setHasError] = useState(false);
   const { nameArticle } = useParams();
 
   const getData = useCallback(async () => {
@@ -18,11 +19,19 @@ function Articles() {
       const response = await axios.get(
         `https://api.elliotfern.com/blog.php?type=articleName&paramName=${nameArticle}`
       );
-      setArticle(response.data);
-      document.title = `${response.data.post_title} - Elliot Fernandez`;
-      setIsFetching(false);
+
+      if (response.data && response.data.post_content) {
+        setArticle(response.data);
+        document.title = `${response.data.post_title} - Elliot Fernandez`;
+        setHasError(false); // Reiniciar error si los datos son correctos
+      } else {
+        setHasError(true); // Activar error si no hay contenido
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
+      setHasError(true); // Activar error en caso de fallo
+    } finally {
+      setIsFetching(false); // Marcar como completada la carga
     }
   }, [nameArticle]);
 
@@ -32,8 +41,18 @@ function Articles() {
 
   if (isFetching === true) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
+      >
         <h3>cargando ... </h3>
+      </div>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
+        <h3>{t("article.articleNoDisponible")}</h3>
       </div>
     );
   }
@@ -58,11 +77,21 @@ function Articles() {
     const links = doc.querySelectorAll("a");
 
     links.forEach((link) => {
-      const linkDomain = new URL(link.href).hostname;
-      if (!allowedDomains.includes(linkDomain)) {
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.innerHTML += " 🔗";
+      const href = link.href;
+
+      // Verificar si el href es válido antes de crear la URL
+      if (href) {
+        try {
+          const linkDomain = new URL(href).hostname;
+          if (!allowedDomains.includes(linkDomain)) {
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.innerHTML += " 🔗";
+          }
+        } catch (error) {
+          // Si la URL no es válida, simplemente ignoramos el enlace
+          console.error("Invalid URL:", error);
+        }
       }
     });
 
@@ -140,17 +169,23 @@ function Articles() {
         <ul>
           {toc.map((h2) => (
             <li key={h2.id}>
-              <a href={`#${h2.id}`} onClick={handleLinkClick}>{h2.text}</a>
+              <a href={`#${h2.id}`} onClick={handleLinkClick}>
+                {h2.text}
+              </a>
               {h2.children.length > 0 && (
                 <ul>
                   {h2.children.map((h3) => (
                     <li key={h3.id}>
-                      <a href={`#${h3.id}`} onClick={handleLinkClick}>{h3.text}</a>
+                      <a href={`#${h3.id}`} onClick={handleLinkClick}>
+                        {h3.text}
+                      </a>
                       {h3.children.length > 0 && (
                         <ul>
                           {h3.children.map((h4) => (
                             <li key={h4.id}>
-                              <a href={`#${h4.id}`} onClick={handleLinkClick}>{h4.text}</a>
+                              <a href={`#${h4.id}`} onClick={handleLinkClick}>
+                                {h4.text}
+                              </a>
                             </li>
                           ))}
                         </ul>
@@ -165,7 +200,7 @@ function Articles() {
       </div>
 
       <div
-        className="text-article"
+        className={styles.textArticle}
         dangerouslySetInnerHTML={{ __html: modifiedContentWithLinks }}
       ></div>
 

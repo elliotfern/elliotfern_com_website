@@ -37,6 +37,8 @@ function NavBar() {
     const newLang = i18n.language;
     navigate(`/${newLang}/search-results?query=${query}`);
     setQuery("");
+    setMenuVisible(false);
+    setLanguagesMenuVisible(false);
   };
 
   return (

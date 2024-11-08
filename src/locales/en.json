@@ -104,7 +104,8 @@
   },
 
   "article" : {
-    "index": "Table of Contents"
+    "index": "Table of Contents",
+    "articleNoDisponible": "Sorry, but this content is not available at the moment."
   },
 
     "webPostDate": "Posted on",

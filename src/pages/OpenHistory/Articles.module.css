@@ -11,3 +11,43 @@
   margin-top: 0px;
   margin-bottom: 0.8em;
 }
+
+.textArticle {
+    line-height: 1.5;
+}
+
+.textArticle p {
+  margin-top: 1.5em auto;
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .indexContinguts {
+    width: 100%;
+  }
+
+  .textArticle ul, ol {
+    margin-left: 25px;
+  }
+
+  .textArticle {
+    font-size: 1.25em;
+  }
+
+  .indexContinguts ul, 
+  .indexContinguts li {
+    margin-left: 10px;
+    font-size: 1.01em;
+  }
+}
+
+/* Ordenador */
+@media (width >= 800px) {
+  .textArticle ul, ol {
+    margin-left: 40px;
+  }
+
+  .textArticle {
+    font-size: 1em;
+  }
+}

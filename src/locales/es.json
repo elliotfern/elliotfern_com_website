@@ -103,7 +103,8 @@
   },
 
   "article" : {
-    "index": "Índice de contenidos"
+    "index": "Índice de contenidos",
+    "articleNoDisponible": "Lo sentimos, pero este contenido no está disponible en este momento."
   },
 
     "webPostDate": "Publicado el",

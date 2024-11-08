@@ -54,7 +54,6 @@ h6 {
 /* Párrafos */
 p {
   margin: 1em 0;
-  font-size: 1rem;
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -314,12 +313,6 @@ img {
     padding: 3px 6px; /* Asegurarse de que los botones no se vean demasiado grandes */
   }
 }
-.text-article {
-  line-height: 1.5;
-  font-size: 1.1em;
-}
-
-
 
 /* Estilos base */
 .links-container {
