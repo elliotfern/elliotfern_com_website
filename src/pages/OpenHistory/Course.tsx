@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import he from "he";
 
 function Course() {
   const { t } = useTranslation();
@@ -75,7 +76,7 @@ function Course() {
         courseArticlesList.map((eachArticle) => (
           <div className="llistat-articles" key={eachArticle.ID}>
             <Link to={`/${lang}/article/${eachArticle.post_name}`}>
-              {eachArticle.post_title}
+              {he.decode(eachArticle.post_title)}
             </Link>
           </div>
         ))

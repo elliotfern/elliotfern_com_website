@@ -35,6 +35,19 @@
   background-color: #f44336;
 }
 
+.cookieBanner .policyCookiesBtn {
+  background-color: #ffffff;
+}
+
+.cookieBanner h3 {
+  color: white!important;
+  font-size: 1.1em;
+}
+
+.text {
+  font-size: 0.9em;
+}
+
 /* Responsive para dispositivos móviles */
 @media (max-width: 768px) {
   .cookieBanner {

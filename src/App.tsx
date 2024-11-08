@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import i18n from "./config/i18n";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 
+// Importaciones de tus componentes
 import Articles from "./pages/OpenHistory/Articles";
 import ArticlesArchives from "./pages/OpenHistory/ArticlesArchives";
 import Course from "./pages/OpenHistory/Course";
-
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer";
 import AboutAuthor from "./pages/AboutAuthor/AboutAuthor";
@@ -25,6 +25,7 @@ import BookAuthors from "./pages/Library/Authors/BookAuthors";
 import BookDetails from "./pages/Library/BookDetails/BookDetails";
 import BookAuthorDetails from "./pages/Library/AuthorDetails/BookAuthorDetails";
 
+
 // Lista de idiomas permitidos
 const supportedLanguages = ["en", "ca", "es", "it", "fr"];
 
@@ -33,6 +34,9 @@ function App() {
   const userLang = i18n.language;
   const redirectLang = supportedLanguages.includes(userLang) ? userLang : "en";
 
+  const [showCookieBanner, setShowCookieBanner] = useState<boolean>(false);
+
+  // Obtener cookie por nombre
   const getCookie = (name: string): string | null => {
     const cookieArr = document.cookie.split(";");
     for (let i = 0; i < cookieArr.length; i++) {
@@ -44,39 +48,59 @@ function App() {
     return null;
   };
 
+  // Función para aceptar las cookies
+  const acceptCookies = () => {
+    setCookie("cookiesAccepted", "true", 30);
+    setShowCookieBanner(false);
+    loadGoogleAnalytics();
+  };
+
+  // Cargar Google Analytics
+  const loadGoogleAnalytics = () => {
+    ReactGA.initialize("G-0L7VP04REK", {
+      gaOptions: {
+        anonymizeIp: true,
+      },
+    });
+  };
+
+  // Función para establecer cookies
+  const setCookie = (name: string, value: string, days: number) => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  };
+
+  // Verificar las cookies y el estado del banner cada vez que se cambia la ruta
   useEffect(() => {
-    // Verificar si las cookies ya fueron aceptadas
     const cookiesAccepted = getCookie("cookiesAccepted");
 
     if (cookiesAccepted === "true") {
-      // Inicializar Google Analytics solo una vez
-      ReactGA.initialize("G-0L7VP04REK", {
-        gaOptions: {
-          anonymizeIp: true,
-        },
-      });
+      // Si las cookies han sido aceptadas, inicializar Google Analytics
+      loadGoogleAnalytics();
+      setShowCookieBanner(false);
+    } else if (cookiesAccepted === "false") {
+      setShowCookieBanner(false);
+    } else {
+      setShowCookieBanner(true); 
     }
-  }, []); // Solo ejecutar al montar el componente
+  }, [location.pathname]); // Se ejecuta cada vez que la ruta cambie
 
+  // Verificar cuando cambia la ruta para enviar un Pageview
   useEffect(() => {
     const cookiesAccepted = getCookie("cookiesAccepted");
-
     if (cookiesAccepted === "true") {
-      // Enviar un pageview cada vez que cambie location.pathname
       ReactGA.send({ hitType: "pageview", page: location.pathname });
     }
-  }, [location.pathname]); // Ejecutar cuando cambie location.pathname
+  }, [location.pathname]); // Cuando cambie la ruta, envía un Pageview
 
   return (
     <>
       <NavBar />
-      <CookieBanner /> {/* Asegúrate de renderizar el banner de cookies */}
+      {showCookieBanner && <CookieBanner onHide={acceptCookies} />}
       <div className="main-container">
         <Routes>
-          <Route
-            path="/"
-            element={<Navigate to={`/${redirectLang}/homepage`} />}
-          />
+          <Route path="/" element={<Navigate to={`/${redirectLang}/homepage`} />} />
           <Route path="/en" element={<Navigate to="/en/homepage" />} />
           <Route path="/ca" element={<Navigate to="/ca/homepage" />} />
           <Route path="/es" element={<Navigate to="/es/homepage" />} />
@@ -84,43 +108,25 @@ function App() {
           <Route path="/fr" element={<Navigate to="/fr/homepage" />} />
 
           <Route path="/homepage" element={<Navigate to="/en/homepage" />} />
-
           <Route path="/:lang/homepage" element={<HomePage />} />
           <Route path="/:lang/course/:nameCourse/" element={<Course />} />
           <Route path="/:lang/article/:nameArticle" element={<Articles />} />
-
-          <Route
-            path="/:lang/history-archives"
-            element={<ArticlesArchives />}
-          />
-
+          <Route path="/:lang/history-archives" element={<ArticlesArchives />} />
           <Route path="/:lang/about-author" element={<AboutAuthor />} />
           <Route path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/:lang/contact" element={<Contact />} />
-
           <Route path="/:lang/links" element={<Links />} />
-
-          <Route
-            path="/about-author"
-            element={<Navigate to="/en/about-author" />}
-          />
-          <Route
-            path="/privacy-policy"
-            element={<Navigate to="/en/privacy-policy" />}
-          />
+          <Route path="/about-author" element={<Navigate to="/en/about-author" />} />
+          <Route path="/privacy-policy" element={<Navigate to="/en/privacy-policy" />} />
           <Route path="/contact" element={<Navigate to="/en/contact" />} />
-
           <Route path="/:lang/books" element={<Books />} />
           <Route path="/:lang/books/:slug" element={<BookDetails />} />
           <Route path="/:lang/authors" element={<BookAuthors />} />
           <Route path="/:lang/authors/:slug" element={<BookAuthorDetails />} />
-
           <Route path="/blog" element={<Navigate to="/en/blog" />} />
           <Route path="/:lang/blog" element={<Blog />} />
           <Route path="/blog/:blogArticle" element={<BlogArticles />} />
-
           <Route path="/:lang/search-results" element={<SearchResultsPage />} />
-
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

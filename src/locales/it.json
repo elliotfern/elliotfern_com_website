@@ -82,9 +82,10 @@
 
 "cookieBanner": {
   "titol": "Benvenuto su ElliotFern.com!",
-  "missatge": "Noi e i nostri partner archiviamo e/o accediamo alle informazioni sul tuo dispositivo tramite cookie ed elaboriamo dati personali, come identificatori univoci e informazioni standard inviate da un dispositivo per annunci e contenuti personalizzati, misurazione di annunci e contenuti e informazioni sul pubblico, nonché per sviluppare e migliorare i prodotti. Con il tuo permesso, noi e i nostri partner possiamo utilizzare dati di geolocalizzazione precisi e scansione del dispositivo. Puoi fare clic per dare il tuo consenso al nostro trattamento. In alternativa, puoi fare clic per rifiutare di fornire il tuo consenso o per accedere a informazioni più dettagliate e modificare le tue preferenze prima di prestare il tuo consenso Tieni presente che alcuni trattamenti dei tuoi dati personali non richiedono il tuo consenso, ma hai il diritto di opporti a tale trattamento. Le tue preferenze si applicheranno solo a questo sito web. Puoi modificare le tue preferenze in qualsiasi momento tornando su questo sito o visitando la nostra informativa sulla privacy.",
-  "acceptar": "Accetta",
-  "rebutjar": "Rifiutare"
+  "missatge": "Noi e i nostri partner memorizziamo e/o accediamo a informazioni sul tuo dispositivo tramite cookie e trattiamo dati personali, come identificatori univoci e informazioni standard per ottenere informazioni sul pubblico. Con il tuo permesso, noi e i nostri partner possiamo utilizzare dati di localizzazione e identificazione tramite la scansione del dispositivo. Puoi fare clic per dare il tuo consenso al nostro trattamento. In alternativa, puoi fare clic per rifiutare il consenso.",
+  "acceptar": "Accetta e chiudi",
+  "rebutjar": "Rifiuta e chiudi",
+  "policy": "Scopri di più"
 },
 
 "search" : {
@@ -102,6 +103,10 @@
   "webTitle": "Sviluppatore Web specializzato in Front-end e Storico",
   "webDescription": "Storia Aperta è un progetto editoriale indipendente che offre ai suoi lettori l'accesso gratuito a articoli di storia su molti corsi diversi. Ora puoi leggere gli articoli di storia su questo sito web.",
   "webLinkCourse": "Vedi tutti gli articoli"
+},
+
+"article": {
+  "index": "Indice dei contenuti"
 },
 
     "webPostDate": "Pubblicato il",
