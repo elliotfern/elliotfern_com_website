@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AuthorBox from "../../components/AuthorBox/AuthorBox";
 import he from "he";
@@ -7,11 +8,19 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styles from "./Articles.module.css";
 
+interface RelatedArticle {
+  curso_titulo: string;
+  articulo_titulo: string;
+  articulo_url: string;
+  curso_url: string;
+}
+
 function Articles() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [article, setArticle] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [relatedArticles, setRelatedArticles] = useState<RelatedArticle[]>([]);
   const { nameArticle } = useParams();
 
   const getData = useCallback(async () => {
@@ -23,23 +32,41 @@ function Articles() {
       if (response.data && response.data.post_content) {
         setArticle(response.data);
         document.title = `${response.data.post_title} - Elliot Fernandez`;
-        setHasError(false); // Reiniciar error si los datos son correctos
+        setHasError(false);
+
+        // Llamada a la nueva API para obtener los artículos relacionados
+        const courseId = response.data.ID;
+        const lang = i18n.language; // Obtener el idioma actual
+        getRelatedArticles(courseId, lang);
       } else {
-        setHasError(true); // Activar error si no hay contenido
+        setHasError(true);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
-      setHasError(true); // Activar error en caso de fallo
+      setHasError(true);
     } finally {
-      setIsFetching(false); // Marcar como completada la carga
+      setIsFetching(false);
     }
-  }, [nameArticle]);
+  }, [nameArticle, i18n.language]);
+
+  const getRelatedArticles = async (courseId: number, lang: string) => {
+    try {
+      const response = await axios.get<RelatedArticle[]>(
+        `https://api.elliotfern.com/blog.php?type=llistatArticlesCurs&id=${courseId}&lang=${lang}`
+      );
+      if (response.data) {
+        setRelatedArticles(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching related articles:", error);
+    }
+  };
 
   useEffect(() => {
     getData();
   }, [getData]);
 
-  if (isFetching === true) {
+  if (isFetching) {
     return (
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
@@ -51,7 +78,9 @@ function Articles() {
 
   if (hasError) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
+      >
         <h3>{t("article.articleNoDisponible")}</h3>
       </div>
     );
@@ -70,16 +99,12 @@ function Articles() {
   // Función para modificar los enlaces externos
   const modifyExternalLinks = (htmlContent) => {
     const allowedDomains = ["elliotfern.com", "media.elliotfern.com"];
-
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlContent, "text/html");
 
     const links = doc.querySelectorAll("a");
-
     links.forEach((link) => {
       const href = link.href;
-
-      // Verificar si el href es válido antes de crear la URL
       if (href) {
         try {
           const linkDomain = new URL(href).hostname;
@@ -89,7 +114,6 @@ function Articles() {
             link.innerHTML += " 🔗";
           }
         } catch (error) {
-          // Si la URL no es válida, simplemente ignoramos el enlace
           console.error("Invalid URL:", error);
         }
       }
@@ -104,14 +128,13 @@ function Articles() {
     const doc = parser.parseFromString(htmlContent, "text/html");
 
     const headers = [...doc.querySelectorAll("h2, h3, h4")];
-
     const toc = [];
     let currentH2 = null;
     let currentH3 = null;
 
     headers.forEach((header, index) => {
       const id = `section-${index + 1}`;
-      header.id = id; // Asignamos un id único a cada encabezado
+      header.id = id;
 
       if (header.tagName === "H2") {
         currentH2 = { text: header.textContent, id, children: [] };
@@ -135,17 +158,15 @@ function Articles() {
 
   // Función para manejar el desplazamiento suave con el offset
   const handleLinkClick = (event) => {
-    // Prevenimos el comportamiento predeterminado del enlace
     event.preventDefault();
-
-    const targetId = event.target.getAttribute("href").substring(1); // Obtener el ID del enlace
+    const targetId = event.target.getAttribute("href").substring(1);
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      const headerHeight = document.querySelector("header")?.offsetHeight || 0; // Ajusta según el tamaño de tu header
+      const headerHeight = document.querySelector("header")?.offsetHeight || 0;
       window.scrollTo({
-        top: targetElement.offsetTop - headerHeight, // Desplazamos hacia abajo teniendo en cuenta el header
-        behavior: "smooth", // Desplazamiento suave
+        top: targetElement.offsetTop - headerHeight,
+        behavior: "smooth",
       });
     }
   };
@@ -154,7 +175,6 @@ function Articles() {
     <>
       <h2 className="text-center bold">{he.decode(article.post_title)}</h2>
       <h5 className="text-center italic">{he.decode(article.post_excerpt)} </h5>
-      <div />
 
       <AuthorBox />
 
@@ -163,7 +183,6 @@ function Articles() {
         {t("webPostModified")} {formatFecha(article.post_modified)}
       </p>
 
-      {/* Generamos el índice de contenidos */}
       <div className={styles.indexContinguts}>
         <h3>{t("article.index")}</h3>
         <ul>
@@ -205,6 +224,29 @@ function Articles() {
       ></div>
 
       <hr />
+
+      {/* Listado de artículos relacionados */}
+      {relatedArticles.length > 0 && (
+        <div>
+          <h3>
+          Curs: {" "}
+            <Link
+              to={`/${i18n.language}/course/${relatedArticles[0].curso_url}`}
+            >
+            {relatedArticles[0].curso_titulo}{" "}
+            </Link>
+          </h3>
+          <ul>
+            {relatedArticles.map((related) => (
+              <li key={related.articulo_url}>
+                <Link to={`/${i18n.language}/article/${related.articulo_url}`}>
+                  {he.decode(related.articulo_titulo)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 }

@@ -24,6 +24,7 @@ import CookieBanner from "./components/CookieBanner/CookieBanner";
 import BookAuthors from "./pages/Library/Authors/BookAuthors";
 import BookDetails from "./pages/Library/BookDetails/BookDetails";
 import BookAuthorDetails from "./pages/Library/AuthorDetails/BookAuthorDetails";
+import ScrollToTop from './components/ScrollToTop';
 
 
 // Lista de idiomas permitidos
@@ -99,6 +100,7 @@ function App() {
       <NavBar />
       {showCookieBanner && <CookieBanner onHide={acceptCookies} />}
       <div className="main-container">
+      <ScrollToTop />
         <Routes>
           <Route path="/" element={<Navigate to={`/${redirectLang}/homepage`} />} />
           <Route path="/en" element={<Navigate to="/en/homepage" />} />
