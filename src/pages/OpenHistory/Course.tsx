@@ -67,7 +67,7 @@ function Course() {
       </h2>
       <h6 className="text-center italic">
         {courseArticlesList && courseArticlesList.length > 0
-          ? courseArticlesList[0].courseDescription
+          ? he.decode(courseArticlesList[0].courseDescription)
           : t("webCursDescripcioError")}
       </h6>
       <h5 className="separador">{t("webwebCursContingut")}</h5>

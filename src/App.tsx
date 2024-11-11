@@ -11,7 +11,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer";
 import AboutAuthor from "./pages/AboutAuthor/AboutAuthor";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import Books from "./pages/Library/Books/Books";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import Error from "./pages/Error";
@@ -24,6 +24,7 @@ import CookieBanner from "./components/CookieBanner/CookieBanner";
 import BookAuthors from "./pages/Library/Authors/BookAuthors";
 import BookDetails from "./pages/Library/BookDetails/BookDetails";
 import BookAuthorDetails from "./pages/Library/AuthorDetails/BookAuthorDetails";
+import CompromisQualitat from "./pages/CompromisQualitat";
 import ScrollToTop from './components/ScrollToTop';
 
 
@@ -129,6 +130,7 @@ function App() {
           <Route path="/:lang/blog" element={<Blog />} />
           <Route path="/blog/:blogArticle" element={<BlogArticles />} />
           <Route path="/:lang/search-results" element={<SearchResultsPage />} />
+          <Route path="/:lang/commitment-responsibility" element={<CompromisQualitat />} />
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

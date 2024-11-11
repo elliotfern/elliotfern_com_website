@@ -15,7 +15,8 @@
     "privacyPolicy": "Política de Privacitat",
     "contact": "Contacte",
     "buscadorPlaceHolder": "Cercar al web...",
-    "buscadorCerca": "Cerca"
+    "buscadorCerca": "Cerca",
+    "compromisQualitat": "Compromís de Responsabilitat"
   },
   "link": {
     "PaginaTitol" : "Enllaços d'interès",
@@ -98,22 +99,25 @@
   "homepage" : {
     "titleSeo": "Elliot Fernandez - Desenvolupador web i Historiador",
     "descripcioSeo": "Pàgina web del Desenvolupador i historiador Elliot Fernandez, on podràs veure els seus treballs i articles d'història.",
-    "webTitle": "Desenvolupador Web especialitzat en Front-end i Historiador",
-    "webDescription": "Història Oberta és un projecte de publicació independent que ofereix als seus lectors accés gratuït a articles d'Història en molts cursos diferents. Ara podeu llegir els articles d'història en aquest lloc web.",
+    "webTitle": "👋 Hola, sóc l'Elliot Fernandez, desenvolupador Web especialitzat en front-end i historiador.",
+    "webTitleHistoriaOberta": "Història Oberta",
+    "historiaOberta": "Història Oberta és un projecte de publicació independent que ofereix als seus lectors accés gratuït a articles d'Història en molts cursos diferents. Ara podeu llegir els articles d'història en aquest lloc web.",
     "webLinkCourse": "Veure tots els articles"
   },
 
   "article" : {
     "index": "Índex de continguts",
-    "articleNoDisponible": "Ho sentim, però aquest contingut no està disponible en aquest moment."
+    "articleNoDisponible": "Ho sentim, però aquest contingut no està disponible en aquest moment.",
+    "curs": "Curs: "
   },
 
-  "welcome": "Welcome to our site",
-  "services": "Serveis",
+  "AuthorBox" : {
+    "descripcioAutor": "Vaig nèixer l'any 1987 a Terrassa (Barcelona). L'any 2009 em vaig llicenciar en Història Moderna i Contemporània a la Universitat Autònoma de Barcelona i el 2011 vaig completar el Màster en Història del Món de la Universitat Pompeu Fabra. Professionalment sóc desenvolupador web especialitzat en tecnologies del Front-end. Des de 2017 treballo fent projectes web com a freelance a HispanTIC."
+  },
+
   "webPostDate": "Publicat el",
   "webPostModified": "Modificat el",
   "webCommentsText": "Comentaris",
-  "webAuthorDescrip": "Vaig nèixer l'any 1987 a Terrassa, Barcelona. L'any 2009 em vaig llicenciar en Història a la Universitat Autònoma de Barcelona i el 2011 vaig completar el Màster en Història del Món de la Universitat Pompeu Fabra. Professionalment sóc desenvolupador web especialitzat en tecnologies del Front-end. Des de 2017 treballo fent projectes web com a freelance a HispanTIC.",
   "webCursNameError": "Curs no disponible",
   "webCursDescripcioError": "Aquest curs està en preparació",
   "webwebCursContingut": "Continguts del curs:",

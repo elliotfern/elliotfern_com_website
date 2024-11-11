@@ -1,0 +1,57 @@
+/* CONTENIDOR CURSOS HOMEPAGE */
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gridItem {
+  flex: 1;
+  flex-basis: calc(
+    25% - 20px
+  ); /* Distribuye el espacio de forma proporcional */
+  padding: 20px;
+  background-color: #3498db;
+  color: white;
+  margin: 10px;
+  border: 1px black solid;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Media query para pantallas más pequeñas (móviles) */
+@media (max-width: 767px) {
+  .gridItem {
+    flex-basis: 100%; /* Mostrar un item por fila en dispositivos móviles */
+  }
+}
+
+/* SELECTOR IDIOMES */
+.languagesBadge {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .languagesBadge img {
+    width: auto;  /* Tamaño por defecto de los iconos */
+    height: auto;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .languagesBadge img {
+      width: auto;
+      height: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .languagesBadge img {
+      width: auto;
+      height: 20px;
+    }
+  }
+

@@ -17,7 +17,12 @@ function Footer() {
               <Link to={routes[i18n.language].privacyPolicy}>
                 {t("nav.privacyPolicy")}
               </Link>
-  
+          </div>
+
+          <div className="menu-separacio">
+              <Link to={routes[i18n.language].compromisQualitat}>
+                {t("nav.compromisQualitat")}
+              </Link>
           </div>
 
           <div className="menu-separacio">

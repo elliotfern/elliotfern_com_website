@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ReactPaginate from "react-paginate";
 import he from "he";
+import Styles from '../../HomePage/HomePage.module.css';
 
 interface Author {
   id: string;
@@ -154,9 +155,9 @@ function BooksAuthors() {
         </div>
 
         {/* Grid de autores */}
-        <div className="grid-container">
+        <div className={Styles.gridContainer}>
           {currentAuthors.map((author) => (
-            <div className="grid-item" key={author.id}>
+            <div className={Styles.gridItem} key={author.id}>
               <img
                 className="authorPhoto"
                 src={

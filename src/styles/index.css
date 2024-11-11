@@ -110,32 +110,7 @@ ul, ol {
   }
 }
 
-.grid-container {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.grid-item {
-  flex: 1;
-  flex-basis: calc(
-    25% - 20px
-  ); /* Distribuye el espacio de forma proporcional */
-  padding: 20px;
-  background-color: #3498db;
-  color: white;
-  margin: 10px;
-  border: 1px black solid;
-  border-radius: 5px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-/* Media query para pantallas más pequeñas (móviles) */
-@media (max-width: 767px) {
-  .grid-item {
-    flex-basis: 100%; /* Mostrar un item por fila en dispositivos móviles */
-  }
-}
 
 .llistat-articles {
   margin-top: 15px;

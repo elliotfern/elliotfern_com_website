@@ -15,7 +15,8 @@
       "privacyPolicy": "Politique de confidentialité",
       "contact": "Contact",
        "buscadorPlaceHolder": "Chercher sur le site...",
-      "buscadorCerca": "Chercher"
+      "buscadorCerca": "Chercher",
+   "compromisQualitat": "Engagement de responsabilité"
   },
   
   "link": {
@@ -98,20 +99,26 @@
 "homepage": {
     "titleSeo": "Elliot Fernandez - Développeur web et Historien",
     "descripcioSeo": "Le site web du Développeur web et Historien Elliot Fernandez, où vous pouvez voir ses travaux et articles d'histoire.",
-    "webTitle": "Développeur Web spécialisé en Front-end et Historien",
-    "webDescription": "Histoire Ouverte est un projet de publication indépendant qui offre à ses lecteurs un accès gratuit aux articles d'histoire sur de nombreux cours différents. Vous pouvez maintenant lire les articles d'histoire sur ce site web.",
+    "webTitle": "👋 Bonjour, je m'appelle Elliot Fernandez, développeur web front-end et historien.",
+    "webTitleHistoriaOberta": "Histoire Ouverte",
+    "historiaOberta": "Histoire Ouverte est un projet de publication indépendant qui offre à ses lecteurs un accès gratuit aux articles d'histoire sur de nombreux cours différents. Vous pouvez maintenant lire les articles d'histoire sur ce site web.",
     "webLinkCourse": "Voir tous les articles"
   },
 
   "article": {
     "index": "Table des matières",
-    "articleNoDisponible": "Désolé, mais ce contenu n'est pas disponible pour le moment."
+    "articleNoDisponible": "Désolé, mais ce contenu n'est pas disponible pour le moment.",
+    "curs": "Course: "
+  },
+
+  "AuthorBox" : {
+    "descripcioAutor": "Je suis né en 1987 à Terrassa (Barcelone). En 2009, j'ai obtenu une licence en Histoire Moderne et Contemporaine à l'Université Autonome de Barcelone, et en 2011, j'ai terminé le Master en Histoire du Monde à l'Université Pompeu Fabra. Professionnellement, je suis développeur web spécialisé dans les technologies Front-end. Depuis 2017, je travaille en tant que freelance sur des projets web chez HispanTIC."
   },
 
     "webPostDate": "Publié le",
     "webPostModified": "Modifié le",
     "webCommentsText": "Commentaires",
-    "webAuthorDescrip": "Il est titulaire d'un diplôme en histoire de l'Université autonome de Barcelone (2009) et d'un master en histoire mondiale de l'Université Pompeu Fabra (2011).",
+
     "webCursNameError": "Cours non disponible",
     "webCursDescripcioError": "Ce cours est en préparation",
     "webwebCursContingut": "Contenus du cours :",

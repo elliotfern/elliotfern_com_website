@@ -5,6 +5,8 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import ReactPaginate from "react-paginate";
 import he from "he";
+import Styles from '../../HomePage/HomePage.module.css';
+
 
 interface Book {
   id: string;
@@ -212,9 +214,9 @@ function Books() {
       </div>
 
       {/* Grid de libros */}
-      <div className="grid-container">
+      <div className={Styles.gridContainer}>
         {currentBooks.map((book) => (
-          <div className="grid-item" key={book.id}>
+          <div className={Styles.gridItem} key={book.id}>
             <img
               className="bookPhoto"
               src={

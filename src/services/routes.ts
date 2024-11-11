@@ -9,6 +9,7 @@ export const routes = {
         links: "en/links",
         privacyPolicy: "/en/privacy-policy",
         contact: "/en/contact",
+        compromisQualitat: "/en/commitment-responsibility"
     },
 
     es: {
@@ -21,6 +22,7 @@ export const routes = {
         links: "es/links",
         privacyPolicy: "/es/privacy-policy",
         contact: "/es/contact",
+        compromisQualitat: "/es/commitment-responsibility"
     },
 
     ca: {
@@ -33,6 +35,7 @@ export const routes = {
         links: "ca/links",
         privacyPolicy: "/ca/privacy-policy",
         contact: "/ca/contact",
+        compromisQualitat: "/ca/commitment-responsibility"
     },
 
     fr: {
@@ -45,6 +48,7 @@ export const routes = {
         links: "fr/links",
         privacyPolicy: "/fr/privacy-policy",
         contact: "/fr/contact",
+        compromisQualitat: "/fr/commitment-responsibility"
     },
 
     it: {
@@ -57,6 +61,7 @@ export const routes = {
         links: "it/links",
         privacyPolicy: "/it/privacy-policy",
         contact: "/it/contact",
+        compromisQualitat: "/it/commitment-responsibility"
     },
    
 };

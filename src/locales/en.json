@@ -15,7 +15,8 @@
     "privacyPolicy": "Privacy Policy",
     "contact": "Contact",
     "buscadorPlaceHolder": "Search on the website...",
-   "buscadorCerca": "Search"
+   "buscadorCerca": "Search",
+   "compromisQualitat": "Commitment of Responsability"
   },
 
   "link": {
@@ -98,20 +99,25 @@
   "homepage": {
     "titleSeo": "Elliot Fernandez - Web Developer and Historian",
     "descripcioSeo": "The website of Web Developer and Historian Elliot Fernandez, where you can view his works and history articles.",
-    "webTitle": "Web Developer specialized in Front-end and Historian",
-    "webDescription": "Open History is an independent publishing project that offers its readers free access to history articles on many different courses. You can now read the history articles on this website.",
+    "webTitle": "👋 Hi, I'm Elliot Fernandez, front-end web developer and historian.",
+    "webTitleHistoriaOberta": "Open History",
+    "historiaOberta": "Open History is an independent publishing project that offers its readers free access to history articles on many different courses. You can now read the history articles on this website.",
     "webLinkCourse": "See all articles"
   },
 
   "article" : {
     "index": "Table of Contents",
-    "articleNoDisponible": "Sorry, but this content is not available at the moment."
+    "articleNoDisponible": "Sorry, but this content is not available at the moment.",
+    "curs": "Course: "
+  },
+
+  "AuthorBox" : {
+    "descripcioAutor": "I was born in 1987 in Terrassa (Barcelona). In 2009, I graduated in Modern and Contemporary History from the Autonomous University of Barcelona, and in 2011, I completed a Master's in World History at Pompeu Fabra University. Professionally, I am a web developer specializing in Front-end technologies. Since 2017, I have been working on web projects as a freelancer at HispanTIC."
   },
 
     "webPostDate": "Posted on",
     "webPostModified": "Modified on",
     "webCommentsText": "Comments",
-    "webAuthorDescrip": "He holds a degree in History from the Autonomous University of Barcelona (2009) and a Master's in World History from Pompeu Fabra University (2011).",
     "webCursNameError": "Course not available",
     "webCursDescripcioError": "This course is in preparation",
     "webwebCursContingut": "Course contents:",

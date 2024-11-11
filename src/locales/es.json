@@ -15,7 +15,8 @@
     "privacyPolicy": "Política de Privacidad",
     "contact": "Contacto",
     "buscadorPlaceHolder": "Buscar en la web...",
-    "buscadorCerca": "Buscar"
+    "buscadorCerca": "Buscar",
+   "compromisQualitat": "Compromiso de Responsabilidad"
   },
 
   "link": {
@@ -97,20 +98,25 @@
 "homepage": {
     "titleSeo": "Elliot Fernandez - Desarrollador web e Historiador",
     "descripcioSeo": "Página web del Desarrollador e historiador Elliot Fernandez, donde podrás ver sus trabajos y artículos de historia.",
-    "webTitle": "Desarrollador Web especializado en Front-end e Historiador",
-    "webDescription": "Historia Abierta es un proyecto de publicación independiente que ofrece a sus lectores acceso gratuito a artículos de Historia en muchos cursos diferentes. Ahora puedes leer los artículos de historia en este sitio web.",
+    "webTitle": "👋 Hola, soy Elliot Fernandez, desarrollador Web especializado en front-end e historiador.",
+    "webTitleHistoriaOberta": "Historia Abierta",
+    "historiaOberta": "Historia Abierta es un proyecto de publicación independiente que ofrece a sus lectores acceso gratuito a artículos de Historia en muchos cursos diferentes. Ahora puedes leer los artículos de historia en este sitio web.",
     "webLinkCourse": "Ver todos los artículos"
   },
 
   "article" : {
     "index": "Índice de contenidos",
-    "articleNoDisponible": "Lo sentimos, pero este contenido no está disponible en este momento."
+    "articleNoDisponible": "Lo sentimos, pero este contenido no está disponible en este momento.",
+    "curs": "Curso: "
+  },
+
+  "AuthorBox" : {
+    "descripcioAutor": "Nací en el año 1987 en Terrassa (Barcelona). En el año 2009 me licencié en Historia Moderna y Contemporánea en la Universidad Autónoma de Barcelona y en 2011 completé el Máster en Historia del Mundo en la Universidad Pompeu Fabra. Profesionalmente soy desarrollador web especializado en tecnologías de Front-end. Desde 2017 trabajo realizando proyectos web como freelance en HispanTIC."
   },
 
     "webPostDate": "Publicado el",
     "webPostModified": "Modificado el",
     "webCommentsText": "Comentarios",
-    "webAuthorDescrip": "Es licenciado en Historia por la Universidad Autónoma de Barcelona (2009) y Máster en Historia del Mundo por la Universidad Pompeu Fabra (2011).",
     "webCursNameError": "Curso no disponible",
     "webCursDescripcioError": "Este curso está en preparación",
     "webwebCursContingut": "Contenidos del curso:",
