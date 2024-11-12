@@ -7,6 +7,7 @@ import he from "he";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styles from "./Articles.module.css";
+import TranslateArticles from "../../components/TranslateArticles/TranslateArticles";
 
 interface RelatedArticle {
   curso_titulo: string;
@@ -36,7 +37,7 @@ function Articles() {
   const [relatedArticles, setRelatedArticles] = useState<RelatedArticle[]>([]);
   const { nameArticle } = useParams();
   const [translations, setTranslations] = useState<ArticleTranslations>({});
-  const location = useLocation();  // Hook para obtener la ruta actual
+  const location = useLocation(); // Hook para obtener la ruta actual
 
   const getData = useCallback(async () => {
     try {
@@ -70,10 +71,9 @@ function Articles() {
     getData();
     const pathLang = location.pathname.split("/")[1];
     if (pathLang && pathLang !== i18n.language) {
-      i18n.changeLanguage(pathLang);  // Cambiar el idioma
+      i18n.changeLanguage(pathLang); // Cambiar el idioma
     }
   }, [getData, location, i18n]);
-
 
   const getRelatedArticles = async (courseId: number, lang: string) => {
     try {
@@ -100,8 +100,6 @@ function Articles() {
       console.error("Error fetching translations:", error);
     }
   };
-
- 
 
   if (isFetching) {
     return (
@@ -208,16 +206,6 @@ function Articles() {
     }
   };
 
-   // Datos de las banderas e idiomas
-   const languageLinks = [
-    { code: "ca", flag: "https://media.elliotfern.com/img/history-img/icon/flag_catalan.png", title: translations.post_nameCa, name: t("nav.catalan") },
-    { code: "es", flag: "https://media.elliotfern.com/img/history-img/icon/flag_spain.png", title: translations.post_nameEs, name: t("nav.spanish") },
-    { code: "en", flag: "https://media.elliotfern.com/img/history-img/icon/flag_united-kingdom.png", title: translations.post_nameEn, name: t("nav.english") },
-    { code: "fr", flag: "https://media.elliotfern.com/img/history-img/icon/flag_france.png", title: translations.post_nameFr, name: t("nav.french") },
-    { code: "it", flag: "https://media.elliotfern.com/img/history-img/icon/flag_italy.png", title: translations.post_nameIt, name: t("nav.italian") },
-  ];
-
-
   return (
     <>
       <h2 className="text-center bold">{he.decode(article.post_title)}</h2>
@@ -230,18 +218,8 @@ function Articles() {
         {t("webPostModified")} {formatFecha(article.post_modified)}
       </p>
 
-       {/* Div para las banderas de idiomas */}
-       <div className={styles.languageFlags}>
-        {languageLinks.map(
-          (lang) =>
-            lang.title && (
-              <Link to={`/${lang.code}/article/${lang.title}`} key={lang.code} className={styles.languageLink}>
-                <img src={lang.flag} alt={lang.name} style={{ width: "24px", marginRight: "5px" }} />
-                {lang.name}
-              </Link>
-            )
-        )}
-      </div>
+      {/* Componente para las banderas de idiomas */}
+      <TranslateArticles translations={translations} t={t} type="article" />
 
       <div className={styles.indexContinguts}>
         <h3>{t("article.index")}</h3>
@@ -289,7 +267,7 @@ function Articles() {
       {relatedArticles.length > 0 && (
         <div>
           <h3>
-          {t("article.curs")}{" "}
+            {t("article.curs")}{" "}
             <Link
               to={`/${i18n.language}/course/${relatedArticles[0].curso_url}`}
             >

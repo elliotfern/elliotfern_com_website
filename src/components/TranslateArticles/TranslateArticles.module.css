@@ -1,0 +1,51 @@
+.languageFlags {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    margin: 20px 0;
+    gap: 15px; /* Espacio entre las banderas */
+  }
+  
+  .languageLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333; /* Color de texto por defecto */
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .languageLink img {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    border-radius: 50%; /* Para hacer las banderas redondas */
+    transition: transform 0.3s;
+  }
+  
+  .languageLink:hover {
+    color: #007bff; /* Cambia el color del texto al hacer hover */
+  }
+  
+  .languageLink:hover img {
+    transform: scale(1.1); /* Amplía la bandera al hacer hover */
+  }
+  
+  /* Media Query para pantallas pequeñas (móviles) */
+  @media (max-width: 768px) {
+    .languageFlags {
+      flex-wrap: wrap;  /* Permite que las banderas se envuelvan en lugar de estar en una sola línea */
+      justify-content: start;  /* Centra las banderas */
+    }
+  
+    .languageLink {
+      font-size: 14px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
+      margin-bottom: 10px; /* Añade un pequeño espacio entre las banderas */
+    }
+  
+    .languageLink img {
+      width: 30px; /* Aumenta el tamaño de las banderas en móviles */
+      height: 24px;
+    }
+  }
+  
