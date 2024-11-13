@@ -8,7 +8,7 @@ import TranslateArticles from "../../components/TranslateArticles/TranslateArtic
 interface CursoResponse {
   ID: number;
   post_title: string;
-  post_date: string; 
+  post_date: string;
   post_name: string;
   courseName: string;
   courseDescription: string;
@@ -31,7 +31,9 @@ interface ArticleTranslations {
 function Course() {
   const { t, i18n } = useTranslation();
   const [translations, setTranslations] = useState<ArticleTranslations>({});
-  const [courseArticlesList, setCourseArticlesList] = useState<CursoResponse[] | null>(null);
+  const [courseArticlesList, setCourseArticlesList] = useState<
+    CursoResponse[] | null
+  >(null);
   const [isFetching, setIsFetching] = useState(true);
 
   const { lang, nameCourse } = useParams();
@@ -100,7 +102,9 @@ function Course() {
 
   if (isFetching) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
+      >
         <h3>Loading ... </h3>
       </div>
     );
@@ -122,16 +126,23 @@ function Course() {
       {/* Componente para las banderas de idiomas */}
       <TranslateArticles translations={translations} t={t} type="course" />
 
-      <h5 className="separador">{t("webwebCursContingut")}</h5>
+      {courseArticlesList[0].post_title ? (
+        <h5 className="separador">{t("webwebCursContingut")}</h5>
+      ) : (
+        <h5 className="separador">{t("webwebCursContingutError")}</h5>
+      )}
 
       {courseArticlesList && courseArticlesList.length > 0 ? (
-        courseArticlesList.map((eachArticle) => (
-          <div className="llistat-articles" key={eachArticle.ID}>
-            <Link to={`/${lang}/article/${eachArticle.post_name}`}>
-              {he.decode(eachArticle.post_title)}
-            </Link>
-          </div>
-        ))
+        courseArticlesList.map(
+          (eachArticle) =>
+            eachArticle.post_title ? (
+              <div className="llistat-articles" key={eachArticle.ID}>
+                <Link to={`/${lang}/article/${eachArticle.post_name}`}>
+                  {he.decode(eachArticle.post_title)}
+                </Link>
+              </div>
+            ) : null // Si no hay post_title, no mostramos el artículo
+        )
       ) : (
         <div>{t("webwebCursContingutError")}</div>
       )}
