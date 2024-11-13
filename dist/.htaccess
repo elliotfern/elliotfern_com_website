@@ -1,15 +1,16 @@
 RewriteEngine On
 RewriteBase /
+# Redirige sitemap-index.xml a sitemap-index.xml.php
+RewriteRule ^sitemap-index\.xml$ sitemap-index.xml.php [L]
+
+# Redirige todos los sitemaps de idiomas, como sitemap-en.xml, sitemap-es.xml, etc., a sus archivos PHP correspondientes
+RewriteRule ^sitemap-([a-z]{2})\.xml$ sitemap-$1.xml.php [L]
 
 # Si la solicitud no es para un archivo existente ni un directorio, redirige a 'index.html'
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
 
-<Files "adsbygoogle.js">
-    Header set Access-Control-Allow-Origin "https://pagead2.googlesyndication.com"
-    Header set Access-Control-Allow-Origin "https://googleads.g.doubleclick.net"
-</Files>
 
 #Redirecciones
 Redirect 301 "/en/history-article-archives" "/en/history-archives"

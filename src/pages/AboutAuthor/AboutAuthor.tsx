@@ -15,12 +15,18 @@ function AboutAuthor() {
 
   let idArticle = 0;
 
-  if (lang === "es" || lang === "en" || lang === "fr" || lang === "it") {
+  if (lang === "en") {
     idArticle = 398;
   } else if (lang === "ca") {
     idArticle = 1744;
+  } else if (lang === "es") {
+    idArticle = 3612;
+  } else if (lang === "fr") {
+    idArticle = 3614;
+  } else if (lang === "it") {
+    idArticle = 3615;
   }
-
+ 
   const getData = async () => {
     setIsFetching(true); // Resetea el estado de carga al inicio
     setError(null); // Resetea el error antes de realizar la nueva llamada
