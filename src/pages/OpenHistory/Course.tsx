@@ -4,6 +4,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import he from "he";
 import TranslateArticles from "../../components/TranslateArticles/TranslateArticles";
+import { Helmet } from "react-helmet";
 
 interface CursoResponse {
   ID: number;
@@ -77,21 +78,9 @@ function Course() {
     }
   };
 
-  const getTitle = useCallback(() => {
-    if (courseArticlesList && courseArticlesList.length > 0) {
-      document.title = `${courseArticlesList[0].courseName} - Elliot Fernandez`;
-    } else {
-      document.title = "Course - Elliot Fernandez";
-    }
-  }, [courseArticlesList]);
-
   useEffect(() => {
     getData();
   }, [getData]);
-
-  useEffect(() => {
-    getTitle();
-  }, [getTitle]);
 
   useEffect(() => {
     const pathLang = location.pathname.split("/")[1];
@@ -111,7 +100,56 @@ function Course() {
   }
 
   return (
-    <>
+    <>   
+    <Helmet>
+        <title>{he.decode(courseArticlesList[0].courseName)} - Elliot Fernandez</title>
+        <meta name="description" content={he.decode(courseArticlesList[0].courseDescription)} />
+        <meta property="og:title" content={`${he.decode(courseArticlesList[0].courseName)} - Elliot Fernandez`} />
+        <meta
+          property="og:description"
+          content={he.decode(courseArticlesList[0].courseDescription)}
+        />
+        <link
+          rel="canonical"
+          href={`https://elliotfern.com/ca/course/${translations.post_nameCa}`}
+        />
+
+        {translations.post_nameEs && (
+          <link
+            rel="alternate"
+            hrefLang="es"
+            href={`https://elliotfern.com/es/course/${translations.post_nameEs}`}
+          />
+        )}
+        {translations.post_nameEn && (
+          <link
+            rel="alternate"
+            hrefLang="en"
+            href={`https://elliotfern.com/en/course/${translations.post_nameEn}`}
+          />
+        )}
+        {translations.post_nameFr && (
+          <link
+            rel="alternate"
+            hrefLang="fr"
+            href={`https://elliotfern.com/fr/course/${translations.post_nameFr}`}
+          />
+        )}
+        {translations.post_nameIt && (
+          <link
+            rel="alternate"
+            hrefLang="it"
+            href={`https://elliotfern.com/it/course/${translations.post_nameIt}`}
+          />
+        )}
+        {translations.post_nameCa && (
+          <link
+            rel="alternate"
+            hrefLang="x-default"
+            href={`https://elliotfern.com/ca/course/${translations.post_nameCa}`}
+          />
+        )}
+      </Helmet>
       <h2 className="text-center">
         {courseArticlesList && courseArticlesList.length > 0
           ? courseArticlesList[0].courseName

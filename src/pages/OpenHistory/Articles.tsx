@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styles from "./Articles.module.css";
 import TranslateArticles from "../../components/TranslateArticles/TranslateArticles";
+import { Helmet } from "react-helmet";
 
 interface RelatedArticle {
   curso_titulo: string;
@@ -47,7 +48,6 @@ function Articles() {
 
       if (response.data && response.data.post_content) {
         setArticle(response.data);
-        document.title = `${response.data.post_title} - Elliot Fernandez`;
         setHasError(false);
 
         // Llamada a la nueva API para obtener los artículos relacionados
@@ -208,6 +208,56 @@ function Articles() {
 
   return (
     <>
+      <Helmet>
+        <title>{he.decode(article.post_title)} - Elliot Fernandez</title>
+        <meta name="description" content={he.decode(article.post_excerpt)} />
+        <meta property="og:title" content={`${he.decode(article.post_title)} - Elliot Fernandez`} />
+        <meta
+          property="og:description"
+          content={he.decode(article.post_excerpt)}
+        />
+        <link
+          rel="canonical"
+          href={`https://elliotfern.com/ca/article/${translations.post_nameCa}`}
+        />
+
+        {translations.post_nameEs && (
+          <link
+            rel="alternate"
+            hrefLang="es"
+            href={`https://elliotfern.com/es/article/${translations.post_nameEs}`}
+          />
+        )}
+        {translations.post_nameEn && (
+          <link
+            rel="alternate"
+            hrefLang="en"
+            href={`https://elliotfern.com/en/article/${translations.post_nameEn}`}
+          />
+        )}
+        {translations.post_nameFr && (
+          <link
+            rel="alternate"
+            hrefLang="fr"
+            href={`https://elliotfern.com/fr/article/${translations.post_nameFr}`}
+          />
+        )}
+        {translations.post_nameIt && (
+          <link
+            rel="alternate"
+            hrefLang="it"
+            href={`https://elliotfern.com/it/article/${translations.post_nameIt}`}
+          />
+        )}
+        {translations.post_nameCa && (
+          <link
+            rel="alternate"
+            hrefLang="x-default"
+            href={`https://elliotfern.com/ca/article/${translations.post_nameCa}`}
+          />
+        )}
+      </Helmet>
+
       <h2 className="text-center bold">{he.decode(article.post_title)}</h2>
       <h5 className="text-center italic">{he.decode(article.post_excerpt)} </h5>
 
