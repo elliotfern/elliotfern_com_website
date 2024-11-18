@@ -40,6 +40,17 @@ function Articles() {
   const [translations, setTranslations] = useState<ArticleTranslations>({});
   const location = useLocation(); // Hook para obtener la ruta actual
 
+   // Obtener la URL de la página actual
+   const currentUrl = window.location.pathname;
+
+   // Dividir la URL en partes usando "/" como delimitador
+   const pathParts = currentUrl.split('/');
+ 
+   // Obtener la última parte de la URL
+   const lastPart = pathParts[pathParts.length - 1];
+
+   const lang = i18n.language; // Obtener el idioma actual
+
   const getData = useCallback(async () => {
     try {
       const response = await axios.get(
@@ -218,42 +229,43 @@ function Articles() {
         />
         <link
           rel="canonical"
-          href={`https://elliotfern.com/ca/article/${translations.post_nameCa}`}
+          href={`https://elliotfern.com/${lang}/article/${lastPart}`}
         />
+
+         {translations.post_nameCa && (
+          <link
+            rel="canonical"
+            hrefLang="ca"
+            href={`https://elliotfern.com/es/article/${translations.post_nameCa}`}
+          />
+        )}
 
         {translations.post_nameEs && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="es"
             href={`https://elliotfern.com/es/article/${translations.post_nameEs}`}
           />
         )}
         {translations.post_nameEn && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="en"
             href={`https://elliotfern.com/en/article/${translations.post_nameEn}`}
           />
         )}
         {translations.post_nameFr && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="fr"
             href={`https://elliotfern.com/fr/article/${translations.post_nameFr}`}
           />
         )}
         {translations.post_nameIt && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="it"
             href={`https://elliotfern.com/it/article/${translations.post_nameIt}`}
-          />
-        )}
-        {translations.post_nameCa && (
-          <link
-            rel="alternate"
-            hrefLang="x-default"
-            href={`https://elliotfern.com/ca/article/${translations.post_nameCa}`}
           />
         )}
       </Helmet>

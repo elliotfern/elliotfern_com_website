@@ -36,9 +36,19 @@ function Course() {
     CursoResponse[] | null
   >(null);
   const [isFetching, setIsFetching] = useState(true);
+  const [error, setError] = useState<string | null>(null); // Estado de error
 
   const { lang, nameCourse } = useParams();
   const location = useLocation();
+
+  // Obtener la URL de la página actual
+  const currentUrl = window.location.pathname;
+
+  // Dividir la URL en partes usando "/" como delimitador
+  const pathParts = currentUrl.split("/");
+
+  // Obtener la última parte de la URL
+  const lastPart = pathParts[pathParts.length - 1];
 
   const getData = useCallback(async () => {
     try {
@@ -58,11 +68,14 @@ function Course() {
         console.warn("No se encontraron artículos relacionados con el curso.");
         setCourseArticlesList([]);
         setIsFetching(false);
+        setError(t("article.articleNoDisponible")); // Establece el mensaje de error
       }
     } catch (error) {
       console.error("Error fetching data:", error);
+      setIsFetching(false);
+      setError(t("webCursErrorFetch")); // Establece el mensaje de error de la API
     }
-  }, [nameCourse, lang]);
+  }, [nameCourse, lang, t]);
 
   const getTranslations = async (courseId: number, lang: string) => {
     try {
@@ -75,6 +88,7 @@ function Course() {
       }
     } catch (error) {
       console.error("Error fetching translations:", error);
+      setError(t("webCursErrorTranslations")); // Establece el mensaje de error de traducciones
     }
   };
 
@@ -94,62 +108,84 @@ function Course() {
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
       >
-        <h3>Loading ... </h3>
+        <h3>{t("loading")}</h3>
+      </div>
+    );
+  }
+
+  // Si hay un error, mostrar el mensaje de error
+  if (error) {
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
+      >
+        <h3>{error}</h3>
       </div>
     );
   }
 
   return (
-    <>   
-    <Helmet>
-        <title>{he.decode(courseArticlesList[0].courseName)} - Elliot Fernandez</title>
-        <meta name="description" content={he.decode(courseArticlesList[0].courseDescription)} />
-        <meta property="og:title" content={`${he.decode(courseArticlesList[0].courseName)} - Elliot Fernandez`} />
+    <>
+      <Helmet>
+        <title>
+          {he.decode(courseArticlesList[0].courseName)} - Elliot Fernandez
+        </title>
+        <meta
+          name="description"
+          content={he.decode(courseArticlesList[0].courseDescription)}
+        />
+        <meta
+          property="og:title"
+          content={`${he.decode(
+            courseArticlesList[0].courseName
+          )} - Elliot Fernandez`}
+        />
         <meta
           property="og:description"
           content={he.decode(courseArticlesList[0].courseDescription)}
         />
         <link
           rel="canonical"
-          href={`https://elliotfern.com/ca/course/${translations.post_nameCa}`}
+          href={`https://elliotfern.com/${lang}/course/${lastPart}`}
         />
 
+        {translations.post_nameCa && (
+          <link
+            rel="canonical"
+            hrefLang="ca"
+            href={`https://elliotfern.com/es/course/${translations.post_nameCa}`}
+          />
+        )}
         {translations.post_nameEs && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="es"
             href={`https://elliotfern.com/es/course/${translations.post_nameEs}`}
           />
         )}
         {translations.post_nameEn && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="en"
             href={`https://elliotfern.com/en/course/${translations.post_nameEn}`}
           />
         )}
         {translations.post_nameFr && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="fr"
             href={`https://elliotfern.com/fr/course/${translations.post_nameFr}`}
           />
         )}
         {translations.post_nameIt && (
           <link
-            rel="alternate"
+            rel="canonical"
             hrefLang="it"
             href={`https://elliotfern.com/it/course/${translations.post_nameIt}`}
           />
         )}
-        {translations.post_nameCa && (
-          <link
-            rel="alternate"
-            hrefLang="x-default"
-            href={`https://elliotfern.com/ca/course/${translations.post_nameCa}`}
-          />
-        )}
       </Helmet>
+
       <h2 className="text-center">
         {courseArticlesList && courseArticlesList.length > 0
           ? courseArticlesList[0].courseName

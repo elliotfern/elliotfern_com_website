@@ -57,10 +57,10 @@ function HomePage() {
         <meta property="og:title" content={t("homepage.titleSeo")} />
         <meta property="og:description" content={t("homepage.descripcioSeo")} />
         <link rel="canonical" href="https://elliotfern.com/ca/homepage" />
-        <link rel="alternate" hrefLang="es" href="https://elliotfern.com/es/homepage" />
-        <link rel="alternate" hrefLang="en" href="https://elliotfern.com/en/homepage" />
-        <link rel="alternate" hrefLang="fr" href="https://elliotfern.com/fr/homepage" />
-        <link rel="alternate" hrefLang="it" href="https://elliotfern.com/it/homepage" />
+        <link rel="canonical" hrefLang="es" href="https://elliotfern.com/es/homepage" />
+        <link rel="canonical" hrefLang="en" href="https://elliotfern.com/en/homepage" />
+        <link rel="canonical" hrefLang="fr" href="https://elliotfern.com/fr/homepage" />
+        <link rel="canonical" hrefLang="it" href="https://elliotfern.com/it/homepage" />
       </Helmet>
  
       <h4 className="text-center">{t("homepage.webTitle")}</h4>
