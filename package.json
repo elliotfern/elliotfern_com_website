@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test-watch": "vitest watch"
   },
   "dependencies": {
+    "@testing-library/dom": "^10.0.0",
     "@types/i18next": "^12.1.0",
     "axios": "^1.7.7",
     "date-fns": "^4.1.0",
@@ -30,19 +33,24 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
     "@types/he": "^1.2.3",
     "@types/node": "^22.7.7",
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "@types/react-helmet": "^6.1.11",
+    "@types/testing-library__react": "^10.2.0",
     "@types/unorm": "^1.3.31",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^9.11.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",
+    "jsdom": "^25.0.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "vitest": "^2.1.5"
   }
 }
