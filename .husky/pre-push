@@ -1,0 +1,4 @@
+#! /bin/sh
+. "$(dirname "$0")/../node_modules/.bin/setup-env"
+
+yarn prettify && yarn lint && yarn test
