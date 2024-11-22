@@ -28,30 +28,29 @@
 
 /* SELECTOR IDIOMES */
 .languagesBadge {
-    display: flex;
-    justify-content: start;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  
-  .languagesBadge img {
-    width: auto;  /* Tamaño por defecto de los iconos */
-    height: auto;
-  }
-  
-  /* Responsividad */
-  @media (max-width: 768px) {
-    .languagesBadge img {
-      width: auto;
-      height: 20px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .languagesBadge img {
-      width: auto;
-      height: 20px;
-    }
-  }
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
 
+.languagesBadge img {
+  width: auto; /* Tamaño por defecto de los iconos */
+  height: auto;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .languagesBadge img {
+    width: auto;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .languagesBadge img {
+    width: auto;
+    height: 20px;
+  }
+}

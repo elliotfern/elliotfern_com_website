@@ -19,7 +19,7 @@
     "compromisQualitat": "Compromís de Responsabilitat"
   },
   "link": {
-    "PaginaTitol" : "Enllaços d'interès",
+    "PaginaTitol": "Enllaços d'interès",
     "Categories": "Categories:",
     "Topics": "Temes:",
     "showAllLinks": "Veure'ls tots",
@@ -33,7 +33,7 @@
     "refreshTable": "Actualitzar dades",
     "buscar": "Cercador"
   },
-  "book" : {
+  "book": {
     "titolPagina": "Llibres recomanats",
     "year": "Any de publicació",
     "originalLanguage": "Idioma original",
@@ -43,8 +43,8 @@
     "genres": "Filtrar per gènere",
     "languages": "Filtrar per idioma",
     "allLanguages": "Tots els idiomes",
-    "esborrar" : "Cancel·lar resultats",
-    "titolCercador" : "Cercador de llibres",
+    "esborrar": "Cancel·lar resultats",
+    "titolCercador": "Cercador de llibres",
     "cercadorPlaceHolder": "Cercar per títol del llibre",
     "paginaAutors": "Pots consultar la pàgina d'autors/es",
     "bookDetailsBtn": "Veure més detalls del llibre",
@@ -55,22 +55,21 @@
     "topic": "Tema",
     "editorial": "Editorial",
     "tipusLlibre": "Tipus"
-
   },
-"footer": {
-  "titolPB": "Aquesta pàgina web allibera els seus continguts al Domini Públic",
-  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.ca",
-  "textPB": "Tots els continguts d'aquesta pàgina web es publiquen i es fan arribar al domini públic renunciant a tots els drets sobre l'obra en relació amb la propietat intel·lectual, incloent els drets relacionats, tant com sigui possible amb la llei aplicable. Podeu copiar, modificar, distribuir l'obra i fer comunicació pública, fins i tot amb fins comercials, sense demanar cap tipus de permís.",
-  "textAbout": "Història Oberta és un projecte editorial independent que ofereix als lectors accés gratuït a cursos d'història."
-},
+  "footer": {
+    "titolPB": "Aquesta pàgina web allibera els seus continguts al Domini Públic",
+    "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.ca",
+    "textPB": "Tots els continguts d'aquesta pàgina web es publiquen i es fan arribar al domini públic renunciant a tots els drets sobre l'obra en relació amb la propietat intel·lectual, incloent els drets relacionats, tant com sigui possible amb la llei aplicable. Podeu copiar, modificar, distribuir l'obra i fer comunicació pública, fins i tot amb fins comercials, sense demanar cap tipus de permís.",
+    "textAbout": "Història Oberta és un projecte editorial independent que ofereix als lectors accés gratuït a cursos d'història."
+  },
 
-  "bookAuthors" : {
+  "bookAuthors": {
     "titolPagina": "Tots els Autors/es",
     "countries": "Filtrar per país d'orígen",
     "allCountries": "Tots els països",
     "professions": "Filtrar per professió",
     "allProfessions": "Totes les professions",
-    "country" : "País",
+    "country": "País",
     "profession": "Professió",
     "yearBorn": "Any de naixement",
     "yearDie": "Any de defunció",
@@ -88,15 +87,15 @@
     "rebutjar": "Rebutjar i tancar",
     "policy": "Saber-ne més"
   },
-  "search" : {
-    "title" : "Resultats de la cerca per a ",
+  "search": {
+    "title": "Resultats de la cerca per a ",
     "subTitol": "Estàs fent una cerca d'articles en català",
     "errorEmptyQuery": "Error en la cerca, si us plau, prova a fer una nova recerca.",
     "noResults": "No hem trobat cap resultat, si us plau, prova a fer una nova recerca.",
     "loading": "Carregant els resultats de la cerca."
   },
-  
-  "homepage" : {
+
+  "homepage": {
     "titleSeo": "Elliot Fernandez - Desenvolupador web i Historiador",
     "descripcioSeo": "Pàgina web del Desenvolupador i historiador Elliot Fernandez, on podràs veure els seus treballs i articles d'història.",
     "webTitle": "👋 Hola, sóc l'Elliot Fernandez, desenvolupador Web especialitzat en front-end i historiador.",
@@ -105,13 +104,13 @@
     "webLinkCourse": "Veure tots els articles"
   },
 
-  "article" : {
+  "article": {
     "index": "Índex de continguts",
     "articleNoDisponible": "Ho sentim, però aquest contingut no està disponible en aquest moment.",
     "curs": "Curs: "
   },
 
-  "AuthorBox" : {
+  "AuthorBox": {
     "descripcioAutor": "Vaig nèixer l'any 1987 a Terrassa (Barcelona). L'any 2009 em vaig llicenciar en Història Moderna i Contemporània a la Universitat Autònoma de Barcelona i el 2011 vaig completar el Màster en Història del Món de la Universitat Pompeu Fabra. Professionalment sóc desenvolupador web especialitzat en tecnologies del Front-end. Des de 2017 treballo fent projectes web com a freelance a HispanTIC."
   },
 

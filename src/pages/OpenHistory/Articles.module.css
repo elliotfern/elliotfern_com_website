@@ -1,8 +1,8 @@
 .indexContinguts {
-    width: 60%;
-    background-color: rgb(221, 221, 221);
-    padding: 20px;
-    border-radius: 8px;
+  width: 60%;
+  background-color: rgb(221, 221, 221);
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .indexContinguts h3 {
@@ -13,7 +13,7 @@
 }
 
 .textArticle {
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
 .textArticle p {
@@ -26,7 +26,8 @@
     width: 100%;
   }
 
-  .textArticle ul, ol {
+  .textArticle ul,
+  ol {
     margin-left: 25px;
   }
 
@@ -34,7 +35,7 @@
     font-size: 1.25em;
   }
 
-  .indexContinguts ul, 
+  .indexContinguts ul,
   .indexContinguts li {
     margin-left: 10px;
     font-size: 1.01em;
@@ -43,7 +44,8 @@
 
 /* Ordenador */
 @media (width >= 800px) {
-  .textArticle ul, ol {
+  .textArticle ul,
+  ol {
     margin-left: 40px;
   }
 

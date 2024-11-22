@@ -1,102 +1,102 @@
 {
   "nav": {
-      "home": "Accueil",
-      "about": "À propos de l'auteur",
-      "books": "Livres",
-      "historyArchives": "Archives",
-      "blog": "Blog",
-      "links": "Links",
-      "languages": "Langues",
-      "english": "Anglais",
-      "spanish": "Espagnol",
-      "catalan": "Catalan",
-      "italian": "Italien",
-      "french": "Français",
-      "privacyPolicy": "Politique de confidentialité",
-      "contact": "Contact",
-       "buscadorPlaceHolder": "Chercher sur le site...",
-      "buscadorCerca": "Chercher",
-   "compromisQualitat": "Engagement de responsabilité"
+    "home": "Accueil",
+    "about": "À propos de l'auteur",
+    "books": "Livres",
+    "historyArchives": "Archives",
+    "blog": "Blog",
+    "links": "Links",
+    "languages": "Langues",
+    "english": "Anglais",
+    "spanish": "Espagnol",
+    "catalan": "Catalan",
+    "italian": "Italien",
+    "french": "Français",
+    "privacyPolicy": "Politique de confidentialité",
+    "contact": "Contact",
+    "buscadorPlaceHolder": "Chercher sur le site...",
+    "buscadorCerca": "Chercher",
+    "compromisQualitat": "Engagement de responsabilité"
   },
-  
-  "link": {
-  "PaginaTitol": "Liens d'Intérêt",
-  "Categories": "Catégories :",
-  "Topics": "Sujets :",
-  "showAllLinks": "Voir Tous",
-  "web": "Page Web",
-  "url": "URL",
-  "categoria": "Catégorie",
-  "idioma": "Langue",
-  "tema": "Sujet",
-  "tipus": "Type",
-  "data": "Date de Modification",
-  "refreshTable": "Mettre à Jour les Données"
-},
 
-"book": {
-  "titolPagina": "Livres recommandés",
-  "year": "Année de publication",
-  "originalLanguage": "Langue originale",
-  "autor": "Auteur/e",
-  "tematica": "Thématique principale",
-  "allGenres": "Tous les genres",
-  "genres": "Filtrer par genre",
-  "languages": "Filtrer par langue",
-  "allLanguages": "Toutes les langues",
-  "esborrar": "Annuler les résultats",
-  "titolCercador": "Moteur de recherche de livres",
-  "cercadorPlaceHolder": "Rechercher par titre du livre",
-  "paginaAutors": "Vous pouvez consulter la page des auteurs/trices",
-   "bookDetailsBtn": "Voir plus de détails sur le livre",
-  "title": "Titre en anglais",
-  "author": "Auteur(e)",
-  "language": "Langue originale",
-  "genre": "Catégorie",
-  "topic": "Sujet",
-  "editorial": "Éditeur",
-  "tipusLlibre": "Type"
-},
-"bookAuthors": {
-  "titolPagina": "Tous les Auteurs/trices",
-  "countries": "Filtrer par pays d'origine",
-  "allCountries": "Tous les pays",
-  "professions": "Filtrer par profession",
-  "allProfessions": "Toutes les professions",
-  "country": "Pays",
-  "profession": "Profession",
-  "yearBorn": "Année de naissance",
-  "yearDie": "Année de décès",
-  "description": "Description",
+  "link": {
+    "PaginaTitol": "Liens d'Intérêt",
+    "Categories": "Catégories :",
+    "Topics": "Sujets :",
+    "showAllLinks": "Voir Tous",
+    "web": "Page Web",
+    "url": "URL",
+    "categoria": "Catégorie",
+    "idioma": "Langue",
+    "tema": "Sujet",
+    "tipus": "Type",
+    "data": "Date de Modification",
+    "refreshTable": "Mettre à Jour les Données"
+  },
+
+  "book": {
+    "titolPagina": "Livres recommandés",
+    "year": "Année de publication",
+    "originalLanguage": "Langue originale",
+    "autor": "Auteur/e",
+    "tematica": "Thématique principale",
+    "allGenres": "Tous les genres",
+    "genres": "Filtrer par genre",
+    "languages": "Filtrer par langue",
+    "allLanguages": "Toutes les langues",
+    "esborrar": "Annuler les résultats",
+    "titolCercador": "Moteur de recherche de livres",
+    "cercadorPlaceHolder": "Rechercher par titre du livre",
+    "paginaAutors": "Vous pouvez consulter la page des auteurs/trices",
+    "bookDetailsBtn": "Voir plus de détails sur le livre",
+    "title": "Titre en anglais",
+    "author": "Auteur(e)",
+    "language": "Langue originale",
+    "genre": "Catégorie",
+    "topic": "Sujet",
+    "editorial": "Éditeur",
+    "tipusLlibre": "Type"
+  },
+  "bookAuthors": {
+    "titolPagina": "Tous les Auteurs/trices",
+    "countries": "Filtrer par pays d'origine",
+    "allCountries": "Tous les pays",
+    "professions": "Filtrer par profession",
+    "allProfessions": "Toutes les professions",
+    "country": "Pays",
+    "profession": "Profession",
+    "yearBorn": "Année de naissance",
+    "yearDie": "Année de décès",
+    "description": "Description",
     "wikipedia": "Page Wikipédia",
     "booksByAuthor": "Livres de l'auteur(e)",
     "authorDetailsBtn": "Voir plus de détails sur l'auteur(e)"
-},
+  },
 
-"footer": {
-  "titolPB": "Cette page web libère ses contenus dans le Domaine Public",
-  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr",
-  "textPB": "Tous les contenus de cette page web sont publiés et envoyés dans le domaine public en renonçant à tous les droits sur l'œuvre en relation avec la propriété intellectuelle, y compris les droits connexes, autant que possible selon la loi applicable. Vous pouvez copier, modifier, distribuer l'œuvre et faire une communication publique, même à des fins commerciales, sans demander de permission.",
-  "textAbout": "Histoire Ouverte est un projet d'édition indépendant qui offre aux lecteurs un accès gratuit à des cours d'histoire."
-},
+  "footer": {
+    "titolPB": "Cette page web libère ses contenus dans le Domaine Public",
+    "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr",
+    "textPB": "Tous les contenus de cette page web sont publiés et envoyés dans le domaine public en renonçant à tous les droits sur l'œuvre en relation avec la propriété intellectuelle, y compris les droits connexes, autant que possible selon la loi applicable. Vous pouvez copier, modifier, distribuer l'œuvre et faire une communication publique, même à des fins commerciales, sans demander de permission.",
+    "textAbout": "Histoire Ouverte est un projet d'édition indépendant qui offre aux lecteurs un accès gratuit à des cours d'histoire."
+  },
 
-"cookieBanner": {
-  "titol": "Bienvenue sur ElliotFern.com !",
-  "missatge": "Nous et nos partenaires stockons et/ou accédons à des informations sur votre appareil via des cookies, et traitons des données personnelles, telles que des identifiants uniques et des informations standard pour obtenir des informations sur l'audience. Avec votre consentement, nous et nos partenaires pouvons utiliser des données de localisation et d'identification via la numérisation de l'appareil. Vous pouvez cliquer pour donner votre consentement à notre traitement. Sinon, vous pouvez cliquer pour refuser le consentement.",
-  "acceptar": "Accepter et fermer",
-  "rebutjar": "Refuser et fermer",
-  "policy": "En savoir plus"
-},
+  "cookieBanner": {
+    "titol": "Bienvenue sur ElliotFern.com !",
+    "missatge": "Nous et nos partenaires stockons et/ou accédons à des informations sur votre appareil via des cookies, et traitons des données personnelles, telles que des identifiants uniques et des informations standard pour obtenir des informations sur l'audience. Avec votre consentement, nous et nos partenaires pouvons utiliser des données de localisation et d'identification via la numérisation de l'appareil. Vous pouvez cliquer pour donner votre consentement à notre traitement. Sinon, vous pouvez cliquer pour refuser le consentement.",
+    "acceptar": "Accepter et fermer",
+    "rebutjar": "Refuser et fermer",
+    "policy": "En savoir plus"
+  },
 
-"search" : {
-  "title" : "Résultats de recherche pour ",
-  "subTitol": "Vous recherchez des articles en français",
-  "errorEmptyQuery": "Erreur de recherche, veuillez essayer de faire une nouvelle recherche.",
+  "search": {
+    "title": "Résultats de recherche pour ",
+    "subTitol": "Vous recherchez des articles en français",
+    "errorEmptyQuery": "Erreur de recherche, veuillez essayer de faire une nouvelle recherche.",
     "noResults": "Aucun résultat trouvé, veuillez essayer de faire une nouvelle recherche.",
     "loading": "Chargement des résultats de la recherche."
-},
+  },
 
-"homepage": {
+  "homepage": {
     "titleSeo": "Elliot Fernandez - Développeur web et Historien",
     "descripcioSeo": "Le site web du Développeur web et Historien Elliot Fernandez, où vous pouvez voir ses travaux et articles d'histoire.",
     "webTitle": "👋 Bonjour, je m'appelle Elliot Fernandez, développeur web front-end et historien.",
@@ -111,18 +111,18 @@
     "curs": "Course: "
   },
 
-  "AuthorBox" : {
+  "AuthorBox": {
     "descripcioAutor": "Je suis né en 1987 à Terrassa (Barcelone). En 2009, j'ai obtenu une licence en Histoire Moderne et Contemporaine à l'Université Autonome de Barcelone, et en 2011, j'ai terminé le Master en Histoire du Monde à l'Université Pompeu Fabra. Professionnellement, je suis développeur web spécialisé dans les technologies Front-end. Depuis 2017, je travaille en tant que freelance sur des projets web chez HispanTIC."
   },
 
-    "webPostDate": "Publié le",
-    "webPostModified": "Modifié le",
-    "webCommentsText": "Commentaires",
+  "webPostDate": "Publié le",
+  "webPostModified": "Modifié le",
+  "webCommentsText": "Commentaires",
 
-    "webCursNameError": "Cours non disponible",
-    "webCursDescripcioError": "Ce cours est en préparation",
-    "webwebCursContingut": "Contenus du cours :",
-    "webwebCursContingutError": "Aucun contenu disponible dans ce cours",
-     "dataCreacio": "Date de création de l'enregistrement",
-    "dataModificacio": "Date de modification des données"
-  } 
+  "webCursNameError": "Cours non disponible",
+  "webCursDescripcioError": "Ce cours est en préparation",
+  "webwebCursContingut": "Contenus du cours :",
+  "webwebCursContingutError": "Aucun contenu disponible dans ce cours",
+  "dataCreacio": "Date de création de l'enregistrement",
+  "dataModificacio": "Date de modification des données"
+}

@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import styles from "./AuthorBox.module.css";
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import styles from './AuthorBox.module.css'
 
 function AuthorBox() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation()
 
   return (
     <div className={styles.boxAuthor}>
@@ -13,10 +13,10 @@ function AuthorBox() {
 
       <div className={styles.authorInfo}>
         <h6>
-          {" "}
+          {' '}
           <Link to={`/${i18n.language}/about-author`}>Elliot Fernandez</Link>
         </h6>
-        <p>{t("AuthorBox.descripcioAutor")}</p>
+        <p>{t('AuthorBox.descripcioAutor')}</p>
 
         {/* Redes Sociales */}
         <div className={styles.socialIcons}>
@@ -25,26 +25,38 @@ function AuthorBox() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="https://media.elliotfern.com/img/elliotfern-icon/linkedin.svg" alt="LinkedIn" width={24} />
+            <img
+              src="https://media.elliotfern.com/img/elliotfern-icon/linkedin.svg"
+              alt="LinkedIn"
+              width={24}
+            />
           </a>
           <a
             href="https://github.com/ElliotFern"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="https://media.elliotfern.com/img/elliotfern-icon/github.svg" alt="GitHub" width={24} />
+            <img
+              src="https://media.elliotfern.com/img/elliotfern-icon/github.svg"
+              alt="GitHub"
+              width={24}
+            />
           </a>
           <a
             href="https://c.im/@elliot"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="https://media.elliotfern.com/img/elliotfern-icon/mastodon.svg" alt="Mastodon" width={24} />
+            <img
+              src="https://media.elliotfern.com/img/elliotfern-icon/mastodon.svg"
+              alt="Mastodon"
+              width={24}
+            />
           </a>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default AuthorBox;
+export default AuthorBox

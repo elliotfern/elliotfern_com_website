@@ -1,4 +1,4 @@
 #! /bin/sh
-. "$(dirname "$0")/../node_modules/.bin/setup-env"
+. "$(dirname "$0")/_/husky.sh"
 
 yarn prettify && yarn lint && yarn test

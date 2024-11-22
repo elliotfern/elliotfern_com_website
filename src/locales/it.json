@@ -18,21 +18,21 @@
     "buscadorCerca": "Cerca",
     "compromisQualitat": "Impegno di responsabilità"
   },
-  
+
   "link": {
-  "PaginaTitol": "Collegamenti di Interesse",
-  "Categories": "Categorie :",
-  "Topics": "Argomenti :",
-  "showAllLinks": "Mostra Tutti",
-  "web": "Sito Web",
-  "url": "URL",
-  "categoria": "Categoria",
-  "idioma": "Lingua",
-  "tema": "Argomento",
-  "tipus": "Tipo",
-  "data": "Data di Modifica",
-  "refreshTable": "Aggiorna Dati"
-},
+    "PaginaTitol": "Collegamenti di Interesse",
+    "Categories": "Categorie :",
+    "Topics": "Argomenti :",
+    "showAllLinks": "Mostra Tutti",
+    "web": "Sito Web",
+    "url": "URL",
+    "categoria": "Categoria",
+    "idioma": "Lingua",
+    "tema": "Argomento",
+    "tipus": "Tipo",
+    "data": "Data di Modifica",
+    "refreshTable": "Aggiorna Dati"
+  },
 
   "book": {
     "titolPagina": "Libri consigliati",
@@ -75,56 +75,54 @@
   },
 
   "footer": {
-  "titolPB": "Questa pagina web rilascia i suoi contenuti nel Pubblico Dominio",
-  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.it",
-  "textPB": "Tutti i contenuti di questa pagina web sono pubblicati e inviati nel pubblico dominio rinunciando a tutti i diritti sull'opera in relazione alla proprietà intellettuale, compresi i diritti connessi, per quanto possibile secondo la legge applicabile. Puoi copiare, modificare, distribuire l'opera e fare comunicazione pubblica, anche per fini commerciali, senza chiedere alcun tipo di permesso.",
-  "textAbout": "Storia Aperta è un progetto editoriale indipendente che offre ai lettori accesso gratuito a corsi di storia."
-},
+    "titolPB": "Questa pagina web rilascia i suoi contenuti nel Pubblico Dominio",
+    "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.it",
+    "textPB": "Tutti i contenuti di questa pagina web sono pubblicati e inviati nel pubblico dominio rinunciando a tutti i diritti sull'opera in relazione alla proprietà intellettuale, compresi i diritti connessi, per quanto possibile secondo la legge applicabile. Puoi copiare, modificare, distribuire l'opera e fare comunicazione pubblica, anche per fini commerciali, senza chiedere alcun tipo di permesso.",
+    "textAbout": "Storia Aperta è un progetto editoriale indipendente che offre ai lettori accesso gratuito a corsi di storia."
+  },
 
-"cookieBanner": {
-  "titol": "Benvenuto su ElliotFern.com!",
-  "missatge": "Noi e i nostri partner memorizziamo e/o accediamo a informazioni sul tuo dispositivo tramite cookie e trattiamo dati personali, come identificatori univoci e informazioni standard per ottenere informazioni sul pubblico. Con il tuo permesso, noi e i nostri partner possiamo utilizzare dati di localizzazione e identificazione tramite la scansione del dispositivo. Puoi fare clic per dare il tuo consenso al nostro trattamento. In alternativa, puoi fare clic per rifiutare il consenso.",
-  "acceptar": "Accetta e chiudi",
-  "rebutjar": "Rifiuta e chiudi",
-  "policy": "Scopri di più"
-},
+  "cookieBanner": {
+    "titol": "Benvenuto su ElliotFern.com!",
+    "missatge": "Noi e i nostri partner memorizziamo e/o accediamo a informazioni sul tuo dispositivo tramite cookie e trattiamo dati personali, come identificatori univoci e informazioni standard per ottenere informazioni sul pubblico. Con il tuo permesso, noi e i nostri partner possiamo utilizzare dati di localizzazione e identificazione tramite la scansione del dispositivo. Puoi fare clic per dare il tuo consenso al nostro trattamento. In alternativa, puoi fare clic per rifiutare il consenso.",
+    "acceptar": "Accetta e chiudi",
+    "rebutjar": "Rifiuta e chiudi",
+    "policy": "Scopri di più"
+  },
 
-"search" : {
-  "title" : "Cerca risultati per ",
-  "subTitol": "Stai cercando articoli in italiano",
-  "errorEmptyQuery": "Errore nella ricerca, per favore prova a fare una nuova ricerca.",
-  "noResults": "Nessun risultato trovato, per favore prova a fare una nuova ricerca.",
-  "loading": "Caricando i risultati della ricerca."
-},
+  "search": {
+    "title": "Cerca risultati per ",
+    "subTitol": "Stai cercando articoli in italiano",
+    "errorEmptyQuery": "Errore nella ricerca, per favore prova a fare una nuova ricerca.",
+    "noResults": "Nessun risultato trovato, per favore prova a fare una nuova ricerca.",
+    "loading": "Caricando i risultati della ricerca."
+  },
 
+  "homepage": {
+    "titleSeo": "Elliot Fernandez - Sviluppatore Web e Storico",
+    "descripcioSeo": "Sito web dello sviluppatore web e storico Elliot Fernandez, dove puoi vedere i suoi lavori e articoli di storia.",
+    "webTitle": "👋 Ciao, sono Elliot Fernandez, sviluppatore web front-end e storico.",
+    "webTitleHistoriaOberta": "Storia Aperta",
+    "historiaOberta": "Storia Aperta è un progetto editoriale indipendente che offre ai suoi lettori l'accesso gratuito a articoli di storia su molti corsi diversi. Ora puoi leggere gli articoli di storia su questo sito web.",
+    "webLinkCourse": "Vedi tutti gli articoli"
+  },
 
-"homepage": {
-  "titleSeo": "Elliot Fernandez - Sviluppatore Web e Storico",
-  "descripcioSeo": "Sito web dello sviluppatore web e storico Elliot Fernandez, dove puoi vedere i suoi lavori e articoli di storia.",
-  "webTitle": "👋 Ciao, sono Elliot Fernandez, sviluppatore web front-end e storico.",
-  "webTitleHistoriaOberta": "Storia Aperta",
-  "historiaOberta": "Storia Aperta è un progetto editoriale indipendente che offre ai suoi lettori l'accesso gratuito a articoli di storia su molti corsi diversi. Ora puoi leggere gli articoli di storia su questo sito web.",
-  "webLinkCourse": "Vedi tutti gli articoli"
-},
+  "article": {
+    "index": "Indice dei contenuti",
+    "articleNoDisponible": "Ci dispiace, ma questo contenuto non è disponibile al momento.",
+    "curs": "Corso: "
+  },
 
-"article": {
-  "index": "Indice dei contenuti",
-  "articleNoDisponible": "Ci dispiace, ma questo contenuto non è disponibile al momento.",
-  "curs": "Corso: "
-},
+  "AuthorBox": {
+    "descripcioAutor": "Sono nato nel 1987 a Terrassa (Barcellona). Nel 2009 mi sono laureato in Storia Moderna e Contemporanea presso l'Università Autonoma di Barcellona e nel 2011 ho completato il Master in Storia del Mondo all'Università Pompeu Fabra. Professionalmente sono uno sviluppatore web specializzato in tecnologie Front-end. Dal 2017 lavoro come freelance in progetti web presso HispanTIC"
+  },
 
-"AuthorBox" : {
-  "descripcioAutor": "Sono nato nel 1987 a Terrassa (Barcellona). Nel 2009 mi sono laureato in Storia Moderna e Contemporanea presso l'Università Autonoma di Barcellona e nel 2011 ho completato il Master in Storia del Mondo all'Università Pompeu Fabra. Professionalmente sono uno sviluppatore web specializzato in tecnologie Front-end. Dal 2017 lavoro come freelance in progetti web presso HispanTIC"
-},
-
-    "webPostDate": "Pubblicato il",
-    "webPostModified": "Modificato il",
-    "webCommentsText": "Commenti",
-    "webCursNameError": "Corso non disponibile",
-    "webCursDescripcioError": "Questo corso è in preparazione",
-    "webwebCursContingut": "Contenuti del corso:",
-    "webwebCursContingutError": "Nessun contenuto disponibile in questo corso",
-     "dataCreacio": "Data di creazione del record",
-    "dataModificacio": "Data di modifica dei dati"
-    
-  }
+  "webPostDate": "Pubblicato il",
+  "webPostModified": "Modificato il",
+  "webCommentsText": "Commenti",
+  "webCursNameError": "Corso non disponibile",
+  "webCursDescripcioError": "Questo corso è in preparazione",
+  "webwebCursContingut": "Contenuti del corso:",
+  "webwebCursContingutError": "Nessun contenuto disponibile in questo corso",
+  "dataCreacio": "Data di creazione del record",
+  "dataModificacio": "Data di modifica dei dati"
+}

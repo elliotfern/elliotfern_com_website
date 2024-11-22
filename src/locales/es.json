@@ -16,86 +16,86 @@
     "contact": "Contacto",
     "buscadorPlaceHolder": "Buscar en la web...",
     "buscadorCerca": "Buscar",
-   "compromisQualitat": "Compromiso de Responsabilidad"
+    "compromisQualitat": "Compromiso de Responsabilidad"
   },
 
   "link": {
-  "PaginaTitol": "Enlaces de Interés",
-  "Categories": "Categorías:",
-  "Topics": "Temas:",
-  "showAllLinks": "Ver Todos",
-  "web": "Página web",
-  "url": "URL",
-  "categoria": "Categoría",
-  "idioma": "Idioma",
-  "tema": "Tema",
-  "tipus": "Tipo",
-  "data": "Fecha de Modificación",
-  "refreshTable": "Actualizar Datos"
-},
+    "PaginaTitol": "Enlaces de Interés",
+    "Categories": "Categorías:",
+    "Topics": "Temas:",
+    "showAllLinks": "Ver Todos",
+    "web": "Página web",
+    "url": "URL",
+    "categoria": "Categoría",
+    "idioma": "Idioma",
+    "tema": "Tema",
+    "tipus": "Tipo",
+    "data": "Fecha de Modificación",
+    "refreshTable": "Actualizar Datos"
+  },
 
-"book": {
-  "titolPagina": "Libros recomendados",
-  "year": "Año de publicación",
-  "originalLanguage": "Idioma original",
-  "autor": "Autor/a",
-  "tematica": "Temática principal",
-  "allGenres": "Todos los géneros",
-  "genres": "Filtrar por género",
-  "languages": "Filtrar por idioma",
-  "allLanguages": "Todos los idiomas",
-  "esborrar": "Cancelar resultados",
-  "titolCercador": "Buscador de libros",
-  "cercadorPlaceHolder": "Buscar por título del libro",
-  "paginaAutors": "Puedes consultar la página de autores/as",
-  "bookDetailsBtn": "Ver más detalles del libro",
-  "title": "Título en inglés",
-  "author": "Autor/a",
-  "language": "Idioma original",
-  "genre": "Categoría",
-  "topic": "Tema",
-  "editorial": "Editorial",
-  "tipusLlibre": "Tipo"
-},
-"bookAuthors": {
-  "titolPagina": "Todos los Autores/as",
-  "countries": "Filtrar por país de origen",
-  "allCountries": "Todos los países",
-  "professions": "Filtrar por profesión",
-  "allProfessions": "Todas las profesiones",
-  "country": "País",
-  "profession": "Profesión",
-  "yearBorn": "Año de nacimiento",
-  "yearDie": "Año de defunción",
-  "description": "Descripción",
-  "wikipedia": "Página de Wikipedia",
-  "booksByAuthor": "Libros del autor/a",
-  "authorDetailsBtn": "Ver más detalles del autor/a"
-},
-"footer": {
-  "titolPB": "Esta página web libera sus contenidos al Dominio Público",
-  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.es",
-  "textPB": "Todos los contenidos de esta página web se publican y se hacen llegar al dominio público renunciando a todos los derechos sobre la obra en relación con la propiedad intelectual, incluidos los derechos relacionados, en la medida en que sea posible según la ley aplicable. Puedes copiar, modificar, distribuir la obra y hacer comunicación pública, incluso con fines comerciales, sin pedir ningún tipo de permiso.",
-  "textAbout": "Historia Abierta es un proyecto editorial independiente que ofrece a los lectores acceso gratuito a cursos de historia."
-},
+  "book": {
+    "titolPagina": "Libros recomendados",
+    "year": "Año de publicación",
+    "originalLanguage": "Idioma original",
+    "autor": "Autor/a",
+    "tematica": "Temática principal",
+    "allGenres": "Todos los géneros",
+    "genres": "Filtrar por género",
+    "languages": "Filtrar por idioma",
+    "allLanguages": "Todos los idiomas",
+    "esborrar": "Cancelar resultados",
+    "titolCercador": "Buscador de libros",
+    "cercadorPlaceHolder": "Buscar por título del libro",
+    "paginaAutors": "Puedes consultar la página de autores/as",
+    "bookDetailsBtn": "Ver más detalles del libro",
+    "title": "Título en inglés",
+    "author": "Autor/a",
+    "language": "Idioma original",
+    "genre": "Categoría",
+    "topic": "Tema",
+    "editorial": "Editorial",
+    "tipusLlibre": "Tipo"
+  },
+  "bookAuthors": {
+    "titolPagina": "Todos los Autores/as",
+    "countries": "Filtrar por país de origen",
+    "allCountries": "Todos los países",
+    "professions": "Filtrar por profesión",
+    "allProfessions": "Todas las profesiones",
+    "country": "País",
+    "profession": "Profesión",
+    "yearBorn": "Año de nacimiento",
+    "yearDie": "Año de defunción",
+    "description": "Descripción",
+    "wikipedia": "Página de Wikipedia",
+    "booksByAuthor": "Libros del autor/a",
+    "authorDetailsBtn": "Ver más detalles del autor/a"
+  },
+  "footer": {
+    "titolPB": "Esta página web libera sus contenidos al Dominio Público",
+    "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.es",
+    "textPB": "Todos los contenidos de esta página web se publican y se hacen llegar al dominio público renunciando a todos los derechos sobre la obra en relación con la propiedad intelectual, incluidos los derechos relacionados, en la medida en que sea posible según la ley aplicable. Puedes copiar, modificar, distribuir la obra y hacer comunicación pública, incluso con fines comerciales, sin pedir ningún tipo de permiso.",
+    "textAbout": "Historia Abierta es un proyecto editorial independiente que ofrece a los lectores acceso gratuito a cursos de historia."
+  },
 
-"cookieBanner": {
-  "titol": "Bienvenidos a ElliotFern.com!",
-  "missatge": "Nosotros y nuestros socios almacenamos y/o accedemos a información en su dispositivo a través de cookies, y procesamos datos personales, como identificadores únicos e información estándar para obtener información sobre la audiencia. Con su permiso, nosotros y nuestros socios podemos utilizar datos de localización e identificación mediante el escaneo del dispositivo. Puede hacer clic para dar su consentimiento a nuestro procesamiento. Alternativamente, puede hacer clic para negarse a dar su consentimiento.",
-  "acceptar": "Aceptar y cerrar",
-  "rebutjar": "Rechazar y cerrar",
-  "policy": "Saber más"
-},
+  "cookieBanner": {
+    "titol": "Bienvenidos a ElliotFern.com!",
+    "missatge": "Nosotros y nuestros socios almacenamos y/o accedemos a información en su dispositivo a través de cookies, y procesamos datos personales, como identificadores únicos e información estándar para obtener información sobre la audiencia. Con su permiso, nosotros y nuestros socios podemos utilizar datos de localización e identificación mediante el escaneo del dispositivo. Puede hacer clic para dar su consentimiento a nuestro procesamiento. Alternativamente, puede hacer clic para negarse a dar su consentimiento.",
+    "acceptar": "Aceptar y cerrar",
+    "rebutjar": "Rechazar y cerrar",
+    "policy": "Saber más"
+  },
 
-"search" : {
-  "title" : "Resultados de la búsqueda para ",
-  "subTitol": "Estás buscando artículos en español",
-  "errorEmptyQuery": "Error en la búsqueda, por favor, prueba a hacer una nueva búsqueda.",
-  "noResults": "No hemos encontrado resultados, por favor, prueba a hacer una nueva búsqueda.",
-  "loading": "Cargando los resultados de la búsqueda."
-},
+  "search": {
+    "title": "Resultados de la búsqueda para ",
+    "subTitol": "Estás buscando artículos en español",
+    "errorEmptyQuery": "Error en la búsqueda, por favor, prueba a hacer una nueva búsqueda.",
+    "noResults": "No hemos encontrado resultados, por favor, prueba a hacer una nueva búsqueda.",
+    "loading": "Cargando los resultados de la búsqueda."
+  },
 
-"homepage": {
+  "homepage": {
     "titleSeo": "Elliot Fernandez - Desarrollador web e Historiador",
     "descripcioSeo": "Página web del Desarrollador e historiador Elliot Fernandez, donde podrás ver sus trabajos y artículos de historia.",
     "webTitle": "👋 Hola, soy Elliot Fernandez, desarrollador Web especializado en front-end e historiador.",
@@ -104,23 +104,23 @@
     "webLinkCourse": "Ver todos los artículos"
   },
 
-  "article" : {
+  "article": {
     "index": "Índice de contenidos",
     "articleNoDisponible": "Lo sentimos, pero este contenido no está disponible en este momento.",
     "curs": "Curso: "
   },
 
-  "AuthorBox" : {
+  "AuthorBox": {
     "descripcioAutor": "Nací en el año 1987 en Terrassa (Barcelona). En el año 2009 me licencié en Historia Moderna y Contemporánea en la Universidad Autónoma de Barcelona y en 2011 completé el Máster en Historia del Mundo en la Universidad Pompeu Fabra. Profesionalmente soy desarrollador web especializado en tecnologías de Front-end. Desde 2017 trabajo realizando proyectos web como freelance en HispanTIC."
   },
 
-    "webPostDate": "Publicado el",
-    "webPostModified": "Modificado el",
-    "webCommentsText": "Comentarios",
-    "webCursNameError": "Curso no disponible",
-    "webCursDescripcioError": "Este curso está en preparación",
-    "webwebCursContingut": "Contenidos del curso:",
-    "webwebCursContingutError": "No hay contenido disponible en este curso",
-      "dataCreacio": "Fecha de creación del registro",
-    "dataModificacio": "Fecha de modificación de los datos"
-  }
+  "webPostDate": "Publicado el",
+  "webPostModified": "Modificado el",
+  "webCommentsText": "Comentarios",
+  "webCursNameError": "Curso no disponible",
+  "webCursDescripcioError": "Este curso está en preparación",
+  "webwebCursContingut": "Contenidos del curso:",
+  "webwebCursContingutError": "No hay contenido disponible en este curso",
+  "dataCreacio": "Fecha de creación del registro",
+  "dataModificacio": "Fecha de modificación de los datos"
+}

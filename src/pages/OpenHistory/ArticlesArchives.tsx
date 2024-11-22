@@ -1,48 +1,48 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import he from "he";
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import he from 'he'
 
 function ArticlesArchives() {
-  const { lang } = useParams();
+  const { lang } = useParams()
 
-  const [articlesData, setArticlesData] = useState([]);
+  const [articlesData, setArticlesData] = useState([])
 
   useEffect(() => {
-    getData();
-  }, []);
+    getData()
+  }, [])
 
   const getData = async () => {
     try {
       const response = await axios.get(
         `https://api.elliotfern.com/blog.php?type=arxiuArticles&lang=${lang}`
-      );
-      setArticlesData(response.data);
+      )
+      setArticlesData(response.data)
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error('Error fetching data:', error)
       // Handle error and redirection to /error if needed
     }
-  };
+  }
 
   // Función para agrupar los artículos por curso
   const groupArticlesByCourse = (data) => {
-    const groupedData = {};
+    const groupedData = {}
 
     data.forEach((article) => {
-      const courseName = article.cursName;
+      const courseName = article.cursName
 
       if (!groupedData[courseName]) {
-        groupedData[courseName] = [];
+        groupedData[courseName] = []
       }
 
-      groupedData[courseName].push(article);
-    });
+      groupedData[courseName].push(article)
+    })
 
-    return groupedData;
-  };
+    return groupedData
+  }
 
   // Agrupar los artículos por curso
-  const groupedArticles = groupArticlesByCourse(articlesData);
+  const groupedArticles = groupArticlesByCourse(articlesData)
 
   return (
     <>
@@ -70,7 +70,7 @@ function ArticlesArchives() {
         </div>
       ))}
     </>
-  );
+  )
 }
 
-export default ArticlesArchives;
+export default ArticlesArchives

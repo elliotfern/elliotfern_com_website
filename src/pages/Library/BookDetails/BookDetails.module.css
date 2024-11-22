@@ -1,45 +1,44 @@
 /* BookAuthorDetails.module.css */
 
 .container {
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: auto; /* Centrar el contenedor */
-    padding: 20px; /* Espaciado alrededor */
-  }
-  
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: auto; /* Centrar el contenedor */
+  padding: 20px; /* Espaciado alrededor */
+}
+
+.contentBook {
+  display: flex; /* Usar flexbox para las columnas */
+  gap: 20px; /* Espacio entre columnas */
+}
+
+.bookImage {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  max-width: 400px; /* Ajusta el tamaño máximo de la imagen */
+  height: auto; /* Mantiene la relación de aspecto */
+  border-radius: 8px; /* Esquinas redondeadas para la imagen */
+  object-fit: cover; /* Recorta la imagen si es necesario para llenar el espacio */
+}
+
+.details {
+  flex: 1; /* Permite que el contenedor de detalles tome el espacio restante */
+  display: flex;
+  flex-direction: column; /* Asegura que los detalles se apilen verticalmente */
+}
+
+/* Estilos para la sección de libros */
+.booksContainer {
+  margin-top: 40px; /* Espacio superior para separar los libros del autor */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
   .contentBook {
-    display: flex; /* Usar flexbox para las columnas */
-    gap: 20px; /* Espacio entre columnas */
+    flex-direction: column; /* Cambia a columna en dispositivos móviles */
+    gap: 10px; /* Reduce el espaciado entre columnas */
   }
-  
+
   .bookImage {
-    width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-    max-width: 400px; /* Ajusta el tamaño máximo de la imagen */
-    height: auto; /* Mantiene la relación de aspecto */
-    border-radius: 8px; /* Esquinas redondeadas para la imagen */
-    object-fit: cover; /* Recorta la imagen si es necesario para llenar el espacio */
+    max-width: 100%; /* Permite que la imagen ocupe todo el ancho en móviles */
+    height: auto; /* Asegura que la imagen mantenga la relación de aspecto */
   }
-  
-  .details {
-    flex: 1; /* Permite que el contenedor de detalles tome el espacio restante */
-    display: flex;
-    flex-direction: column; /* Asegura que los detalles se apilen verticalmente */
-  }
-  
-  /* Estilos para la sección de libros */
-  .booksContainer {
-    margin-top: 40px; /* Espacio superior para separar los libros del autor */
-  }
-  
-  /* Estilos responsivos para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .contentBook {
-      flex-direction: column; /* Cambia a columna en dispositivos móviles */
-      gap: 10px; /* Reduce el espaciado entre columnas */
-    }
-  
-    .bookImage {
-      max-width: 100%; /* Permite que la imagen ocupe todo el ancho en móviles */
-      height: auto; /* Asegura que la imagen mantenga la relación de aspecto */
-    }
-  }
-  
+}

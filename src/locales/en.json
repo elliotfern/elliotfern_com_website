@@ -15,26 +15,26 @@
     "privacyPolicy": "Privacy Policy",
     "contact": "Contact",
     "buscadorPlaceHolder": "Search on the website...",
-   "buscadorCerca": "Search",
-   "compromisQualitat": "Commitment of Responsability"
+    "buscadorCerca": "Search",
+    "compromisQualitat": "Commitment of Responsability"
   },
 
   "link": {
-  "PaginaTitol": "Bookmarks",
-  "Categories": "Categories:",
-  "Topics": "Topics:",
-  "showAllLinks": "View All",
-  "web": "Website",
-  "url": "URL",
-  "categoria": "Category",
-  "idioma": "Language",
-  "tema": "Topic",
-  "tipus": "Type",
-  "data": "Modification Date",
-  "refreshTable": "Refresh Data"
-},
+    "PaginaTitol": "Bookmarks",
+    "Categories": "Categories:",
+    "Topics": "Topics:",
+    "showAllLinks": "View All",
+    "web": "Website",
+    "url": "URL",
+    "categoria": "Category",
+    "idioma": "Language",
+    "tema": "Topic",
+    "tipus": "Type",
+    "data": "Modification Date",
+    "refreshTable": "Refresh Data"
+  },
 
-"book": {
+  "book": {
     "titolPagina": "Recommended Books",
     "year": "Publication Year",
     "originalLanguage": "Original Language",
@@ -74,28 +74,28 @@
   },
 
   "footer": {
-  "titolPB": "We release the contents to the Public Domain",
-  "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "textPB": "All the contents of this web page are published and sent to the public domain by renouncing all rights to the work in relation to intellectual property, including related rights, as far as it is possible with the applicable law applicable. You can copy, modify, distribute the work and make public communication, even for commercial purposes, without asking for any kind of permission.",
-  "textAbout": "Open History is an independent publishing project that offers readers free access history courses."
-},
+    "titolPB": "We release the contents to the Public Domain",
+    "PBurl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "textPB": "All the contents of this web page are published and sent to the public domain by renouncing all rights to the work in relation to intellectual property, including related rights, as far as it is possible with the applicable law applicable. You can copy, modify, distribute the work and make public communication, even for commercial purposes, without asking for any kind of permission.",
+    "textAbout": "Open History is an independent publishing project that offers readers free access history courses."
+  },
 
-"cookieBanner": {
-  "titol": "Welcome at ElliotFern.com!",
-  "missatge": "We and our partners store and/or access information on your device through cookies, and process personal data, such as unique identifiers and standard information to gather audience insights. With your consent, we and our partners may use location and identification data through device scanning. You can click to give your consent to our processing. Alternatively, you can click to refuse consent.",
-  "acceptar": "Accept and close",
-  "rebutjar": "Reject and close",
-  "policy": "Learn more"
-},
+  "cookieBanner": {
+    "titol": "Welcome at ElliotFern.com!",
+    "missatge": "We and our partners store and/or access information on your device through cookies, and process personal data, such as unique identifiers and standard information to gather audience insights. With your consent, we and our partners may use location and identification data through device scanning. You can click to give your consent to our processing. Alternatively, you can click to refuse consent.",
+    "acceptar": "Accept and close",
+    "rebutjar": "Reject and close",
+    "policy": "Learn more"
+  },
 
-  "search" : {
-    "title" : "Search results for ",
+  "search": {
+    "title": "Search results for ",
     "subTitol": "You are searching articles in English",
     "errorEmptyQuery": "Search error, please try making a new search.",
     "noResults": "No results found, please try making a new search.",
     "loading": "Loading search results."
   },
-  
+
   "homepage": {
     "titleSeo": "Elliot Fernandez - Web Developer and Historian",
     "descripcioSeo": "The website of Web Developer and Historian Elliot Fernandez, where you can view his works and history articles.",
@@ -105,23 +105,23 @@
     "webLinkCourse": "See all articles"
   },
 
-  "article" : {
+  "article": {
     "index": "Table of Contents",
     "articleNoDisponible": "Sorry, but this content is not available at the moment.",
     "curs": "Course: "
   },
 
-  "AuthorBox" : {
+  "AuthorBox": {
     "descripcioAutor": "I was born in 1987 in Terrassa (Barcelona). In 2009, I graduated in Modern and Contemporary History from the Autonomous University of Barcelona, and in 2011, I completed a Master's in World History at Pompeu Fabra University. Professionally, I am a web developer specializing in Front-end technologies. Since 2017, I have been working on web projects as a freelancer at HispanTIC."
   },
 
-    "webPostDate": "Posted on",
-    "webPostModified": "Modified on",
-    "webCommentsText": "Comments",
-    "webCursNameError": "Course not available",
-    "webCursDescripcioError": "This course is in preparation",
-    "webwebCursContingut": "Course contents:",
-    "webwebCursContingutError": "There is no content available for this course",
-    "dataCreacio": "Data Creation Date",
-    "dataModificacio": "Data Modification Date"
-  } 
+  "webPostDate": "Posted on",
+  "webPostModified": "Modified on",
+  "webCommentsText": "Comments",
+  "webCursNameError": "Course not available",
+  "webCursDescripcioError": "This course is in preparation",
+  "webwebCursContingut": "Course contents:",
+  "webwebCursContingutError": "There is no content available for this course",
+  "dataCreacio": "Data Creation Date",
+  "dataModificacio": "Data Modification Date"
+}

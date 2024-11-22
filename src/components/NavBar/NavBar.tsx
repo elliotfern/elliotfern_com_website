@@ -1,45 +1,45 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { routes } from "../../services/routes";
-import styles from "./NavBar.module.css";
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { routes } from '../../services/routes'
+import styles from './NavBar.module.css'
 
 function NavBar() {
-  const { t, i18n } = useTranslation();
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
+  const { t, i18n } = useTranslation()
+  const [query, setQuery] = useState('')
+  const navigate = useNavigate()
 
-  const [menuVisible, setMenuVisible] = useState(false);
-  const [languagesMenuVisible, setLanguagesMenuVisible] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false)
+  const [languagesMenuVisible, setLanguagesMenuVisible] = useState(false)
 
   const handleToggleMenu = () => {
-    setMenuVisible(!menuVisible);
-  };
+    setMenuVisible(!menuVisible)
+  }
 
   const handleToggleLanguagesMenu = () => {
-    setLanguagesMenuVisible(!languagesMenuVisible);
-  };
+    setLanguagesMenuVisible(!languagesMenuVisible)
+  }
 
   // Cierra los menús al hacer clic en cualquier enlace del menú principal o de idiomas
   const handleCloseMenus = () => {
-    setMenuVisible(false);
-    setLanguagesMenuVisible(false);
-  };
+    setMenuVisible(false)
+    setLanguagesMenuVisible(false)
+  }
 
   const handleLanguageChange = (newLang) => {
-    i18n.changeLanguage(newLang);
-    navigate(`/${newLang}/homepage`);
-    handleCloseMenus(); // Cierra los menús después de cambiar el idioma
-  };
+    i18n.changeLanguage(newLang)
+    navigate(`/${newLang}/homepage`)
+    handleCloseMenus() // Cierra los menús después de cambiar el idioma
+  }
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    const newLang = i18n.language;
-    navigate(`/${newLang}/search-results?query=${query}`);
-    setQuery("");
-    setMenuVisible(false);
-    setLanguagesMenuVisible(false);
-  };
+    e.preventDefault()
+    const newLang = i18n.language
+    navigate(`/${newLang}/search-results?query=${query}`)
+    setQuery('')
+    setMenuVisible(false)
+    setLanguagesMenuVisible(false)
+  }
 
   return (
     <>
@@ -57,7 +57,7 @@ function NavBar() {
             }`}
             onClick={handleToggleMenu}
           >
-            {menuVisible ? "✖" : "☰"}
+            {menuVisible ? '✖' : '☰'}
           </button>
 
           <div
@@ -71,7 +71,7 @@ function NavBar() {
                   to={routes[i18n.language].homepage}
                   onClick={handleCloseMenus}
                 >
-                  {t("nav.home")}
+                  {t('nav.home')}
                 </Link>
               </li>
               <li>
@@ -79,7 +79,7 @@ function NavBar() {
                   to={routes[i18n.language].about}
                   onClick={handleCloseMenus}
                 >
-                  {t("nav.about")}
+                  {t('nav.about')}
                 </Link>
               </li>
               <li>
@@ -87,7 +87,7 @@ function NavBar() {
                   to={routes[i18n.language].books}
                   onClick={handleCloseMenus}
                 >
-                  {t("nav.books")}
+                  {t('nav.books')}
                 </Link>
               </li>
               <li>
@@ -95,7 +95,7 @@ function NavBar() {
                   to={routes[i18n.language].historyArchives}
                   onClick={handleCloseMenus}
                 >
-                  {t("nav.historyArchives")}
+                  {t('nav.historyArchives')}
                 </Link>
               </li>
               <li>
@@ -103,7 +103,7 @@ function NavBar() {
                   to={routes[i18n.language].blog}
                   onClick={handleCloseMenus}
                 >
-                  {t("nav.blog")}
+                  {t('nav.blog')}
                 </Link>
               </li>
               <li>
@@ -111,12 +111,12 @@ function NavBar() {
                   to={routes[i18n.language].links}
                   onClick={handleCloseMenus}
                 >
-                  {t("nav.links")}
+                  {t('nav.links')}
                 </Link>
               </li>
               <li>
                 <a href="#" onClick={handleToggleLanguagesMenu}>
-                  {t("nav.languages")}
+                  {t('nav.languages')}
                 </a>
 
                 {languagesMenuVisible && (
@@ -126,41 +126,41 @@ function NavBar() {
                         <li>
                           <a
                             href="#"
-                            onClick={() => handleLanguageChange("en")}
+                            onClick={() => handleLanguageChange('en')}
                           >
-                            {t("nav.english")}
+                            {t('nav.english')}
                           </a>
                         </li>
                         <li>
                           <a
                             href="#"
-                            onClick={() => handleLanguageChange("es")}
+                            onClick={() => handleLanguageChange('es')}
                           >
-                            {t("nav.spanish")}
+                            {t('nav.spanish')}
                           </a>
                         </li>
                         <li>
                           <a
                             href="#"
-                            onClick={() => handleLanguageChange("it")}
+                            onClick={() => handleLanguageChange('it')}
                           >
-                            {t("nav.italian")}
+                            {t('nav.italian')}
                           </a>
                         </li>
                         <li>
                           <a
                             href="#"
-                            onClick={() => handleLanguageChange("fr")}
+                            onClick={() => handleLanguageChange('fr')}
                           >
-                            {t("nav.french")}
+                            {t('nav.french')}
                           </a>
                         </li>
                         <li>
                           <a
                             href="#"
-                            onClick={() => handleLanguageChange("ca")}
+                            onClick={() => handleLanguageChange('ca')}
                           >
-                            {t("nav.catalan")}
+                            {t('nav.catalan')}
                           </a>
                         </li>
                         <li>
@@ -181,21 +181,21 @@ function NavBar() {
             <form onSubmit={handleSearch} className={styles.searchForm}>
               <input
                 type="search"
-                placeholder={t("nav.buscadorPlaceHolder")}
+                placeholder={t('nav.buscadorPlaceHolder')}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 aria-label="Search"
                 className={styles.searchInput} // Asocia estilos con el input
               />
               <button type="submit" className={styles.searchButton}>
-              {t("nav.buscadorCerca")}
+                {t('nav.buscadorCerca')}
               </button>
             </form>
           </div>
         </div>
       </header>
     </>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

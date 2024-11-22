@@ -48,7 +48,7 @@
   .headerContent > .containerMenu {
     flex: 1;
     display: flex;
-    justify-content:space-between; 
+    justify-content: space-between;
   }
 
   .logo {
@@ -151,7 +151,7 @@
 }
 
 .superMenu1 li {
-  margin-right: 20px;  /* Espacio entre los elementos del menú */
+  margin-right: 20px; /* Espacio entre los elementos del menú */
   display: inline-block; /* Esto puede ser opcional dependiendo de la estructura */
 }
 
@@ -178,7 +178,7 @@
   font-size: 1.5rem; /* Tamaño del icono */
   cursor: pointer; /* Cambia el cursor al pasar por encima */
   right: 10px;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
 }
 
 /* Estilos para pantallas más pequeñas (ejemplo: móviles) */
@@ -186,18 +186,18 @@
   .menuOpen {
     display: block;
   }
-  
+
   .menuClosed {
     display: none;
   }
-  
+
   .headerContent {
-    flex-direction: column;  /* Los elementos se alinean verticalmente */
+    flex-direction: column; /* Los elementos se alinean verticalmente */
     align-items: center;
   }
 
   .containerMenu {
-    display: none;  /* Menú oculto en móviles */
+    display: none; /* Menú oculto en móviles */
     flex-direction: column; /* Cambia la dirección a columna en móviles */
     width: 100%; /* Asegura que el menú ocupe el ancho completo */
     align-items: start; /* Centra los elementos */
@@ -276,16 +276,16 @@
 }
 
 .searchInput {
-  font-size: 1rem;  
+  font-size: 1rem;
   outline: none;
   transition: border-color 0.3s ease;
   border: 1px solid #ddd;
-  margin-right:15px;
+  margin-right: 15px;
   padding: 7px;
 }
 
 .searchInput:focus {
-  border-color: #000000;       /* Borde azul al hacer foco */
+  border-color: #000000; /* Borde azul al hacer foco */
 }
 
 .searchButton {
@@ -299,15 +299,15 @@
 }
 
 .searchButton:hover {
-  background-color: #1a3450;    /* Fondo azul más oscuro al pasar el ratón */
+  background-color: #1a3450; /* Fondo azul más oscuro al pasar el ratón */
 }
 
 @media (max-width: 768px) {
   .searchForm {
-    flex-direction: column;     /* Los elementos se apilan en pantallas pequeñas */
+    flex-direction: column; /* Los elementos se apilan en pantallas pequeñas */
   }
 
   .searchInput {
-    margin-bottom: 10px;         /* Añadir espacio entre el input y el botón */
+    margin-bottom: 10px; /* Añadir espacio entre el input y el botón */
   }
 }

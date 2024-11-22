@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "prettify": "prettier --write .",
     "test": "vitest run",
     "test-watch": "vitest watch",
     "prepare": "husky install"
@@ -50,6 +51,7 @@
     "globals": "^15.9.0",
     "husky": "^8.0.0",
     "jsdom": "^25.0.1",
+    "prettier": "^3.3.3",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8",

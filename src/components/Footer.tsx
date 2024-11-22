@@ -1,32 +1,32 @@
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { routes } from "../services/routes";
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { routes } from '../services/routes'
 
 function Footer() {
-  const { t, i18n } = useTranslation();
-  const year = new Date().getFullYear();
+  const { t, i18n } = useTranslation()
+  const year = new Date().getFullYear()
   return (
     <>
       <div className="container-fluid footer">
         <div className="footer-elliotfern">
           <div className="menu-separacio">
-              <Link to={routes[i18n.language].about}>{t("nav.about")}</Link>
+            <Link to={routes[i18n.language].about}>{t('nav.about')}</Link>
           </div>
 
           <div className="menu-separacio">
-              <Link to={routes[i18n.language].privacyPolicy}>
-                {t("nav.privacyPolicy")}
-              </Link>
+            <Link to={routes[i18n.language].privacyPolicy}>
+              {t('nav.privacyPolicy')}
+            </Link>
           </div>
 
           <div className="menu-separacio">
-              <Link to={routes[i18n.language].compromisQualitat}>
-                {t("nav.compromisQualitat")}
-              </Link>
+            <Link to={routes[i18n.language].compromisQualitat}>
+              {t('nav.compromisQualitat')}
+            </Link>
           </div>
 
           <div className="menu-separacio">
-              <Link to={routes[i18n.language].contact}>{t("nav.contact")}</Link>
+            <Link to={routes[i18n.language].contact}>{t('nav.contact')}</Link>
           </div>
         </div>
 
@@ -50,15 +50,13 @@ function Footer() {
             />
           </a>
 
-          <div className="text-footer">{t("footer.textPB")}</div>
+          <div className="text-footer">{t('footer.textPB')}</div>
 
-          <div className="text-footer">
-            Elliot Fernandez (2002 - {year})
-          </div>
+          <div className="text-footer">Elliot Fernandez (2002 - {year})</div>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
