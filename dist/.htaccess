@@ -1,16 +1,20 @@
 RewriteEngine On
 RewriteBase /
-# Redirige sitemap-index.xml a sitemap-index.xml.php
+
+# 1. Eliminar la barra final de las URL, excepto para directorios
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# 2. Redirige sitemap-index.xml a sitemap-index.xml.php
 RewriteRule ^sitemap-index\.xml$ sitemap-index.xml.php [L]
 
-# Redirige todos los sitemaps de idiomas, como sitemap-en.xml, sitemap-es.xml, etc., a sus archivos PHP correspondientes
+# 3. Redirige sitemaps de idiomas (por ejemplo, sitemap-en.xml)
 RewriteRule ^sitemap-([a-z]{2})\.xml$ sitemap-$1.xml.php [L]
 
-# Si la solicitud no es para un archivo existente ni un directorio, redirige a 'index.html'
+# 4. Si la solicitud no es para un archivo o directorio existente, redirige a index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
-
 
 #Redirecciones
 Redirect 301 "/en/history-article-archives" "/en/history-archives"
