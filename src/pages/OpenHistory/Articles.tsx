@@ -237,7 +237,7 @@ function Articles() {
 
         {translations.post_nameCa && (
           <link
-            rel="canonical"
+            rel="alternate"
             hrefLang="ca"
             href={`https://elliotfern.com/es/article/${translations.post_nameCa}`}
           />
@@ -245,28 +245,28 @@ function Articles() {
 
         {translations.post_nameEs && (
           <link
-            rel="canonical"
+            rel="alternate"
             hrefLang="es"
             href={`https://elliotfern.com/es/article/${translations.post_nameEs}`}
           />
         )}
         {translations.post_nameEn && (
           <link
-            rel="canonical"
+            rel="alternate"
             hrefLang="en"
             href={`https://elliotfern.com/en/article/${translations.post_nameEn}`}
           />
         )}
         {translations.post_nameFr && (
           <link
-            rel="canonical"
+            rel="alternate"
             hrefLang="fr"
             href={`https://elliotfern.com/fr/article/${translations.post_nameFr}`}
           />
         )}
         {translations.post_nameIt && (
           <link
-            rel="canonical"
+            rel="alternate"
             hrefLang="it"
             href={`https://elliotfern.com/it/article/${translations.post_nameIt}`}
           />

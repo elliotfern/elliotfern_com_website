@@ -1,13 +1,11 @@
 {
-    "editor.formatOnSave": true,
-    "[php]": {
-        "editor.formatOnSave": true,
-      },
-      "[html]": {
-        "editor.formatOnSave": true,
-      },
-  
-    "eslint.enable": true,
-  
-    }
-    
+  "editor.formatOnSave": true,
+  "[php]": {
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+
+  "eslint.enable": true
+}
