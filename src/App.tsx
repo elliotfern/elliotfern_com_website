@@ -1,9 +1,12 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+// App.tsx
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import i18n from './config/i18n'
 import { useEffect, useState } from 'react'
 import ReactGA from 'react-ga4'
 
 // Importaciones de tus componentes
+import { AuthProvider } from './services/authContext';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Articles from './pages/OpenHistory/Articles'
 import ArticlesArchives from './pages/OpenHistory/ArticlesArchives'
 import Course from './pages/OpenHistory/Course'
@@ -26,6 +29,9 @@ import BookDetails from './pages/Library/BookDetails/BookDetails'
 import BookAuthorDetails from './pages/Library/AuthorDetails/BookAuthorDetails'
 import CompromisQualitat from './pages/CompromisQualitat'
 import ScrollToTop from './components/ScrollToTop'
+import Dashboard from './pages/Dashboard/Dashboard';
+import LoginPage from './pages/LoginPage/LoginPage';
+import Vault from './pages/Dashboard/Vault/Vault';
 
 // Lista de idiomas permitidos
 const supportedLanguages = ['en', 'ca', 'es', 'it', 'fr']
@@ -96,7 +102,7 @@ function App() {
   }, [location.pathname]) // Cuando cambie la ruta, envía un Pageview
 
   return (
-    <>
+    <AuthProvider>
       <NavBar />
       {showCookieBanner && <CookieBanner onHide={acceptCookies} />}
       <div className="main-container">
@@ -114,24 +120,15 @@ function App() {
 
           <Route path="/homepage" element={<Navigate to="/en/homepage" />} />
           <Route path="/:lang/homepage" element={<HomePage />} />
-          <Route path="/:lang/course/:nameCourse/" element={<Course />} />
+          <Route path="/:lang/course/:nameCourse" element={<Course />} />
           <Route path="/:lang/article/:nameArticle" element={<Articles />} />
-          <Route
-            path="/:lang/history-archives"
-            element={<ArticlesArchives />}
-          />
+          <Route path="/:lang/history-archives" element={<ArticlesArchives />} />
           <Route path="/:lang/about-author" element={<AboutAuthor />} />
           <Route path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/:lang/contact" element={<Contact />} />
           <Route path="/:lang/links" element={<Links />} />
-          <Route
-            path="/about-author"
-            element={<Navigate to="/en/about-author" />}
-          />
-          <Route
-            path="/privacy-policy"
-            element={<Navigate to="/en/privacy-policy" />}
-          />
+          <Route path="/about-author" element={<Navigate to="/en/about-author" />} />
+          <Route path="/privacy-policy" element={<Navigate to="/en/privacy-policy" />} />
           <Route path="/contact" element={<Navigate to="/en/contact" />} />
           <Route path="/:lang/books" element={<Books />} />
           <Route path="/:lang/books/:slug" element={<BookDetails />} />
@@ -141,17 +138,31 @@ function App() {
           <Route path="/:lang/blog" element={<Blog />} />
           <Route path="/blog/:blogArticle" element={<BlogArticles />} />
           <Route path="/:lang/search-results" element={<SearchResultsPage />} />
-          <Route
-            path="/:lang/commitment-responsibility"
-            element={<CompromisQualitat />}
-          />
+          <Route path="/:lang/commitment-responsibility" element={<CompromisQualitat />} />
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/vault"
+            element={
+              <PrivateRoute>
+                <Vault />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </div>
       <Footer />
-    </>
-  )
+    </AuthProvider>
+  );
 }
 
 export default App
