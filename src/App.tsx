@@ -87,13 +87,13 @@ function App() {
     }
   }, [location.pathname]) // Se ejecuta cada vez que la ruta cambie
 
- // Verificar cuando cambia la ruta para enviar un Pageview
-useEffect(() => {
-  const cookiesAccepted = getCookie('cookiesAccepted');
-  if (cookiesAccepted === 'true') {
-    ReactGA.pageview(location.pathname); // Usa pageview en lugar de send
-  }
-}, [location.pathname]); // Cuando cambie la ruta, envía un Pageview
+  // Verificar cuando cambia la ruta para enviar un Pageview
+  useEffect(() => {
+    const cookiesAccepted = getCookie('cookiesAccepted')
+    if (cookiesAccepted === 'true') {
+      ReactGA.pageview(location.pathname) // Usa pageview en lugar de send
+    }
+  }, [location.pathname]) // Cuando cambie la ruta, envía un Pageview
 
   return (
     <>

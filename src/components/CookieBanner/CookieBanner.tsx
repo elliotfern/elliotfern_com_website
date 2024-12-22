@@ -72,7 +72,7 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ onHide }) => {
     })
 
     // Rastrear la página actual después de aceptar las cookies
-    ReactGA.pageview(location.pathname); // Usa pageview en lugar de send
+    ReactGA.pageview(location.pathname) // Usa pageview en lugar de send
   }
 
   if (!bannerVisible) return null // No renderiza nada si el banner no es visible
