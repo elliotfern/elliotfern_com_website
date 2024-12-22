@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import i18n from './config/i18n'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactGA from 'react-ga4'
 
 // Importaciones de tus componentes
@@ -87,13 +87,13 @@ function App() {
     }
   }, [location.pathname]) // Se ejecuta cada vez que la ruta cambie
 
-  // Verificar cuando cambia la ruta para enviar un Pageview
-  useEffect(() => {
-    const cookiesAccepted = getCookie('cookiesAccepted')
-    if (cookiesAccepted === 'true') {
-      ReactGA.send({ hitType: 'pageview', page: location.pathname })
-    }
-  }, [location.pathname]) // Cuando cambie la ruta, envía un Pageview
+ // Verificar cuando cambia la ruta para enviar un Pageview
+useEffect(() => {
+  const cookiesAccepted = getCookie('cookiesAccepted');
+  if (cookiesAccepted === 'true') {
+    ReactGA.pageview(location.pathname); // Usa pageview en lugar de send
+  }
+}, [location.pathname]); // Cuando cambie la ruta, envía un Pageview
 
   return (
     <>

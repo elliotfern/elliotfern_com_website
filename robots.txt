@@ -1,0 +1,5 @@
+# Allow search boots
+User-agent: *
+
+# Sitemap
+Sitemap: https://elliotfern.com/sitemap-index.xml
