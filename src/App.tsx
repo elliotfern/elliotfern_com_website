@@ -1,7 +1,7 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import i18n from './config/i18n'
-import React, { useEffect, useState } from 'react'
-import ReactGA from 'react-ga4'
+//import React, { useEffect } from 'react'
+//import ReactGA from 'react-ga4'
 
 // Importaciones de tus componentes
 import Articles from './pages/OpenHistory/Articles'
@@ -20,7 +20,7 @@ import Contact from './pages/Contact'
 import Blog from './pages/Blog/Blog'
 import BlogArticles from './pages/Blog/BlogArticles'
 import Links from './pages/Links'
-import CookieBanner from './components/CookieBanner/CookieBanner'
+//import CookieBanner from './components/CookieBanner/CookieBanner'
 import BookAuthors from './pages/Library/Authors/BookAuthors'
 import BookDetails from './pages/Library/BookDetails/BookDetails'
 import BookAuthorDetails from './pages/Library/AuthorDetails/BookAuthorDetails'
@@ -31,11 +31,12 @@ import ScrollToTop from './components/ScrollToTop'
 const supportedLanguages = ['en', 'ca', 'es', 'it', 'fr']
 
 function App() {
-  const location = useLocation()
+  //const location = useLocation()
   const userLang = i18n.language
   const redirectLang = supportedLanguages.includes(userLang) ? userLang : 'en'
 
-  const [showCookieBanner, setShowCookieBanner] = useState<boolean>(false)
+  //const [showCookieBanner, setShowCookieBanner] = useState<boolean>(false)
+  /*
 
   // Obtener cookie por nombre
   const getCookie = (name: string): string | null => {
@@ -52,9 +53,10 @@ function App() {
   // Función para aceptar las cookies
   const acceptCookies = () => {
     setCookie('cookiesAccepted', 'true', 30)
-    setShowCookieBanner(false)
-    loadGoogleAnalytics()
+    //setShowCookieBanner(false)
+    //loadGoogleAnalytics()
   }
+
 
   // Cargar Google Analytics
   const loadGoogleAnalytics = () => {
@@ -65,6 +67,8 @@ function App() {
     })
   }
 
+
+
   // Función para establecer cookies
   const setCookie = (name: string, value: string, days: number) => {
     const expires = new Date()
@@ -72,18 +76,19 @@ function App() {
     document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`
   }
 
+
   // Verificar las cookies y el estado del banner cada vez que se cambia la ruta
   useEffect(() => {
     const cookiesAccepted = getCookie('cookiesAccepted')
 
     if (cookiesAccepted === 'true') {
       // Si las cookies han sido aceptadas, inicializar Google Analytics
-      loadGoogleAnalytics()
-      setShowCookieBanner(false)
+      //loadGoogleAnalytics()
+      //setShowCookieBanner(false)
     } else if (cookiesAccepted === 'false') {
-      setShowCookieBanner(false)
+      //setShowCookieBanner(false)
     } else {
-      setShowCookieBanner(true)
+      //setShowCookieBanner(true)
     }
   }, [location.pathname]) // Se ejecuta cada vez que la ruta cambie
 
@@ -94,11 +99,12 @@ function App() {
       ReactGA.send({ hitType: 'pageview', page: location.pathname })
     }
   }, [location.pathname]) // Cuando cambie la ruta, envía un Pageview
-
+  */
+  // {showCookieBanner && <CookieBanner onHide={acceptCookies} />}
   return (
     <>
       <NavBar />
-      {showCookieBanner && <CookieBanner onHide={acceptCookies} />}
+
       <div className="main-container">
         <ScrollToTop />
         <Routes>
